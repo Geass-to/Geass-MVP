@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+
+:root{
+    --primary: #EF5A63;
+    --light: #F5F5F5;
+    --dark: #161617;
+    --light-dark: #313132;
+    --gray: #C2C2C2;
+    --white60: hsla(0, 0%, 96%,.8);
+    --primary-light: hsla(356, 82%, 90%);
+    
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Quicksand",monospace;
+}
+
+section{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    background-image: linear-gradient(var(--dark), var(--light-dark));
+}
+
+section .imgBox{
+    position: relative;
+    width: 60%;
+    height: 100%;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
+
+section .imgBox::before{
+    content: '“I don’t like expending more effort than I have to.”';
+    font-family: 'secular One', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    position: absolute;
+    color: var(--dark);
+    top:-50px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: linear-gradient(225deg,var(--primary),var(--light-dark)); */
+    /* background: linear-gradient(225deg,#e91e63,#03a9f4); */
+    z-index: 1;
+    mix-blend-mode: overlay;
+}
+
+section .imgBox img{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+    box-shadow: 3px 3px 10px black;
+}
+
+section .contentBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex: 0 0 50%; */
+    width: 40%;
+    /* min-width: 800px;
+    max-width: 1000px; */
+    height:100%;
+    
+}
+
+section .contentBox .formBox{
+    width: 65%;
+    /* height: auto; */
+    /* background-color: hsla(0, 0%, 96%); */
+    background: var(--light-dark);
+    backdrop-filter: blur(10px);
+    padding: 30px 40px;
+    border-radius: 30px;
+    /* overflow: hidden; */
+    box-shadow: 7px 5px 6px black;
+    transition: display 15s;
+
+    
+}
+
+section .contentBox .formBox h2{
+   
+    color: black;
+    font-weight: bold;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    border-bottom: 4px solid black;
+    display: inline-block;
+    letter-spacing: 1px;
+}
+
+section .contentBox .formBox .inputBox{
+    margin-bottom: 40px;
+}
+
+/*     */
+
+section .contentBox .formBox .inputBox input {
+    width: 100%;
+    padding: 5px 5px;
+    outline: none;
+    font-family: 'Quicksand',monospace;
+    /* border: 1px solid var(--light-dark); */
+    border: none;
+    border-bottom: 2px solid black;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: var(--dark);
+    background: transparent;
+    /* border-radius: 20px; */
+}
+
+section .contentBox .formBox .inputBox input[type="submit"]{
+    background: var(--primary);
+    color: var(--light);
+    height: 50px;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 30px;
+}
+
+section .contentBox .formBox .inputBox input[type="submit"]:hover{
+    background-color: #ef5a6493;;
+}
+
+.remember{
+    margin-bottom: 10px;
+    color: var(--light-dark);
+    font-size: 18px;
+    font-weight: 500;
+}
+section .contentBox .formBox span{
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+section .contentBox .formBox h3{
+    color: var(--light-dark);
+    text-align: center;
+    font-size: 18px;
+    margin: 0px 0 30px;
+}
+
+section .contentBox .formBox ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+section .contentBox .formBox ul li{ 
+    display: flex;              
+    justify-content: center;
+    align-items: center;
+    width: 80px !important;
+    list-style: none;
+    /* background-color: aqua; */
+    font-size: 40px !important;
+    color: var(--primary) !important;
+    cursor: pointer;
+}
+
+section .contentBox .formBox ul li:hover{
+    color: #ef5a6493;
+}
+.button-Box{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 35px auto;
+    position: relative;
+    box-shadow: 0 0 15px ;
+    background-color: var(--dark);
+    border-radius: 15px;
+
+}
+.toggle{
+    padding: 10px 30px;
+    /* width: 100%; */
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    position: relative;
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+    color: var(--gray);
+}
+
+#btn{
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 50%;
+    height: 100% ;
+    /* background: linear-gradient(to right, ); */
+    background: var(--primary);
+    border-radius: inherit;
+    transition: .5s;
+}
+
+#indicator{
+    transition: .5s;
+}
+
+#login{
+    position: relative;    
+}
+
+#signup{    
+     display: none;    
+}
+
+
+
+
+@media (max-width: 1024px){
+
+    section .imgBox{
+        border-radius: 0px;
+        box-shadow: none;
+        display: none;
+    
+    }
+    section .imgBox{
+        position: absolute;
+        width: 100%;
+        height: 100%;        
+    }
+
+    
+    
+    
+    section .contentBox{
+        display: flex;
+        width: 100%;
+        z-index: 1;
+        height:100%;
+        
+    }
+
+    section .contentBox .formBox{
+        width: 60%;
+        /* background-color: hsla(0, 0%, 96%); */
+        /* background: hsla(24, 100%, 60%,.5); */
+        /* background: var(--primary-light); */
+        /* backdrop-filter: blur(10px); */
+        padding: 15px 30px;
+        border-radius: 30px;
+        /* box-shadow: 5px 5px 15px black; */
+    }
+
+
+    
+}
+
+
+
+@media (max-width: 768px) {
+
+    section .imgBox{
+        border-radius: 0px;
+        box-shadow: none;
+        display: none;
+    
+    }
+    section .imgBox{
+        position: absolute;
+        width: 100%;
+        height: 100%;        
+    }
+    
+    section .imgBox::before{
+        
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        font-size: 30px;
+        top:20px;
+        
+    }
+    section .contentBox{
+        display: flex;
+        width: 100%;
+        z-index: 1;
+        height:100%;
+        
+    }
+
+    section .contentBox .formBox{
+        width: 90%;
+        /* background-color: hsla(0, 0%, 96%); */
+        /* background: hsla(24, 100%, 60%,.5); */
+        /* background: var(--primary-light); */
+        /* backdrop-filter: blur(10px); */
+        padding: 15px 30px;
+        border-radius: 30px;
+        /* box-shadow: 5px 5px 15px black; */
+    }
+
+    section .contentBox .formBox h2{
+        margin-bottom: 10px;
+    }
+
+    section .contentBox .formBox .inputBox input[type="submit"]{
+        
+        margin-top: 10px;
+    }
+
+    section .contentBox .formBox h3{
+        color: var(--light-dark);
+        text-align: center;
+        font-size: 18px;
+        margin: 0px 0 10px;
+    }
+
+    
+}
