@@ -22,7 +22,7 @@ export const Login = () => {
   return (
     <section>
       <div className="imgBox">
-        <img src="src\images\A-Sabukaru-Introduxction-to-manga-Homonculus-hideo-yamamoto5.jpg" alt="IMG" />
+        <img src="src\images\A-Sabukaru-Introduxction-to-manga-Homonculus-color.png" alt="IMG" />
       </div> 
       <div className="contentBox">
         <div className="formBox">
@@ -38,7 +38,7 @@ export const Login = () => {
                 <input
                   type="text"
                   className="input-field"
-                  placeholder="User Id"
+                  placeholder="Email Id"
                   required
                 />
               </div>

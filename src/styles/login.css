@@ -123,7 +123,7 @@ section .contentBox .formBox .inputBox input {
     border-bottom: 2px solid black;
     font-size: 16px;
     letter-spacing: 1px;
-    color: var(--dark);
+    color: var(--light);
     background: transparent;
     /* border-radius: 20px; */
 }
@@ -156,10 +156,11 @@ section .contentBox .formBox span{
     align-items: center;    
 }
 section .contentBox .formBox h3{
-    color: var(--light-dark);
+    color: var(--light);
     text-align: center;
     font-size: 18px;
     margin: 0px 0 30px;
+    font-family: "Quicksand";
 }
 
 section .contentBox .formBox ul{
@@ -177,8 +178,13 @@ section .contentBox .formBox ul li{
     list-style: none;
     /* background-color: aqua; */
     font-size: 40px !important;
-    color: var(--primary) !important;
+    /* color: var(--primary); */
     cursor: pointer;
+}
+
+section .contentBox .formBox ul li i{ 
+    color: var(--primary);
+    /* background-color: #EF5A63; */
 }
 
 section .contentBox .formBox ul li:hover{
@@ -227,10 +233,10 @@ section .contentBox .formBox ul li:hover{
 #login{
     position: relative;    
 }
-
+/* 
 #signup{    
-     /* display: none;     */
-}
+     display: none;    
+} */
 
 
 
@@ -329,7 +335,7 @@ section .contentBox .formBox ul li:hover{
     }
 
     section .contentBox .formBox h3{
-        color: var(--light-dark);
+        color: var(--light);
         text-align: center;
         font-size: 18px;
         margin: 0px 0 10px;

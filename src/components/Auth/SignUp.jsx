@@ -22,7 +22,7 @@ export const SignUp = () => {
   return (
     <section>
       <div className="imgBox">
-        <img src="src\images\A-Sabukaru-Introduxction-to-manga-Homonculus-color.png" alt="IMG" />
+        <img src="src\images\A-Sabukaru-Introduxction-to-manga-Homonculus-hideo-yamamoto5.png" alt="IMG" />
       </div> 
       <div className="contentBox">
         <div className="formBox">

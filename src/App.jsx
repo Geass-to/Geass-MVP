@@ -5,6 +5,8 @@ import { SignUp } from "./components/Auth/SignUp";
 import Home from "./components/HomePage/Home";
 import { Scroll_Items } from "./components/HomePage/Scroll_Items";
 import { Layout } from "./components/Layout";
+import "./styles/style.css";
+import "./styles/animate.css";
 
 function App() {
   return (
