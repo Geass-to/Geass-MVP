@@ -229,7 +229,7 @@ section .contentBox .formBox ul li:hover{
 }
 
 #signup{    
-     display: none;    
+     /* display: none;     */
 }
 
 
