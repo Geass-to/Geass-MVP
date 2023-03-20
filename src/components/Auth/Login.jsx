@@ -14,6 +14,7 @@ export const Login = () => {
             console.error(err);
         }
     };
+    
     // let x = document.getElementById("login");
     // let y = document.getElementById("signup");
     // let z = document.getElementById("btn");
@@ -101,12 +102,11 @@ export const Login = () => {
                   required
                 />
               </div>
-              <div className="remember">
+              {/*<div className="remember">
                 <label
                   ><input type="checkbox" /> I agree to terms and
-                  conditions</label
-                >
-              </div>
+                  conditions</label>
+              </div>*/}
               <div className="inputBox">
                 <input type="submit" value="Log In" />
               </div>
