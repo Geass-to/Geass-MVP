@@ -8,26 +8,49 @@ import { Layout } from "./components/Layout";
 import "./styles/style.css";
 import "./styles/animate.css";
 import { AuthContext } from "./context/AuthContext";
+import Profile from "./components/profile/Profile";
+import EditProfile from "./components/profile/EditProfile";
 
 function App() {
+  const { currentUser } = useContext(AuthContext);
 
-  const {currentUser} = useContext(AuthContext)
-
-  const RequireAuth = ({children}) => {
-    return currentUser ? (children) : <Navigate to="/login" />
-  }
-  console.log(currentUser)
+  const RequireAuth = ({ children }) => {
+    return currentUser ? children : <Navigate to="/login" />;
+  };
+  console.log(currentUser);
 
   return (
     <Routes>
-    <Route path="login" element={<LogIn/>} />
-    <Route path="signup" element={<SignUp/>} />
+      <Route path="login" element={<LogIn />} />
+      <Route path="signup" element={<SignUp />} />
       <Route path="/" element={<Layout />}>
-        <Route index element={
-          <RequireAuth>
-          <Home />
-          </RequireAuth>
-        } />
+        <Route
+          index
+          element={
+            <RequireAuth>
+              <Home />
+            </RequireAuth>
+          }
+        />
+
+        <Route path="profile">
+          <Route
+            index
+            element={
+              <RequireAuth>
+                <Profile />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="editprofile"
+            element={
+              <RequireAuth>
+                <EditProfile />
+              </RequireAuth>
+            }
+          />
+        </Route>
       </Route>
     </Routes>
   );

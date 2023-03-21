@@ -22,15 +22,16 @@ export const SignUp = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try{
-        await createUserWithEmailAndPassword(auth, email, password)
+      await createUserWithEmailAndPassword(auth, email, password)
+      navigate("/profile/editprofile");
         
     }catch (err){
-        console.error(`ERROR:${err}`);
-        console.error(`ERROR CODE: ${err.code}`);
-        console.error(`ERROR MESSAGE: ${err.message}`);
-        // const errorMessage = err.message.split(':')[1].trim();
-        const errorCode = err.code.split('/')[1];
-        setError(errorCode);
+      console.error(`ERROR:${err}`);
+      console.error(`ERROR CODE: ${err.code}`);
+      console.error(`ERROR MESSAGE: ${err.message}`);
+      // const errorMessage = err.message.split(':')[1].trim();
+      const errorCode = err.code.split('/')[1];
+      setError(errorCode);
     }
 
   }
@@ -67,7 +68,7 @@ export const SignUp = () => {
             <button className="toggle" >Sign Up</button>
           </div>
           <div id="trans">
-          <form id="signup" className="input-group" onSubmit={handleSignup}>
+          <form id="signup" className="input-group" onSubmit={handleSignup} >
           <div className="inputBox">
             <input
               type="text"

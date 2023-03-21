@@ -7,7 +7,7 @@ const NavBar = () => {
     <nav>
     <div className="container">
       <ul>
-        <li className="logo"><img src="src\assets\images\Geass_Logo.png" alt="Geass" /></li>
+        <li className="logo"><img src="\src\assets\images\Geass_Logo.png" alt="Geass" /></li>
         <li className="search-bar">
           <input type="search" placeholder="Search..." className="search" />
           <span className="fas fa-search"></span>
@@ -32,7 +32,7 @@ const NavBar = () => {
         </div>
 
         <li className="profile">
-          <img src="src\assets\images\lelouch.png" alt="profile Pic" />
+          <img src="\src\assets\images\lelouch.png" alt="profile Pic" />
         </li>
       </ul>
     </div>
