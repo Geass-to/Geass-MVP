@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { Login } from "./components/Auth/Login";
+import { LogIn } from "./components/Auth/LogIn";
 import { SignUp } from "./components/Auth/SignUp";
 import Home from "./components/HomePage/Home";
 import { Scroll_Items } from "./components/HomePage/Scroll_Items";
@@ -20,7 +20,7 @@ function App() {
 
   return (
     <Routes>
-    <Route path="login" element={<Login/>} />
+    <Route path="login" element={<LogIn/>} />
     <Route path="signup" element={<SignUp/>} />
       <Route path="/" element={<Layout />}>
         <Route index element={

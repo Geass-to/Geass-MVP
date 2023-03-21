@@ -551,7 +551,7 @@ footer .footer-icons{
 }
 
 .footer-icons i{
-    font-size: 35px;
+    font-size: 25px;
     color: var(--primary-light);
     margin: 10px 0px;
     padding: 0 10px;
@@ -573,11 +573,9 @@ footer .footer-menu li a{
 
 footer .footer-support-box{
     grid-area: support;
-    margin: 10px 0;
-    background-color: var(--primary);
-    height: 30px;
-    width: 100px;
-    border-radius: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .footer-support-box a{
@@ -587,6 +585,11 @@ footer .footer-support-box{
     font-size: 16px;
     font-weight: bold;
     color: var(--dark);
+    white-space: nowrap;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 30px;
+    background-color: var(--primary);
 }
 
 /* Hover animation */
@@ -839,7 +842,7 @@ footer .footer-icons :is(i:hover, i:focus, i:active){
     footer .footer-menu li{
         display: inline;
         padding-bottom: 10px;
-        padding-left: 15px;
+        padding-left: 20px;
     }
 
     footer .footer-menu li a{
@@ -847,11 +850,10 @@ footer .footer-icons :is(i:hover, i:focus, i:active){
         font-size: 20px;
     }
 
-    footer .footer-support-box{    
-        height: 30px;
-        width: 100px;    
+    .footer-support-box a{
+        font-size: 18px;
+        padding: 10px 20px 10px 20px;
     }
-
 /*------------------------Footer Styling End------------------------*/
 
 }

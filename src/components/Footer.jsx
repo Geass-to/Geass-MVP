@@ -1,4 +1,5 @@
 import React from 'react'
+import LogOut from './Auth/LogOut'
 
 export const Footer = () => {
   return (
@@ -22,7 +23,8 @@ export const Footer = () => {
             <li><a href="#">Contact Us</a></li>
           </div>
           <div className="footer-support-box">
-            <li><a href="#">Support</a></li>
+            <a href="#">Support</a>
+            <LogOut/>
           </div>          
         </div>
       </footer>
