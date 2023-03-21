@@ -1,26 +1,43 @@
 import { auth } from "../../config/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "../../styles/login.css";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 export const Login = () => {
 
-  //For Navigation
-  const navigate = useNavigate()
-  const gotoSignUp = () => {navigate(`/signup`)}
-  //For Auth
+  //!states
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(true);
-  
+  const [error, setError] = useState(false);
+
+  const {dispatch} = useContext(AuthContext)
+
+  //!For Navigation
+  const navigate = useNavigate()
+  const gotoSignUp = () => {navigate(`/signup`)}
+
+  //!For Auth  
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try{
-        await signInWithEmailAndPassword(auth, email, password);
+        await signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) =>{
+          //Signed in
+          const user = userCredential.user;
+          dispatch({type:"LOGIN", payload: user})
+          console.log(user);
+          navigate("/");
+        })
     }catch (err){
-        console.error(err);
+      setError(true);
+      console.error(`ERROR:${err}`);
+      console.error(`ERROR CODE: ${err.code}`);
+      console.error(`ERROR MESSAGE: ${err.message}`);
+      const errorCode = err.code.split('/')[1];
+      setError(errorCode);
     }
 
   }
@@ -28,7 +45,7 @@ export const Login = () => {
   return (
     <section>
       <div className="imgBox">
-        <img src="src\images\A-Sabukaru-Introduxction-to-manga-Homonculus-color.png" alt="IMG" />
+        <img src="src\assets\images\A-Sabukaru-Introduxction-to-manga-Homonculus-color.png" alt="IMG" />
       </div> 
       <div className="contentBox">
         <div className="formBox">
@@ -59,6 +76,7 @@ export const Login = () => {
                 />
               </div>
               {error && <span id="error">Wrong email or password!</span>}
+              {/*error && (<span id="error">{error}</span>)*/}
               <div className="inputBox">
                 <input type="submit" value="Log In" />
               </div>

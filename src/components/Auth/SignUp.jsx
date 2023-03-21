@@ -22,7 +22,8 @@ export const SignUp = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try{
-        await createUserWithEmailAndPassword(auth, email, password);
+        await createUserWithEmailAndPassword(auth, email, password)
+        
     }catch (err){
         console.error(`ERROR:${err}`);
         console.error(`ERROR CODE: ${err.code}`);
@@ -55,7 +56,7 @@ export const SignUp = () => {
   return (
     <section>
       <div className="imgBox">
-        <img src="src\images\A-Sabukaru-Introduxction-to-manga-Homonculus-hideo-yamamoto5.png" alt="IMG" />
+        <img src="src\assets\images\A-Sabukaru-Introduxction-to-manga-Homonculus-hideo-yamamoto5.png" alt="IMG" />
       </div> 
       <div className="contentBox">
         <div className="formBox">
