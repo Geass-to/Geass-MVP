@@ -11,19 +11,28 @@ export const SignUp = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordMatch, setPasswordMatch] = useState(true);
+  const [error, setError] = useState('');
 
   //!For Navigation 
   const navigate = useNavigate();
   const gotoLogIn = () => {navigate("/login")};
 
   //!For Auth
-    const signIn = async () =>{
-        try{
-            await createUserWithEmailAndPassword(auth, email, password);
-        }catch (err){
-            console.error(err);
-        }
-    };
+  //TODO Verify email
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    try{
+        await createUserWithEmailAndPassword(auth, email, password);
+    }catch (err){
+        console.error(`ERROR:${err}`);
+        console.error(`ERROR CODE: ${err.code}`);
+        console.error(`ERROR MESSAGE: ${err.message}`);
+        // const errorMessage = err.message.split(':')[1].trim();
+        const errorCode = err.code.split('/')[1];
+        setError(errorCode);
+    }
+
+  }
     
   //!Handleing Confirm Password
   const handleInputChange = (event) => {
@@ -57,7 +66,7 @@ export const SignUp = () => {
             <button className="toggle" >Sign Up</button>
           </div>
           <div id="trans">
-          <form id="signup" className="input-group">
+          <form id="signup" className="input-group" onSubmit={handleSignup}>
           <div className="inputBox">
             <input
               type="text"
@@ -98,7 +107,10 @@ export const SignUp = () => {
           </div>*/}
           {!passwordMatch && (
             <span id="error">Passwords do not match</span>
-            )}
+          )}
+          {error && (
+            <span id="error">{error}</span>
+          )}
           <div className="inputBox">
             <input type="submit" value="Sign Up" />
           </div>
