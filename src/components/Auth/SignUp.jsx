@@ -5,9 +5,18 @@ import "../../styles/login.css";
 import { useNavigate } from "react-router-dom";
 
 export const SignUp = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
 
+  //!States
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordMatch, setPasswordMatch] = useState(true);
+
+  //!For Navigation 
+  const navigate = useNavigate();
+  const gotoLogIn = () => {navigate("/login")};
+
+  //!For Auth
     const signIn = async () =>{
         try{
             await createUserWithEmailAndPassword(auth, email, password);
@@ -16,8 +25,23 @@ export const SignUp = () => {
         }
     };
     
-    const navigate = useNavigate();
-    const gotoLogIn = () => {navigate("/login")};
+  //!Handleing Confirm Password
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    if (name === 'password') {
+    setPassword(value);
+    } else {
+    setConfirmPassword(value);
+    }
+  }
+
+  const checkPasswordMatch = () => {
+    if (password !== confirmPassword) {
+    setPasswordMatch(false);
+    } else {
+    setPasswordMatch(true);
+    }
+  }
 
   return (
     <section>
@@ -40,22 +64,31 @@ export const SignUp = () => {
               className="input-field"
               placeholder="Email Id"
               required
+              onChange={e=>setEmail(e.target.value)}
             />
           </div>
           <div className="inputBox">
             <input
               type="password"
               className="input-field"
+              name="password"
               placeholder="Password"
+              value={password}
               required
+              onChange={handleInputChange}
+              onBlur={checkPasswordMatch}
             />
           </div>
           <div className="inputBox">
             <input
               type="password"
               className="input-field"
+              name="confirmPassword"
               placeholder="Confirm Password"
+              value={confirmPassword}
               required
+              onChange={handleInputChange}
+              onBlur={checkPasswordMatch}
             />
           </div>
           {/*<div className="remember">
@@ -63,6 +96,9 @@ export const SignUp = () => {
               ><input type="checkbox" /> I agree to terms and
               conditions</label>
           </div>*/}
+          {!passwordMatch && (
+            <span id="error">Passwords do not match</span>
+            )}
           <div className="inputBox">
             <input type="submit" value="Sign Up" />
           </div>
