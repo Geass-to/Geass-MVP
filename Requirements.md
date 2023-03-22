@@ -8,7 +8,7 @@
 
 ### Login and register
 - [ ] Google login
-- [ ] Login using firebase
+- [x] Login using firebase
 
 ### Users can upload their text file and covert them to audio
 - [ ] Upload pdf or text files

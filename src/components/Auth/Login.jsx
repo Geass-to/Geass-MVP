@@ -4,6 +4,9 @@ import { useContext, useState } from "react";
 import "../../styles/login.css";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import GoogleAuth from "./GoogleAuth";
+import TwitterAuth from "./TwitterAuth";
+import FacebookAuth from "./FacebookAuth";
 
 export const LogIn = () => {
 
@@ -83,9 +86,9 @@ export const LogIn = () => {
 
               <h3>Login with social media</h3>
               <ul className="logos">
-                <li><i className="fa-brands fa-google"></i></li>
-                <li><i className="fa-brands fa-twitter"></i></li>
-                <li><i className="fa-brands fa-github"></i></li>
+                <li><GoogleAuth/></li>
+                <li><TwitterAuth/></li>
+                <li><FacebookAuth/></li>
               </ul>
             </form>
           </div>

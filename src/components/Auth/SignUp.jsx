@@ -1,8 +1,11 @@
-import { auth } from "../../config/firebase";
+import { auth, signInWithGoogle } from "../../config/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import "../../styles/login.css";
 import { useNavigate } from "react-router-dom";
+import GoogleAuth from "./GoogleAuth";
+import TwitterAuth from "./TwitterAuth";
+import FacebookAuth from "./FacebookAuth";
 
 export const SignUp = () => {
 
@@ -119,9 +122,9 @@ export const SignUp = () => {
 
           <h3>Login with social media</h3>
           <ul className="logos">
-            <li><i className="fa-brands fa-google"></i></li>
-            <li><i className="fa-brands fa-twitter"></i></li>
-            <li><i className="fa-brands fa-github"></i></li>
+            <li><GoogleAuth/></li>
+            <li><TwitterAuth/></li>
+            <li><FacebookAuth/></li>
           </ul>
         </form>
           </div>

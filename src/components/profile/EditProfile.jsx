@@ -3,7 +3,7 @@ import "../../styles/editprofile.css";
 
 const EditProfile = () => {
   return (
-    <div className="bg-card">
+    <>
       <div className="banner">
         <img
           src="https://images.hdqwalls.com/download/kimetsu-no-yaiba-anime-4k-yn-1360x768.jpg"
@@ -25,43 +25,48 @@ const EditProfile = () => {
         <form className="profileDetails">
           <ul>
             <li>
-              Name <br />
+              <span>Name</span>
+              
               <input type="text" />
             </li>
             <li>
-              Username
-              <br />
+              <span>Username</span>
+              
               <input type="text" />
             </li>
             <li>
-              Email Id
-              <br />
+              <span>Email Id</span>
+              
               <input type="Email" />
             </li>
             <li>
-              Password
-              <br />
+              <span>Password</span>
+              
               <input type="password" />
             </li>
             <li>
-              Country
-              <br />
+              <span>Country</span>
+              
               <input type="text" />
             </li>
             <li>
-              City
-              <br />
+              <span>City</span>
+              
               <input type="text" />
             </li>
             <li>
-              Bio
-              <br />
-              <input type="text" />
+              <span>Bio</span>
+              <textarea>
+              </textarea>
+            </li>
+            <li>
+              <button>Submit</button>
             </li>
           </ul>
+
         </form>
       </div>
-    </div>
+    </>
   );
 };
 

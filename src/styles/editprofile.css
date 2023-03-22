@@ -17,8 +17,8 @@
     width: 90%;
     height: 400px;
     margin: 30px auto 30px auto ;
-    border-radius: 30px;
-    box-shadow: 5px 5px 10px black, -5px -5px 10px #a4a4a438;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px black, -5px -5px 5px #a4a4a438;
 }
 
 .banner img{
@@ -30,7 +30,9 @@
 }
 
 .bottomInfo{
-    color: var(--light);
+    font-family: "Quicksand", monospace;
+    font-weight: bold;
+    color: var(--primary-light);
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -50,5 +52,50 @@
     height: 100%;
     object-fit:cover;
     border-radius: inherit;
-
 }
+
+.bottomInfo input{
+    height: 40px;
+}
+
+.bottomInfo textarea{
+    height: 100px;
+}
+
+.bottomInfo input, textarea{
+    color: var(--light);
+    background-color: var(--light-dark);
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 10px;
+    resize:none;
+}
+
+.profileDetails{
+    width: 800px;
+}
+
+.profileDetails ul{
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(350px,.5fr));
+    width: 100%;
+    gap: 25px;
+}
+
+.profileDetails ul li{
+    width: 350px;
+}
+
+.profileImage ul:last-child{
+    background-color: #EF5A63;
+    color: white;
+}
+
+.profileDetails ul li span{
+    font-size: 20px;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+}
+
