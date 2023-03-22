@@ -2,7 +2,7 @@ import React from 'react'
 
 const FacebookAuth = () => {
   return (
-    <i className="fa-brands fa-github"></i>
+    <i class="fa-brands fa-facebook"></i>
   )
 }
 

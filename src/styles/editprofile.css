@@ -99,3 +99,12 @@
     padding-bottom: 10px;
 }
 
+.profileDetails button{
+    margin: 0 20px;
+}
+
+#editprofile-submit-button{
+    display: flex;
+    justify-content: center;
+    align-self: flex-end;
+}

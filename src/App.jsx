@@ -8,8 +8,10 @@ import { Layout } from "./components/Layout";
 import "./styles/style.css";
 import "./styles/animate.css";
 import { AuthContext } from "./context/AuthContext";
-import Profile from "./components/profile/Profile";
-import EditProfile from "./components/profile/EditProfile";
+import Profile from "./components/ProfilePage/Profile";
+import EditProfile from "./components/ProfilePage/EditProfile";
+import { Provider } from "react-redux";
+import { store } from "./features/Store";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
@@ -20,39 +22,38 @@ function App() {
   console.log(currentUser);
 
   return (
-    <Routes>
-      <Route path="login" element={<LogIn />} />
-      <Route path="signup" element={<SignUp />} />
-      <Route path="/" element={<Layout />}>
-        <Route
-          index
-          element={
-            <RequireAuth>
-              <Home />
-            </RequireAuth>
-          }
-        />
+    <Provider store={store} >
+      <Routes>
+        <Route path="login" element={<LogIn />} />
+        <Route path="signup" element={<SignUp />} />
+        <Route path="/" element={<Layout />}>
+          <Route index
+            element={
+              <RequireAuth>
+                <Home />
+              </RequireAuth>
+            }
+          />
 
-        <Route path="profile">
-          <Route
-            index
-            element={
-              <RequireAuth>
-                <Profile />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="editprofile"
-            element={
-              <RequireAuth>
-                <EditProfile />
-              </RequireAuth>
-            }
-          />
+          <Route path="profile">
+            <Route index
+              element={
+                <RequireAuth>
+                  <Profile />
+                </RequireAuth>
+              }
+            />
+            <Route path="editprofile"
+              element={
+                <RequireAuth>
+                  <EditProfile />
+                </RequireAuth>
+              }
+            />
+          </Route>
         </Route>
-      </Route>
-    </Routes>
+      </Routes>
+    </Provider>
   );
 }
 

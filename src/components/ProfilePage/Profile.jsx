@@ -1,6 +1,6 @@
 import React from 'react'
-import Avatar from '../utility/Avatar'
-import BannerCard from '../utility/BannerCard'
+import Avatar from '../Utility/Avatar'
+import BannerCard from '../Utility/BannerCard'
 
 const Profile = () => {
 

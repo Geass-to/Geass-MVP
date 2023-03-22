@@ -7,8 +7,10 @@
 - User profile and dashboard
 
 ### Login and register
-- [ ] Google login
+- [x] Google login
 - [x] Login using firebase
+- [ ] Facebook login
+- [ ] Twitter login
 
 ### Users can upload their text file and covert them to audio
 - [ ] Upload pdf or text files

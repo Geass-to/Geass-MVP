@@ -1,5 +1,7 @@
 import React from "react";
 import "../../styles/editprofile.css";
+import StyledButton from "../Utility/Button";
+import { login, logout } from "../../features/User"
 
 const EditProfile = () => {
   return (
@@ -10,7 +12,6 @@ const EditProfile = () => {
           alt="Banner Image"
         />
       </div>
-
       <div className="bottomInfo">
         <div className="profileImage">
           <div className="uploadBox">
@@ -59,8 +60,11 @@ const EditProfile = () => {
               <textarea>
               </textarea>
             </li>
+            <li id="editprofile-submit-button">
+              <StyledButton bgColor="var(--light-dark)">Go Back</StyledButton>
+              <StyledButton>Submit Now</StyledButton>
+            </li>
             <li>
-              <button>Submit</button>
             </li>
           </ul>
 
