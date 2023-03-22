@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../styles/editprofile.css";
 import StyledButton from "../Utility/Button";
-import { login, logout } from "../../features/User"
+import { useDispatch } from "react-redux";
+import { login, logout } from "../../features/User";
 
 const EditProfile = () => {
+  const dispatch = useDispatch();
+
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [country, setCountry] = useState("");
+  const [city, setCity] = useState("");
+  const [bio, setBio] = useState("");
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+
+    const userData = {
+      name: name,
+      username: username,
+      email: email,
+      country: country,
+      city: city,
+      bio: bio,
+    };
+
+    dispatch(login(userData));
+  };
+
   return (
     <>
       <div className="banner">
@@ -23,51 +48,64 @@ const EditProfile = () => {
           <br />
           <span>Upload profile image</span>
         </div>
-        <form className="profileDetails">
+        <form className="profileDetails" onSubmit={onSubmit}>
           <ul>
             <li>
               <span>Name</span>
-              
-              <input type="text" />
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
             </li>
             <li>
               <span>Username</span>
-              
-              <input type="text" />
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
             </li>
             <li>
               <span>Email Id</span>
-              
-              <input type="Email" />
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </li>
             <li>
               <span>Password</span>
-              
-              <input type="password" />
+              <input
+                type="password"
+              />
             </li>
             <li>
               <span>Country</span>
-              
-              <input type="text" />
+              <input
+                type="text"
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+              />
             </li>
             <li>
               <span>City</span>
-              
-              <input type="text" />
+              <input
+                type="text"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+              />
             </li>
             <li>
               <span>Bio</span>
-              <textarea>
-              </textarea>
+              <textarea value={bio} onChange={(e) => setBio(e.target.value)} />
             </li>
             <li id="editprofile-submit-button">
               <StyledButton bgColor="var(--light-dark)">Go Back</StyledButton>
-              <StyledButton>Submit Now</StyledButton>
+              <StyledButton type="submit">Submit Now</StyledButton>
             </li>
-            <li>
-            </li>
+            <li></li>
           </ul>
-
         </form>
       </div>
     </>
