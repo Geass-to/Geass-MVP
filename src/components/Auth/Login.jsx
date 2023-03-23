@@ -33,10 +33,7 @@ export const LogIn = () => {
           //Signed in
           const user = userCredential.user;
 
-          useEffect(() => {
-            localStorage.setItem("user", JSON.stringify(user));
-          }, [user]);
-
+          localStorage.setItem("user", JSON.stringify(user));
           dispatch(login(user));
           console.log(user);
           navigate("/");
@@ -93,7 +90,7 @@ export const LogIn = () => {
                 />
               </div>
               {error && <span id="error">Wrong email or password!</span>}
-              {/*error && (<span id="error">{error}</span>)*/}
+              {error && (<span id="error">{error}</span>)}
               <div className="inputBox">
                 <input type="submit" value="Log In" />
               </div>

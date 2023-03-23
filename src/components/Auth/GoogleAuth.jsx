@@ -1,5 +1,14 @@
 import React from 'react'
-import { signInWithGoogle } from '../../config/firebase'
+import { auth, provider } from '../../config/firebase'
+import { signInWithPopup } from 'firebase/auth'
+
+export const signInWithGoogle = () => {
+  signInWithPopup(auth, provider).then((result) => {
+    console.log(result)
+  }).catch((error) => {
+    console.error(error)
+  })
+}
 
 const GoogleAuth = () => {
   return (
