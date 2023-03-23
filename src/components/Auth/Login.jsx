@@ -8,6 +8,7 @@ import TwitterAuth from "./TwitterAuth";
 import FacebookAuth from "./FacebookAuth";
 import { useDispatch } from "react-redux";
 import { login } from "../../features/authSlice";
+import SetUser from "./SetUser";
 
 export const LogIn = () => {
   //!states
@@ -32,8 +33,8 @@ export const LogIn = () => {
         (userCredential) => {
           //Signed in
           const user = userCredential.user;
-
-          localStorage.setItem("user", JSON.stringify(user));
+          // SetUser(user)
+          localStorage.setItem("user", JSON.stringify(user));          
           dispatch(login(user));
           console.log(user);
           navigate("/");

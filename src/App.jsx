@@ -12,7 +12,7 @@ import EditProfile from "./components/ProfilePage/EditProfile";
 import { useSelector } from "react-redux";
 
 function App() {
-  // const { currentUser } = useContext(AuthContext);
+  
   const currentUser  = useSelector((state) => state.auth.currentUser)
   console.log(currentUser);
 
