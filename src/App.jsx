@@ -7,22 +7,21 @@ import { Scroll_Items } from "./components/HomePage/Scroll_Items";
 import { Layout } from "./components/Layout";
 import "./styles/style.css";
 import "./styles/animate.css";
-import { AuthContext } from "./context/AuthContext";
 import Profile from "./components/ProfilePage/Profile";
 import EditProfile from "./components/ProfilePage/EditProfile";
-import { Provider } from "react-redux";
-import { store } from "./features/Store";
+import { useSelector } from "react-redux";
 
 function App() {
-  const { currentUser } = useContext(AuthContext);
+  // const { currentUser } = useContext(AuthContext);
+  const currentUser  = useSelector((state) => state.auth.currentUser)
+  console.log(currentUser);
 
   const RequireAuth = ({ children }) => {
     return currentUser ? children : <Navigate to="/login" />;
   };
-  console.log(currentUser);
 
   return (
-    <Provider store={store} >
+    
       <Routes>
         <Route path="login" element={<LogIn />} />
         <Route path="signup" element={<SignUp />} />
@@ -53,7 +52,6 @@ function App() {
           </Route>
         </Route>
       </Routes>
-    </Provider>
   );
 }
 

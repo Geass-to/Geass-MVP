@@ -1,4 +1,4 @@
-import { auth, signInWithGoogle } from "../../config/firebase";
+import { auth } from "../../config/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import "../../styles/login.css";

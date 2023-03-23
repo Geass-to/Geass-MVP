@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../../styles/editprofile.css";
 import StyledButton from "../Utility/Button";
 import { useDispatch } from "react-redux";
-import { login, logout } from "../../features/User";
+import { login, logout } from "../../features/userSlice";
 
 const EditProfile = () => {
   const dispatch = useDispatch();

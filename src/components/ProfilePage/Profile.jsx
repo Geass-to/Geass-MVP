@@ -5,18 +5,10 @@ import { useSelector } from "react-redux";
 
 const Profile = () => {
 
-  // const userData = {
-  //   name: "Sergio",
-  //   bio: `[Name] is a [profession/occupation/interest] from [hometown/city/country]. [He/She/They] has [number of years] of experience in [field of expertise]. [He/She/They] is known for [achievements/awards/skills].
-
-  //   Born and raised in [hometown], [Name] developed a passion for [field of interest] at a young age. After [educational background/training], [he/she/they] began [profession/occupation], honing [his/her/their] skills and gaining valuable experience in [field of expertise]. [Name] has worked with [notable clients/companies/organizations] and has been recognized for [achievements/awards/skills].`,
-  //   completed: "14 Volumes",
-  //   city: "Tokyo",
-  //   country: "America"
-  // }
-  
+  const authEmail = useSelector((state) => state.auth.currentUser.email)
+  console.log(authEmail)
   const userData = useSelector((state) => state.user.value);
-  console.log(userData)
+  // console.log(userData)
 
   return (
     <BannerCard user={userData}>
@@ -40,6 +32,7 @@ const Profile = () => {
           <ul>
             <li>{userData.city}</li>
             <li>{userData.country}</li>
+            <li>{authEmail}</li>
           </ul>
           <br />
         </div>

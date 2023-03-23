@@ -4,7 +4,6 @@ const initialState = {
     value: {
         name: "sdgf",
         username: "sdgds",
-        email: "dsgdsg",
         bio: "dsdfgdsgfdsg",
         city: "dsfg",
         country: "dsgdsg",

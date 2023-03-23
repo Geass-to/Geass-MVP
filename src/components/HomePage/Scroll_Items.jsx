@@ -2,8 +2,8 @@ import React from 'react'
 
 export const Scroll_Items = () => {
   return (
-    <div class="scroll-container">
-      <div class="scroll-items">
+    <div className="scroll-container">
+      <div className="scroll-items">
         <ul>
           <span>
             <li>Popular</li>

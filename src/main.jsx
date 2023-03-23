@@ -3,30 +3,22 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./styles/reset.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { AuthContextProvider } from "./context/AuthContext";
-import { configureStore } from "@reduxjs/toolkit";
+import { store } from "./features/Store";
 import { Provider } from "react-redux";
-import userReducer from "./features/User";
-
-const store = configureStore({
-  reducer: {
-    user: userReducer,
-  },
-});
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path="/*"
-          element={
-            <AuthContextProvider>
-              <App />
-            </AuthContextProvider>
-          }
-        />
-      </Routes>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/*"
+            element={              
+                <App />             
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
