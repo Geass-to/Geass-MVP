@@ -31,8 +31,10 @@ export const userSlice = createSlice({
 
 */
 
+let collectionName = "usertest";
+
 export const getUsers = createAsyncThunk("user/getUsers", async () => {
-  const usersCollectionRef = collection(db, "usertest");
+  const usersCollectionRef = collection(db, collectionName);
   const data = await getDocs(usersCollectionRef);
   const filteredData = data.docs.map((doc) => ({
     ...doc.data(),
@@ -42,15 +44,15 @@ export const getUsers = createAsyncThunk("user/getUsers", async () => {
 });
 
 export const getUser = createAsyncThunk("user/getUser", async (user) => {
-  const username = user.username;
-  const usersCollectionRef = collection(db, "usertest", username);
+  const docName = user.email;
+  const usersCollectionRef = collection(db, collectionName, docName);
   const data = await getDoc(usersCollectionRef);
   return data;
 });
 
 export const addUser = createAsyncThunk("user/addUser", async (newUser) => {
   const docName = newUser.email;
-  const userRef = doc(db, "usertest", docName);
+  const userRef = doc(db, collectionName, docName);
   const data = await setDoc(userRef, newUser);
   console.log("data")
   console.log(data)
@@ -58,8 +60,8 @@ export const addUser = createAsyncThunk("user/addUser", async (newUser) => {
 });
 
 export const updateUser = createAsyncThunk("user/updateUser", async (updatedUser) => {
-  const username = updatedUser.username;
-  const userRef = doc(db, "usertest", username);
+  const docName = JSON.parse(localStorage.getItem("user")).email;
+  const userRef = doc(db, collectionName, docName);
   const data = await updateDoc(userRef, updatedUser);
   return data;
 });

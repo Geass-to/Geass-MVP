@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../../styles/editprofile.css";
 import StyledButton from "../Utility/Button";
 import { useDispatch } from "react-redux";
-import { addUser } from "../../features/userSlice";
+import { addUser, updateUser } from "../../features/userSlice";
 
 const EditProfile = () => {
   const dispatch = useDispatch();
@@ -17,19 +17,18 @@ const EditProfile = () => {
   const onSubmit = (event) => {
     event.preventDefault();
     const newUser = {
-      Name: name,
-      Username: username,
-      Bio: bio,
-      City: city,
-      Country: country,
-      Email: email
+      name: name,
+      username: username,
+      bio: bio,
+      city: city,
+      country: country,
     };
     handleAddUser(newUser);
   };
 
   const handleAddUser = async (newUser) => {
     try {
-      const result = await dispatch(addUser(newUser));
+      const result = await dispatch(updateUser(newUser));
       console.log(result); // successful response from the server
     } catch (error) {
       console.error(error); // error while adding the user
@@ -79,12 +78,14 @@ const EditProfile = () => {
               <input
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                /*onChange={(e) => setEmail(e.target.value)}*/
+                readOnly="readOnly"
+                placeholder="Change Email"
               />
             </li>
             <li>
               <span>Password</span>
-              <input type="password" />
+              <input type="password" disabled="disabled"/>
             </li>
             <li>
               <span>Country</span>
