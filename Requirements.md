@@ -9,8 +9,14 @@
 ### Login and register
 - [x] Google login
 - [x] Login using firebase
+- [x] Email verificition
 - [ ] Facebook login
 - [ ] Twitter login
+#### Bugs and features
+- [x] LogIn Navigate
+- [ ] LogIn Error message correction
+- [ ] SignUp Navigate
+- [ ] SignUp message to verify email
 
 ### Users can upload their text file and covert them to audio
 - [ ] Upload pdf or text files
