@@ -10,10 +10,10 @@ import "./styles/animate.css";
 import Profile from "./components/ProfilePage/Profile";
 import EditProfile from "./components/ProfilePage/EditProfile";
 import { useSelector } from "react-redux";
+import UserList from "./components/UserList/UserList";
 
 function App() {
-  
-  const currentUser  = useSelector((state) => state.auth.currentUser)
+  const currentUser = useSelector((state) => state.auth.currentUser);
   console.log(currentUser);
 
   const RequireAuth = ({ children }) => {
@@ -21,37 +21,40 @@ function App() {
   };
 
   return (
-    
-      <Routes>
-        <Route path="login" element={<LogIn />} />
-        <Route path="signup" element={<SignUp />} />
-        <Route path="/" element={<Layout />}>
-          <Route index
+    <Routes>
+      <Route path="login" element={<LogIn />} />
+      <Route path="signup" element={<SignUp />} />
+      <Route path="/" element={<Layout />}>
+        <Route
+          index
+          element={
+            <RequireAuth>
+              <Home />
+            </RequireAuth>
+          }
+        />
+
+        <Route path="profile">
+          <Route
+            index
             element={
               <RequireAuth>
-                <Home />
+                <Profile />
               </RequireAuth>
             }
           />
-
-          <Route path="profile">
-            <Route index
-              element={
-                <RequireAuth>
-                  <Profile />
-                </RequireAuth>
-              }
-            />
-            <Route path="editprofile"
-              element={
-                <RequireAuth>
-                  <EditProfile />
-                </RequireAuth>
-              }
-            />
+          <Route
+            path="editprofile"
+            element={
+              <RequireAuth>
+                <EditProfile />
+              </RequireAuth>
+            }
+          />
           </Route>
-        </Route>
-      </Routes>
+          <Route path="userlist" element={<UserList />} />
+      </Route>
+    </Routes>
   );
 }
 

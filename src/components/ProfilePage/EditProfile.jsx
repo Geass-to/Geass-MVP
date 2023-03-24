@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import "../../styles/editprofile.css";
 import StyledButton from "../Utility/Button";
 import { useDispatch } from "react-redux";
-import { login, logout } from "../../features/userSlice";
+import { addUser, getUser, updateUser, selectUser } from "../../features/userSlice";
+import { db } from "../../config/firebase";
+import { doc, setDoc } from "firebase/firestore";
 
 const EditProfile = () => {
   const dispatch = useDispatch();
@@ -17,16 +19,19 @@ const EditProfile = () => {
   const onSubmit = (event) => {
     event.preventDefault();
 
-    const userData = {
-      name: name,
-      username: username,
-      email: email,
-      country: country,
-      city: city,
-      bio: bio,
+    const handleAdd = async () => {
+      const userRef = doc(db, "users", "user123");
+      const newUser = {
+        name: "John",
+        username: "jdoe",
+        bio: "Lorem ipsum dolor sit amet",
+        city: "New York",
+        country: "USA",
+      };
+      await setDoc(userRef, newUser);
+      dispatch(addUser(newUser));
     };
 
-    dispatch(login(userData));
   };
 
   return (

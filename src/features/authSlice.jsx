@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const INTIAL_STATE = {
-    currentUser: null,
+    currentUser: JSON.parse(localStorage.getItem("user")) || null,
 };
 
 export const authSlice = createSlice({

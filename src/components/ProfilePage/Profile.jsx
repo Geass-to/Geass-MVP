@@ -2,12 +2,16 @@ import React from 'react';
 import Avatar from '../Utility/Avatar';
 import BannerCard from '../Utility/BannerCard';
 import { useSelector } from "react-redux";
+import { db } from '../../config/firebase'; 
 
 const Profile = () => {
 
   const authEmail = useSelector((state) => state.auth.currentUser.email)
   console.log(authEmail)
-  const userData = useSelector((state) => state.user.value);
+
+
+
+  const userData = useSelector((state) => state.user.info);
   // console.log(userData)
 
   return (
