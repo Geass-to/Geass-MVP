@@ -19,7 +19,7 @@ const Profile = async () => {
   // console.log(userData)
 
   return (
-    {/*<BannerCard user={userData}>
+    <BannerCard user={userData}>
 
       <div className="poster-container">
 
@@ -50,7 +50,7 @@ const Profile = async () => {
         </div>
       </div>
 
-  </BannerCard>*/}
+  </BannerCard>
   )
 }
 
