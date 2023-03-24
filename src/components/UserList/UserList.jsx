@@ -1,28 +1,25 @@
 import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getUsers, selectUser } from "../../features/userSlice";
 import "../../styles/userlist.css";
-import { db } from "../../config/firebase";
-import { collection, getDocs } from "firebase/firestore";
 
 const UserList = () => {
-  const [userList, setUserList] = useState("");
-  const usersCollectionRef = collection(db, "usertest");
-
-  useEffect(() => {
-    const getUserList = async () => {
-      try {
-        const data = await getDocs(usersCollectionRef);
-        const filteredData = data.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-        }));
-        setUserList(filteredData);
-        console.log(filteredData);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getUserList();
-  }, []);
+    const dispatch = useDispatch();
+    const userList = useSelector((state) => state.user.userList);
+    const status = useSelector((state) => state.user.status);
+    const error = useSelector((state) => state.user.error);
+  
+    useEffect(() => {
+      dispatch(getUsers());
+    }, [dispatch]);
+  
+    if (status === "loading") {
+      return <div>Loading...</div>;
+    }
+  
+    if (status === "failed") {
+      return <div>{error}</div>;
+    }
 
   return (
     <div className="user-list">

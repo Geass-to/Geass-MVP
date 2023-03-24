@@ -3,19 +3,23 @@ import Avatar from '../Utility/Avatar';
 import BannerCard from '../Utility/BannerCard';
 import { useSelector } from "react-redux";
 import { db } from '../../config/firebase'; 
+import { collection, getDocs } from "firebase/firestore"; 
 
-const Profile = () => {
+const Profile = async () => {
 
   const authEmail = useSelector((state) => state.auth.currentUser.email)
   console.log(authEmail)
 
+  // const querySnapshot = await getDocs(collection(db, "usertest"));
+  // querySnapshot.forEach((doc) => {
+  // console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
+  // });
 
-
-  const userData = useSelector((state) => state.user.info);
+  // const userData = useSelector((state) => state.user.info);
   // console.log(userData)
 
   return (
-    <BannerCard user={userData}>
+    {/*<BannerCard user={userData}>
 
       <div className="poster-container">
 
@@ -46,7 +50,7 @@ const Profile = () => {
         </div>
       </div>
 
-    </BannerCard>
+  </BannerCard>*/}
   )
 }
 

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { collection, getDocs, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { collection, getDocs, getDoc, setDoc, updateDoc, doc } from "firebase/firestore";
 import { db } from "../config/firebase";
 
 /*  Old Code
@@ -48,14 +48,16 @@ export const getUser = createAsyncThunk("user/getUser", async (user) => {
   return data;
 });
 
-export const addUsers = createAsyncThunk("user/addUser", async (newUser) => {
-  const username = newUser.username;
+export const addUser = createAsyncThunk("user/addUser", async (newUser) => {
+  const username = newUser.Username;
   const userRef = doc(db, "usertest", username);
   const data = await setDoc(userRef, newUser);
+  console.log("data")
+  console.log(data)
   return data;
 });
 
-export const updateUsers = createAsyncThunk("user/updateUser", async (updatedUser) => {
+export const updateUser = createAsyncThunk("user/updateUser", async (updatedUser) => {
   const username = updatedUser.username;
   const userRef = doc(db, "usertest", username);
   const data = await updateDoc(userRef, updatedUser);
@@ -72,6 +74,7 @@ const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      //Get multiple user
       .addCase(getUsers.pending, (state) => {
         state.status = "loading";
       })
@@ -83,39 +86,40 @@ const userSlice = createSlice({
         state.status = "failed";
         state.error = action.error.message;
       })
-
+      //Get single user
       .addCase(getUser.pending, (state) => {
         state.status = "loading";
       })
       .addCase(getUser.fulfilled, (state, action) => {
         state.status = "succeeded";
-        // Here, you can extract the relevant data from the action payload and update the state accordingly
+        state.userList.push(action.payload);
       })
       .addCase(getUser.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       })
-
-      .addCase(addUsers.pending, (state) => {
+      //Add a user
+      .addCase(addUser.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(addUsers.fulfilled, (state, action) => {
+      .addCase(addUser.fulfilled, (state, action) => {
         state.status = "succeeded";
-        // Here, you can update the state with the newly added user data
+        state.userList.push(action.payload);
       })
-      .addCase(addUsers.rejected, (state, action) => {
+      .addCase(addUser.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       })
-      
-      .addCase(updateUsers.pending, (state) => {
+      //Update the user
+      .addCase(updateUser.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(updateUsers.fulfilled, (state, action) => {
+      .addCase(updateUser.fulfilled, (state, action) => {
         state.status = "succeeded";
+        state.userList.push(action.payload);       
         // Here, you can update the state with the updated user data
       })
-      .addCase(updateUsers.rejected, (state, action) => {
+      .addCase(updateUser.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       });
@@ -125,6 +129,8 @@ const userSlice = createSlice({
 
 // export const { addUser, getUser, updateUser } = userSlice.actions;
 
-export const selectUser = (state) => state.user.info  
+export const selectUser = (state) => state.user.userList;
+export const getUserStatus = (state) => state.user.status;  
+export const getUserError = (state) => state.user.error;  
 
 export default userSlice.reducer;

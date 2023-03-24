@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import "../../styles/editprofile.css";
 import StyledButton from "../Utility/Button";
 import { useDispatch } from "react-redux";
-import { addUser, getUser, updateUser, selectUser } from "../../features/userSlice";
-import { db } from "../../config/firebase";
-import { doc, setDoc } from "firebase/firestore";
+import { addUser } from "../../features/userSlice";
 
 const EditProfile = () => {
   const dispatch = useDispatch();
@@ -18,21 +16,26 @@ const EditProfile = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-
-    const handleAdd = async () => {
-      const userRef = doc(db, "users", "user123");
-      const newUser = {
-        name: "John",
-        username: "jdoe",
-        bio: "Lorem ipsum dolor sit amet",
-        city: "New York",
-        country: "USA",
-      };
-      await setDoc(userRef, newUser);
-      dispatch(addUser(newUser));
+    const newUser = {
+      Name: name,
+      Username: username,
+      Bio: bio,
+      City: city,
+      Country: country,
+      Email: email
     };
-
+    handleAddUser(newUser);
   };
+
+  const handleAddUser = async (newUser) => {
+    try {
+      const result = await dispatch(addUser(newUser));
+      console.log(result); // successful response from the server
+    } catch (error) {
+      console.error(error); // error while adding the user
+    }
+  };
+  
 
   return (
     <>
@@ -81,9 +84,7 @@ const EditProfile = () => {
             </li>
             <li>
               <span>Password</span>
-              <input
-                type="password"
-              />
+              <input type="password" />
             </li>
             <li>
               <span>Country</span>
