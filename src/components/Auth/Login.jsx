@@ -33,11 +33,16 @@ export const LogIn = () => {
         (userCredential) => {
           //Signed in
           const user = userCredential.user;
-          // SetUser(user)
-          localStorage.setItem("user", JSON.stringify(user));          
-          dispatch(login(user));
-          console.log(user);
-          navigate("/");
+          if (user.emailVerified) {
+            // SetUser(user)
+            localStorage.setItem("user", JSON.stringify(user));          
+            dispatch(login(user));
+            console.log(user);
+            navigate("/");
+          } else {
+            setError(true);
+            setError("Please verify your email address.");
+          }
         }
       );
     } catch (err) {

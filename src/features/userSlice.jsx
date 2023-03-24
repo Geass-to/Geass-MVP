@@ -49,8 +49,8 @@ export const getUser = createAsyncThunk("user/getUser", async (user) => {
 });
 
 export const addUser = createAsyncThunk("user/addUser", async (newUser) => {
-  const username = newUser.Username;
-  const userRef = doc(db, "usertest", username);
+  const docName = newUser.email;
+  const userRef = doc(db, "usertest", docName);
   const data = await setDoc(userRef, newUser);
   console.log("data")
   console.log(data)
