@@ -1,6 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { collection, getDocs, getDoc, setDoc, updateDoc, doc } from "firebase/firestore";
-import { db } from "../config/firebase";
+import {
+  collection,
+  getDocs,
+  getDoc,
+  addDoc,
+  setDoc,
+  updateDoc,
+  doc,
+} from "firebase/firestore";
+import { db, auth } from "../config/firebase";
 
 /*  Old Code
 const initialState = {
@@ -43,28 +51,36 @@ export const getUsers = createAsyncThunk("user/getUsers", async () => {
   return filteredData;
 });
 
-export const getUser = createAsyncThunk("user/getUser", async (user) => {
-  const docName = user.email;
-  const usersCollectionRef = collection(db, collectionName, docName);
-  const data = await getDoc(usersCollectionRef);
-  return data;
+export const getUser = createAsyncThunk("user/getUser", async (docId) => {
+  // const docId ;
+  console.log(docId);
+  const usersCollectionRef = doc(db, collectionName, docId);
+  const data = await getDoc(usersCollectionRef);  
+  console.log(data);
+  // return { ...data, id: docId };
+  return { ...data.data(), id: data.id };
 });
 
 export const addUser = createAsyncThunk("user/addUser", async (newUser) => {
-  const docName = newUser.email;
-  const userRef = doc(db, collectionName, docName);
-  const data = await setDoc(userRef, newUser);
-  console.log("data")
-  console.log(data)
-  return data;
+  const uid = auth.currentUser.uid;
+  const userRef = doc(db, collectionName, uid);
+  await setDoc(userRef, newUser);
+  console.log("Document written with ID: ", uid);
+  return { ...newUser, id: uid };
 });
 
-export const updateUser = createAsyncThunk("user/updateUser", async (updatedUser) => {
-  const docName = JSON.parse(localStorage.getItem("user")).email;
-  const userRef = doc(db, collectionName, docName);
-  const data = await updateDoc(userRef, updatedUser);
-  return data;
-});
+export const updateUser = createAsyncThunk(
+  "user/updateUser",
+  async (updatedUser) => {
+    // const docName = JSON.parse(localStorage.getItem("user")).email;
+    const docId = auth.currentUser.uid;
+    const userRef = doc(db, collectionName, docId);
+    const data = await updateDoc(userRef, updatedUser);
+    console.log(data);
+    return { ...updatedUser, id: docId };
+    return data;
+  }
+);
 
 const userSlice = createSlice({
   name: "user",
@@ -120,7 +136,7 @@ const userSlice = createSlice({
       .addCase(updateUser.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.userList = action.payload;
-        // state.userList.push(action.payload);       
+        // state.userList.push(action.payload);
         // Here, you can update the state with the updated user data
       })
       .addCase(updateUser.rejected, (state, action) => {
@@ -128,13 +144,12 @@ const userSlice = createSlice({
         state.error = action.error.message;
       });
   },
-  
 });
 
 // export const { addUser, getUser, updateUser } = userSlice.actions;
 
 export const selectUser = (state) => state.user.userList;
-export const getUserStatus = (state) => state.user.status;  
-export const getUserError = (state) => state.user.error;  
+export const getUserStatus = (state) => state.user.status;
+export const getUserError = (state) => state.user.error;
 
 export default userSlice.reducer;

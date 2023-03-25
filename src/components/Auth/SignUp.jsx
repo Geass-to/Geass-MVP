@@ -11,6 +11,7 @@ import TwitterAuth from "./TwitterAuth";
 import FacebookAuth from "./FacebookAuth";
 import { useDispatch } from "react-redux";
 import { addUser } from "../../features/userSlice";
+import { current } from "@reduxjs/toolkit";
 
 export const SignUp = () => {
   //!States
@@ -44,7 +45,6 @@ export const SignUp = () => {
           // Email verification sent!
           console.log("Sent email verification!");
         });
-
         // await result.user.sendEmailVerification();
         // Create a new user object to add to the database
         const newUser = { email: email };

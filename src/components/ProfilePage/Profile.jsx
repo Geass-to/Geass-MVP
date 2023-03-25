@@ -1,22 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Avatar from '../Utility/Avatar';
 import BannerCard from '../Utility/BannerCard';
-import { useSelector } from "react-redux";
-import { db } from '../../config/firebase'; 
-import { collection, getDocs } from "firebase/firestore"; 
+import { useSelector, useDispatch } from "react-redux";
+import { getUser, selectUser } from '../../features/userSlice';
+import { auth } from '../../config/firebase';
 
-const Profile = async () => {
+const Profile =  () => {
 
-  const authEmail = useSelector((state) => state.auth.currentUser.email)
-  console.log(authEmail)
-
-  // const querySnapshot = await getDocs(collection(db, "usertest"));
-  // querySnapshot.forEach((doc) => {
-  // console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
-  // });
-
-  // const userData = useSelector((state) => state.user.info);
-  // console.log(userData)
+  const dispatch = useDispatch();
+  const userData = useSelector(selectUser);
+  console.log(userData);
+  useEffect(() => {
+    console.log("In effect")
+    dispatch(getUser(auth.currentUser.uid));
+  }, [dispatch]);
 
   return (
     <BannerCard user={userData}>
@@ -35,12 +32,12 @@ const Profile = async () => {
         </div>
         <div className="large-card-details-2">
           <span className="status">Finished</span>
-          <span className="volume">{userData.completed}</span>
+          <span className="volume">{/*userData.completed*/}</span>
           <br />
           <ul>
             <li>{userData.city}</li>
             <li>{userData.country}</li>
-            <li>{authEmail}</li>
+            <li>{userData.email}</li>
           </ul>
           <br />
         </div>
