@@ -62,7 +62,9 @@ Future Info
 - titile
 - description
 - length
-
+- tags
+- likes
+- genres
 ### Book Files
 - Text file
 - Poster images
