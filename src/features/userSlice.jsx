@@ -94,7 +94,8 @@ const userSlice = createSlice({
       })
       .addCase(getUser.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.userList.push(action.payload);
+        state.userList = action.payload;
+        // state.userList.push(action.payload);
       })
       .addCase(getUser.rejected, (state, action) => {
         state.status = "failed";
@@ -118,7 +119,8 @@ const userSlice = createSlice({
       })
       .addCase(updateUser.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.userList.push(action.payload);       
+        state.userList = action.payload;
+        // state.userList.push(action.payload);       
         // Here, you can update the state with the updated user data
       })
       .addCase(updateUser.rejected, (state, action) => {
