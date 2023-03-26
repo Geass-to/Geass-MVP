@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
 import StyledButton from "../Utility/Button";
 import { addBook } from '../../features/bookSilce' 
 import '../../styles/bookupload.css'
 
 const BookUpload = () => {
   const dispatch = useDispatch()
+  const Navigate = useNavigate()
+
   const [audioFile, setAudioFile] = useState('')
   const [bookTitle, setBookTitle] = useState('')
   const [bookAuthor, setBookAuthor] = useState('')
@@ -23,12 +26,15 @@ const BookUpload = () => {
         description: bookDesc,
       };
       dispatch(addBook(newBook));
-  
+
       // Clear the input fields
       setAudioFile('');
       setBookTitle('');
       setBookAuthor('');
       setBookDesc('');
+      
+      // Navigate to userProfile page
+      Navigate("/profile")
     }
   };
   
