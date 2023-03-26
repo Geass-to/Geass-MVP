@@ -13,6 +13,17 @@
     
 } */
 
+.form-title {
+    color: var(--primary);
+    font-size: 1.5rem;
+    padding: .4rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
 .upload-form {
 
     /* height: 70vh; */
@@ -36,6 +47,11 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.upload-form-field span {
+    padding: .35rem;
+    font-size: 1.2rem;
 }
 
 .upload-form-field input {
