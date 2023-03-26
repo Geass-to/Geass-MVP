@@ -41,8 +41,14 @@ const BookUpload = () => {
 
   return (
     <div>
+      
       <form onSubmit={handleSubmit}>
         <ul className='upload-form'>
+          <div className="form-title">
+            <span>Upload book</span>
+            <hr />
+          </div>
+
           <li className='upload-form-field'>
             <span>Select the AudioFile:</span> 
             <input type="file" name="audioFile" id="audioFile" required onChange={(e) => setAudioFile(e.target.value)} />
@@ -59,7 +65,7 @@ const BookUpload = () => {
           </li>
 
           <li className='upload-form-field'>
-            Give a brief description about the book:
+            <span>Give a brief description about the book:</span> 
             <textarea name="bookDesc" id="bookDesc" cols="30" rows="10" value={bookDesc} required onChange={(e) => setBookDesc(e.target.value)}></textarea>
           </li>
           <li className='upload-form-field submit-field'>
