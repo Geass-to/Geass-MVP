@@ -11,25 +11,26 @@ const BookUpload = () => {
   const [bookDesc, setBookDesc] = useState('')
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-
-    // Create an object with the form values
-    const newBook = {
-      // audioFile: audioFile,
-      title: bookTitle,
-      author: bookAuthor,
-      description: bookDesc,
+    e.preventDefault();
+  
+    // Check if all values are not empty
+    if (audioFile && bookTitle && bookAuthor && bookDesc) {
+      const newBook = {
+        audioFile: audioFile,
+        title: bookTitle,
+        author: bookAuthor,
+        description: bookDesc,
+      };
+      dispatch(addBook(newBook));
+  
+      // Clear the input fields
+      setAudioFile('');
+      setBookTitle('');
+      setBookAuthor('');
+      setBookDesc('');
     }
-    console.log(newBook)
-    // Dispatch the object to the addBook action
-    dispatch(addBook(newBook))
-
-    // Clear the input fields
-    setAudioFile('')
-    setBookTitle('')
-    setBookAuthor('')
-    setBookDesc('')
-  }
+  };
+  
 
   return (
     <div>
@@ -37,7 +38,7 @@ const BookUpload = () => {
         <ul className='upload-form'>
           <li className='upload-form-field'>
             Select the AudioFile: 
-            <input type="file" name="audioFile" id="audioFile" onChange={(e) => setAudioFile(e.target.value)} />
+            <input type="file" name="audioFile" id="audioFile" onChange={(e) => setAudioFile(e.target.value)}  />
           </li>
 
           <li className='upload-form-field'>
