@@ -7,9 +7,13 @@ import {
   updateDoc,
   getDocs,
   getDoc,
+  writeBatch
 } from "firebase/firestore";
-import { db } from "../firebase";
+import { db } from "../config/firebase";
 import { auth } from "../config/firebase";
+import { arrayUnion } from "firebase/firestore";
+import { useDispatch, useSelector } from "react-redux";
+import { updateUser } from "./userSlice";
 
 /*
 ### Book Info
@@ -36,12 +40,18 @@ const collectionName = "booktest";
 
 // Async Thunk to add a new book to Firestore
 export const addBook = createAsyncThunk("books/addBook", async (newBook) => {
-
-  const bookRef = collection(db, collectionName)
-  const docRef = await addDoc(bookRef, newBook);
-  return { id: docRef.id, ...newBook };
-  
+  const bookRef = collection(db, collectionName);
+  const batch = writeBatch(db);
+  const docRef = await addDoc(bookRef, newBook, { batch });
+  const bookId = docRef.id;
+  const userRef = doc(db, "usertest", auth.currentUser.uid);
+  batch.update(userRef, {
+    bookList: arrayUnion(bookId),
+  });
+  await batch.commit();
+  return { id: bookId, ...newBook };
 });
+
 
 // Async Thunk to get all books from Firestore
 export const getBooks = createAsyncThunk("books/getBooks", async () => {
