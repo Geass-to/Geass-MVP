@@ -34,7 +34,7 @@ const BookUpload = () => {
       setBookDesc('');
       
       // Navigate to userProfile page
-      Navigate("/profile")
+      Navigate("/")
     }
   };
   
