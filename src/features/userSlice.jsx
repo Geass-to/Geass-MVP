@@ -69,16 +69,15 @@ export const addUser = createAsyncThunk("user/addUser", async (newUser) => {
   return { ...newUser, id: uid };
 });
 
-export const updateUser = createAsyncThunk(
-  "user/updateUser",
-  async (updatedUser) => {
-    // const docName = JSON.parse(localStorage.getItem("user")).email;
+export const updateUser = createAsyncThunk("user/updateUser", async (updatedUser) => {
     const docId = auth.currentUser.uid;
     const userRef = doc(db, collectionName, docId);
-    const data = await updateDoc(userRef, updatedUser);
+    const filteredUser = Object.fromEntries(
+      Object.entries(updatedUser).filter(([_, v]) => v !== null && v !== "")
+    );
+    const data = await updateDoc(userRef, filteredUser);
     console.log(data);
-    return { ...updatedUser, id: docId };
-    return data;
+    return { ...filteredUser, id: docId };
   }
 );
 
