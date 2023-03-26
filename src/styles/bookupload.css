@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
-
+/* 
 :root{
     --primary: #EF5A63;
     --light: #F5F5F5;
@@ -11,14 +11,16 @@
     --white60: hsla(0, 0%, 96%,.8);
     --primary-light: hsla(356, 82%, 65%,.8);
     
-}
+} */
 
 .upload-form {
 
     /* height: 70vh; */
     margin: 0 auto;
     padding: 2.5rem;    
-    width: 50vw;
+
+    min-width: 372px;
+    max-width: 50vw;
 
 
     display: flex;
@@ -37,8 +39,18 @@
 }
 
 .upload-form-field input {
-    height: 2rem;
+    height: 40px;
     border-radius: 10px;
     background-color: var(--light-dark);
+    color: var(--light);
     border: none;
+
+    padding: .35rem;
+    line-height: .10rem;
+    font-size: 1rem;
+
+}
+
+.upload-form-field textarea {
+    font-size: 1rem;
 }

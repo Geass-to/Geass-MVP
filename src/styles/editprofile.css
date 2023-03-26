@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
 
-:root{
+/* :root{
     --primary: #EF5A63;
     --light: #F5F5F5;
     --dark: #161617;
@@ -11,7 +11,7 @@
     --white60: hsla(0, 0%, 96%,.8);
     --primary-light: hsla(356, 82%, 65%,.8);
     
-}
+} */
 
 .banner{
     width: 90%;
