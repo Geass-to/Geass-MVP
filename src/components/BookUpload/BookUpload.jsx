@@ -7,6 +7,7 @@ import '../../styles/bookupload.css'
 const BookUpload = () => {
   const dispatch = useDispatch()
   const [audioFile, setAudioFile] = useState('')
+  const [coverImage, setCoverImage] = useState('')
   const [bookTitle, setBookTitle] = useState('')
   const [bookAuthor, setBookAuthor] = useState('')
   const [bookDesc, setBookDesc] = useState('')
@@ -15,7 +16,7 @@ const BookUpload = () => {
     e.preventDefault();
   
     // Check if all values are not empty
-    if (audioFile && bookTitle && bookAuthor && bookDesc) {
+    if (audioFile && coverImage && bookTitle && bookAuthor && bookDesc) {
       const newBook = {
         // audioFile: audioFile,
         title: bookTitle,
@@ -26,9 +27,11 @@ const BookUpload = () => {
   
       // Clear the input fields
       setAudioFile('');
+      setCoverImage('');
       setBookTitle('');
       setBookAuthor('');
       setBookDesc('');
+    
     }
   };
   
@@ -46,6 +49,11 @@ const BookUpload = () => {
           <li className='upload-form-field'>
             <span>Select the AudioFile:</span> 
             <input type="file" name="audioFile" id="audioFile" required onChange={(e) => setAudioFile(e.target.value)} />
+          </li>
+
+          <li className='upload-form-field'>
+            <span>Cover image for the book</span> 
+            <input type="file" name="coverImage" id="coverImage" required onChange={(e) => setCoverImage(e.target.value)} />
           </li>
 
           <li className='upload-form-field'>
