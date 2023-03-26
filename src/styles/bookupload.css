@@ -54,3 +54,8 @@
 .upload-form-field textarea {
     font-size: 1rem;
 }
+
+.submit-field {
+    justify-content: space-between;
+    flex-direction: row;
+}

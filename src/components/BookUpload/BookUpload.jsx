@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import StyledButton from "../Utility/Button";
 import { addBook } from '../../features/bookSilce' 
 import '../../styles/bookupload.css'
 
@@ -16,7 +17,7 @@ const BookUpload = () => {
     // Check if all values are not empty
     if (audioFile && bookTitle && bookAuthor && bookDesc) {
       const newBook = {
-        audioFile: audioFile,
+        // audioFile: audioFile,
         title: bookTitle,
         author: bookAuthor,
         description: bookDesc,
@@ -55,7 +56,10 @@ const BookUpload = () => {
             Give a brief description about the book:
             <textarea name="bookDesc" id="bookDesc" cols="30" rows="10" value={bookDesc} required onChange={(e) => setBookDesc(e.target.value)}></textarea>
           </li>
-          <button type="submit">Submit</button>
+          <li className='upload-form-field submit-field'>
+            <StyledButton bgColor="var(--light-dark)">Go Back</StyledButton>
+            <StyledButton type="submit">Submit</StyledButton>
+          </li>
         </ul>
       </form>
     </div>
