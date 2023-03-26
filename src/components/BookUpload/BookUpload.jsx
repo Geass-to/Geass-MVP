@@ -66,11 +66,6 @@ const BookUpload = () => {
             <input type="file" name="coverImage" id="coverImage" required onChange={(e) => setCoverImage(e.target.value)} />
           </li>
 
-          <li className='upload-form-field'>
-            <span>Cover image for the book</span> 
-            <input type="file" name="coverImage" id="coverImage" required onChange={(e) => setCoverImage(e.target.value)} />
-          </li>
-
           <li className="upload-form-field">
             <span>Book title:</span>
             <input
