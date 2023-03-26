@@ -4,15 +4,25 @@ import BannerCard from '../Utility/BannerCard';
 import { useSelector, useDispatch } from "react-redux";
 import { getUser, selectUser } from '../../features/userSlice';
 import { auth } from '../../config/firebase';
+import { selectAuth } from '../../features/authSlice';
 
 const Profile =  () => {
 
   const dispatch = useDispatch();
   const userData = useSelector(selectUser);
+  const authUser = useSelector(selectAuth);
+
   console.log(userData);
   useEffect(() => {
+    const uid = authUser.uid
+    console.log(uid)
+    if(!uid){
+      dispatch(getUser(uid));
+    }
+    else{
+      console.log("Loading")
+    }
     console.log("In effect")
-    dispatch(getUser(auth.currentUser.uid));
   }, [dispatch]);
 
   return (

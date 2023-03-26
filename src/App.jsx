@@ -11,6 +11,7 @@ import Profile from "./components/ProfilePage/Profile";
 import EditProfile from "./components/ProfilePage/EditProfile";
 import { useSelector } from "react-redux";
 import UserList from "./components/UserList/UserList";
+import BookUpload from "./components/BookUpload/BookUpload";
 
 function App() {
   const currentUser = useSelector((state) => state.auth.currentUser);
@@ -35,23 +36,22 @@ function App() {
         />
 
         <Route path="profile">
-          <Route
-            index
-            element={
+          <Route index element={
               <RequireAuth>
                 <Profile />
               </RequireAuth>
             }
           />
-          <Route
-            path="editprofile"
-            element={
+          <Route path="editprofile" element={
               <RequireAuth>
                 <EditProfile />
               </RequireAuth>
             }
           />
           </Route>
+
+          <Route path="uploadbook" element={<BookUpload />} />
+
           <Route path="userlist" element={<UserList />} />
       </Route>
     </Routes>
