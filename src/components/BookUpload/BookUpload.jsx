@@ -10,22 +10,22 @@ const BookUpload = () => {
       <form>
         <ul className='upload-form'>
           <li className='upload-form-field'>
-            Select the AudioFile: 
+            <span>Select the AudioFile:</span> 
             <input type="file" name="audioFile" id="audioFile" />
           </li>
 
           <li className='upload-form-field'>
-            Book title:
+            <span>Book title:</span>
             <input type="text" name="bookTitle" id="bookTitle" />
           </li>
 
           <li className='upload-form-field'>
-            Book Author:
+            <span>Book Author:</span> 
             <input type="text" name="" id="" />
           </li>
 
           <li className='upload-form-field'>
-            Give a brief description about the book:
+            <span>Give a brief descript</span>ion about the book:
             <textarea name="bookDesc" id="bookDesc" cols="30" rows="10"></textarea>
           </li>
         </ul>
