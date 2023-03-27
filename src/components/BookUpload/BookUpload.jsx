@@ -5,7 +5,12 @@ import StyledButton from "../Utility/Button";
 import { addBook } from "../../features/bookSilce";
 import "../../styles/bookupload.css";
 import { storage } from "../../config/firebase";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import {
+  getDownloadURL,
+  ref,
+  uploadBytes,
+  uploadBytesResumable,
+} from "firebase/storage";
 
 const BookUpload = () => {
   const dispatch = useDispatch();
@@ -19,35 +24,58 @@ const BookUpload = () => {
   const [bookAuthor, setBookAuthor] = useState("");
   const [bookDesc, setBookDesc] = useState("");
 
+  const [audioUploadProgress, setAudioUploadProgress] = useState(0);
+
   const handleAudioFileUpload = async (e) => {
     const file = e.target.files[0];
-    console.log(file);
     const audioRef = ref(storage, `audio/${file.name}`);
-    uploadBytes(audioRef, file)
+
+    const metadata = {
+      contentType: file.type,
+    };
+
+    const uploadTask = uploadBytesResumable(audioRef, file, metadata);
+
+    uploadTask.on("state_changed",
+      (snapshot) => {
+        const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        console.log(`Upload is ${progress}% done`);
+        setAudioUploadProgress(progress);
+        switch (snapshot.state) {
+          case firebase.storage.TaskState.PAUSED:
+            console.log("Upload paused");
+            break;
+          case firebase.storage.TaskState.RUNNING:
+            console.log("Upload running");
+            break;
+        }
+      },
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          setAudioFileURL(downloadURL);
+          console.log("Upload successful");
+        });
+      }
+    );
+  };
+  console.log(audioFileURL)
+
+  const handleCoverImageUpload = async (e) => {
+    const file = e.target.files[0];
+    const imageRef = ref(storage, `images/${file.name}`);
+    uploadBytes(imageRef, file)
       .then((snapshot) => {
         console.log("Uploaded file successfully:", snapshot);
         getDownloadURL(snapshot.ref).then((url) => {
-          setAudioFileURL(url);
-        })
+          setCoverImageURL(url);
+        });
       })
       .catch((error) => {
         console.error("Error uploading file:", error);
       });
-    };
-    
-    const handleCoverImageUpload = async (e) => {
-      const file = e.target.files[0];
-      const imageRef = ref(storage, `images/${file.name}`);
-      uploadBytes(imageRef, file)
-        .then((snapshot) => {
-          console.log("Uploaded file successfully:", snapshot);
-          getDownloadURL(snapshot.ref).then((url) => {
-            setCoverImageURL(url);
-          })
-        })
-        .catch((error) => {
-          console.error("Error uploading file:", error);
-        });    
   };
 
   const handleSubmit = async (e) => {
@@ -64,7 +92,7 @@ const BookUpload = () => {
       };
       dispatch(addBook(newBook));
 
-      // Clear the input fields      
+      // Clear the input fields
       setAudioFileURL("");
       setCoverImageURL("");
       setBookTitle("");
@@ -86,32 +114,19 @@ const BookUpload = () => {
           </div>
 
           <li className="upload-form-field">
-            <span>Select the AudioFile:</span>
-            {/*<input
-              type="file"
-              name="audioFile"
-              id="audioFile"
-              required
-              onChange={(e) => setAudioFile(e.target.value)}
-              />*/}
+            <span>Select the AudioFile:</span>            
             <input
               type="file"
               name="audioFile"
               id="audioFile"
               required
               onChange={handleAudioFileUpload}
-            />
+              />
+              <progress max="100" value={audioUploadProgress}></progress>
           </li>
 
           <li className="upload-form-field">
-            <span>Cover image for the book</span>
-            {/*<input
-              type="file"
-              name="coverImage"
-              id="coverImage"
-              required
-              onChange={(e) => setCoverImage(e.target.value)}
-            />*/}
+            <span>Cover image for the book</span>            
             <input
               type="file"
               name="coverImage"
@@ -159,7 +174,7 @@ const BookUpload = () => {
           </li>
           <li className="upload-form-field submit-field">
             <StyledButton bgColor="var(--light-dark)">Go Back</StyledButton>
-            <StyledButton type="submit" >Submit</StyledButton>
+            <StyledButton type="submit">Submit</StyledButton>
           </li>
         </ul>
       </form>
