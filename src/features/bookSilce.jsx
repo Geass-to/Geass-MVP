@@ -39,18 +39,22 @@ bookId -> User's uid
 const collectionName = "booktest";
 
 // Async Thunk to add a new book to Firestore
-export const addBook = createAsyncThunk("books/addBook", async (newBook) => {
+export const addBook = createAsyncThunk("books/addBook", async (newBook, { getState }) => {
+  const { auth } = getState();
+  const userUid = auth.currentUser.uid;
+  const bookWithUid = { ...newBook, userUid: userUid };
   const bookRef = collection(db, collectionName);
   const batch = writeBatch(db);
-  const docRef = await addDoc(bookRef, newBook, { batch });
+  const docRef = await addDoc(bookRef, bookWithUid, { batch });
   const bookId = docRef.id;
-  const userRef = doc(db, "usertest", auth.currentUser.uid);
+  const userRef = doc(db, "usertest", userUid);
   batch.update(userRef, {
     bookList: arrayUnion(bookId),
   });
   await batch.commit();
-  return { id: bookId, ...newBook };
+  return { id: bookId, ...bookWithUid };
 });
+
 
 
 // Async Thunk to get all books from Firestore

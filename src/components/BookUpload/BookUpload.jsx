@@ -6,12 +6,7 @@ import { addBook } from "../../features/bookSilce";
 import "../../styles/bookupload.css";
 import { storage } from "../../config/firebase";
 import { v4 } from "uuid";
-import {
-  getDownloadURL,
-  ref,
-  uploadBytes,
-  uploadBytesResumable,
-} from "firebase/storage";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 const BookUpload = () => {
   const dispatch = useDispatch();
@@ -22,10 +17,10 @@ const BookUpload = () => {
   const [bookTitle, setBookTitle] = useState("");
   const [bookAuthor, setBookAuthor] = useState("");
   const [bookDesc, setBookDesc] = useState("");
-  
+
   const [audioUploadProgress, setAudioUploadProgress] = useState(0);
   const [imageUploadProgress, setImageUploadProgress] = useState(0);
-  
+
   // Function to upload audiofile to cloud
   const handleAudioFileUpload = async (e) => {
     const file = e.target.files[0];
@@ -37,10 +32,13 @@ const BookUpload = () => {
 
     const uploadTask = uploadBytesResumable(audioRef, file, metadata);
 
-    uploadTask.on("state_changed",
+    uploadTask.on(
+      "state_changed",
       (snapshot) => {
         // Get the progress percentage
-        const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        const progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
         console.log(`Upload is ${progress}% done`);
         setAudioUploadProgress(progress);
         switch (snapshot.state) {
@@ -72,18 +70,21 @@ const BookUpload = () => {
       contentType: file.type,
     };
     const uploadTask = uploadBytesResumable(imageRef, file, metadata);
-  
+
     // Create a listener to track the upload progress
-    uploadTask.on("state_changed", 
+    uploadTask.on(
+      "state_changed",
       (snapshot) => {
         // Get the progress percentage
-        const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        const progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
         console.log("Upload is " + progress + "% done");
-        setImageUploadProgress(progress)
-      }, 
+        setImageUploadProgress(progress);
+      },
       (error) => {
         console.error("Error uploading file:", error);
-      }, 
+      },
       () => {
         // Once the upload is complete, get the download URL
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
@@ -130,19 +131,19 @@ const BookUpload = () => {
           </div>
 
           <li className="upload-form-field">
-            <span>Select the AudioFile:</span>            
+            <span>Select the AudioFile:</span>
             <input
               type="file"
               name="audioFile"
               id="audioFile"
               required
               onChange={handleAudioFileUpload}
-              />
-              <progress max="100" value={audioUploadProgress}></progress>
+            />
+            <progress max="100" value={audioUploadProgress}></progress>
           </li>
 
           <li className="upload-form-field">
-            <span>Cover image for the book</span>            
+            <span>Cover image for the book</span>
             <input
               type="file"
               name="coverImage"
