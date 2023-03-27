@@ -1,0 +1,9 @@
+/* styles for bookLists */
+
+.book-card {
+    width: 12rem;
+    height: 17rem;
+
+    background-color: rebeccapurple;
+    color: var(--light);
+}
