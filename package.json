@@ -17,7 +17,8 @@
     "react-router-dom": "^6.9.0",
     "react-transition-group": "^4.4.5",
     "redux": "^4.2.1",
-    "styled-components": "^5.3.9"
+    "styled-components": "^5.3.9",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.24",

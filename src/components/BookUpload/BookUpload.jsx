@@ -5,6 +5,7 @@ import StyledButton from "../Utility/Button";
 import { addBook } from "../../features/bookSilce";
 import "../../styles/bookupload.css";
 import { storage } from "../../config/firebase";
+import { v4 } from "uuid";
 import {
   getDownloadURL,
   ref,
@@ -16,19 +17,19 @@ const BookUpload = () => {
   const dispatch = useDispatch();
   const Navigate = useNavigate();
 
-  // const [audioFile, setAudioFile] = useState("");
-  // const [coverImage, setCoverImage] = useState("");
   const [audioFileURL, setAudioFileURL] = useState("");
   const [coverImageURL, setCoverImageURL] = useState("");
   const [bookTitle, setBookTitle] = useState("");
   const [bookAuthor, setBookAuthor] = useState("");
   const [bookDesc, setBookDesc] = useState("");
-
+  
   const [audioUploadProgress, setAudioUploadProgress] = useState(0);
-
+  const [imageUploadProgress, setImageUploadProgress] = useState(0);
+  
+  // Function to upload audiofile to cloud
   const handleAudioFileUpload = async (e) => {
     const file = e.target.files[0];
-    const audioRef = ref(storage, `audio/${file.name}`);
+    const audioRef = ref(storage, `audio/${file.name + v4()}`);
 
     const metadata = {
       contentType: file.type,
@@ -38,6 +39,7 @@ const BookUpload = () => {
 
     uploadTask.on("state_changed",
       (snapshot) => {
+        // Get the progress percentage
         const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
         console.log(`Upload is ${progress}% done`);
         setAudioUploadProgress(progress);
@@ -61,23 +63,37 @@ const BookUpload = () => {
       }
     );
   };
-  console.log(audioFileURL)
 
+  // Function to upload cover image to cloud
   const handleCoverImageUpload = async (e) => {
     const file = e.target.files[0];
-    const imageRef = ref(storage, `images/${file.name}`);
-    uploadBytes(imageRef, file)
-      .then((snapshot) => {
-        console.log("Uploaded file successfully:", snapshot);
-        getDownloadURL(snapshot.ref).then((url) => {
+    const imageRef = ref(storage, `images/${file.name + v4()}`);
+    const metadata = {
+      contentType: file.type,
+    };
+    const uploadTask = uploadBytesResumable(imageRef, file, metadata);
+  
+    // Create a listener to track the upload progress
+    uploadTask.on("state_changed", 
+      (snapshot) => {
+        // Get the progress percentage
+        const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        console.log("Upload is " + progress + "% done");
+        setImageUploadProgress(progress)
+      }, 
+      (error) => {
+        console.error("Error uploading file:", error);
+      }, 
+      () => {
+        // Once the upload is complete, get the download URL
+        getDownloadURL(uploadTask.snapshot.ref).then((url) => {
           setCoverImageURL(url);
         });
-      })
-      .catch((error) => {
-        console.error("Error uploading file:", error);
-      });
+      }
+    );
   };
 
+  // Function that run after submit
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -134,6 +150,7 @@ const BookUpload = () => {
               required
               onChange={handleCoverImageUpload}
             />
+            <progress max="100" value={imageUploadProgress}></progress>
           </li>
 
           <li className="upload-form-field">
