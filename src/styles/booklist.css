@@ -1,9 +1,71 @@
 /* styles for bookLists */
 
-.book-card {
+/* .book-card {
     width: 12rem;
     height: 17rem;
 
     background-color: rebeccapurple;
     color: var(--light);
+} */
+
+/* additional styles */
+.book-list {
+    display: grid;
+    padding: 10px;
+    grid-template-columns: repeat(auto-fit, 156px);
+    grid-gap: 10px;
+}
+
+.book-card {
+    
+    width: 100%;
+    
+    /* min-width: 100px/; */
+    /* max-width: 200px; */
+
+    padding: 10px;
+    
+    /* width: clamp(100px,18%,200px); */
+    /* margin: 0 12px 10px; */
+    /* display: inline-block; */
+    
+}
+.book-card .book-cover{
+    width: 100%;
+    border-radius: 15px;
+}
+.book-info{
+    width: 100%;
+    font-family: "Quicksand",monospace;
+    color: var(--light);
+    /* background-color: red; */
+}
+
+.book-info .card-title{
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.book-info h2{
+    font-size: clamp(15px,1.5vw,18px);    
+    font-weight: normal;  
+}
+
+.book-info span{
+    color: var(--gray);
+    /* font-size: 10px; */
+    font-size: clamp(14px, 1.2vw,20px); 
+}
+
+.book-card .book-cover img{
+    width: 100%;
+    aspect-ratio: .7 / 1 ;
+    background-size: cover;
+    border-radius: inherit;
+    box-shadow: 5px 5px 5px black;
+}
+
+.book-card .book-cover :hover{
+    box-shadow: none;
 }
