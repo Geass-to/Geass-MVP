@@ -1,5 +1,6 @@
 import React from 'react';
 import BookCard from '../utility/BookCard';
+import AutoSlide from '../Utility/AutoSlide';
 import "../../styles/booklist.css";
 
 const Home = () => {
@@ -43,6 +44,7 @@ const Home = () => {
 
   return (
     <>
+      <AutoSlide />
       <div className='book-list'>
         {/* <BookCard bookDetails={booksDetails[0]}/> */}
         {
