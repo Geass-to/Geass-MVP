@@ -45,6 +45,11 @@ const Home = () => {
   return (
     <>
       <AutoSlide />
+      <div class="list-header">
+        <div class="header-title">
+          <h2>Continue Reading</h2>
+        </div>
+      </div>
       <div className='book-list'>
         {/* <BookCard bookDetails={booksDetails[0]}/> */}
         {
