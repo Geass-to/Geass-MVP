@@ -440,12 +440,12 @@ nav ul .search-bar span{
 
 .header-title{
     font-family: "Secular One",monospace;
-    font-size: 28px;
+    font-size: 26px;
     /* font-size: clamp(12px,1.4vw,20px); */
     letter-spacing: 1.2px;
     color: var(--primary-light);
     /* color: var(--light); */
-    margin-left: 10px;
+    margin-left: 25px;
     margin-top: 30px;
 }
 

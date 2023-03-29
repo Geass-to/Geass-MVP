@@ -11,9 +11,10 @@
 /* additional styles */
 .book-list {
     display: grid;
-    padding: 10px;
-    grid-template-columns: repeat(auto-fit, 156px);
-    grid-gap: 10px;
+    padding: 0px;
+    grid-template-columns: repeat(auto-fit, 125px);
+    /* grid-gap: 10px; */
+    justify-content: center;
 }
 
 .book-card {
