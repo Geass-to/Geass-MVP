@@ -22,7 +22,7 @@ const BookCard = ({ bookDetails }) => {
         <div className="card-title">
           <h2>{bookDetails.bookTitle}</h2>
         </div>
-        <span>{bookDetails.bookAuthor}</span>
+        <span>-{bookDetails.bookAuthor}</span>
         {/* <span class="read">23</span>
         <span class="stick"> | </span>
         <span class="total">110</span> */}
