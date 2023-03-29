@@ -331,7 +331,8 @@ nav ul .search-bar span{
     padding-top: 10px;
     width: 100%;
     border-radius: 25px;
-    margin-left: 8%;    
+    margin-left: 8%;  
+    margin-bottom: 20px;  
 }
 
 .large-card-details-1{
@@ -439,12 +440,13 @@ nav ul .search-bar span{
 
 .header-title{
     font-family: "Secular One",monospace;
-    font-size: 12px;
-    font-size: clamp(12px,1.4vw,20px);
+    font-size: 26px;
+    /* font-size: clamp(12px,1.4vw,20px); */
     letter-spacing: 1.2px;
     color: var(--primary-light);
     /* color: var(--light); */
-    margin-left: 10px;
+    margin-left: 25px;
+    margin-top: 30px;
 }
 
 .view-more a,i{

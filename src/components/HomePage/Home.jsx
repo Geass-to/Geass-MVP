@@ -1,58 +1,37 @@
-import React from 'react';
-import BookCard from '../utility/BookCard';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import BookCard from "../utility/BookCard";
+import AutoSlide from "../Utility/AutoSlide";
 import "../../styles/booklist.css";
+import { getBooks, selectBook } from "../../features/bookSilce";
 
 const Home = () => {
-  const booksDetails = [
-    {
-      audioUrl: '123123',
-      bookCoverImg: '/src/assets/images/cover1.jpg',
-      bookTitle: 'Who moved my cheese',
-      bookAuthor: 'No name',
-      bookDescription: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa, magnam.'
-    },
-    {
-      audioUrl: '123123',
-      bookCoverImg: '/src/assets/images/cover1.jpg',
-      bookTitle: 'Who moved my cheese',
-      bookAuthor: 'No name',
-      bookDescription: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa, magnam.'
-    },
-    {
-      audioUrl: '123123',
-      bookCoverImg: '/src/assets/images/cover1.jpg',
-      bookTitle: 'Who moved my cheese',
-      bookAuthor: 'No name',
-      bookDescription: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa, magnam.'
-    },
-    {
-      audioUrl: '123123',
-      bookCoverImg: '/src/assets/images/cover1.jpg',
-      bookTitle: 'Who moved my cheese',
-      bookAuthor: 'No name',
-      bookDescription: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa, magnam.'
-    },
-    {
-      audioUrl: '123123',
-      bookCoverImg: '/src/assets/images/cover1.jpg',
-      bookTitle: 'Who moved my cheese',
-      bookAuthor: 'No name',
-      bookDescription: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa, magnam.'
-    }
-  ];
+
+  const dispatch = useDispatch();
+  const books = useSelector(selectBook);
+
+  console.log(books);
+
+  useEffect(() => {
+    console.log("ineffect")
+    dispatch(getBooks());
+  }, [dispatch]);
 
   return (
     <>
-      <div className='book-list'>
-        {/* <BookCard bookDetails={booksDetails[0]}/> */}
-        {
-          booksDetails.map(bookDetails => (
-            <BookCard bookDetails={bookDetails} />
-          ))
-        }
+      <AutoSlide />
+      <div className="list-header">
+        <div className="header-title">
+          <h2>Trending:</h2>
+        </div>
+      </div>
+      <div className="book-list">
+        {books.map((book) => (
+          <BookCard bookDetails={book} key={book.id} />
+        ))}
       </div>
     </>
-  )
-}
+  );
+};
 
 export default Home;
