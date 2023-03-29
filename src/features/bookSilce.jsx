@@ -60,6 +60,7 @@ export const addBook = createAsyncThunk("books/addBook", async (newBook, { getSt
 // Async Thunk to get all books from Firestore
 export const getBooks = createAsyncThunk("books/getBooks", async () => {
   const querySnapshot = await getDocs(collection(db, collectionName));
+  console.log(querySnapshot)
   const books = querySnapshot.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
@@ -142,5 +143,9 @@ const booksSlice = createSlice({
 });
 
 export const { setSelectedBookId } = booksSlice.actions;
+
+export const selectBook = (state) => state.books.booksList;
+export const getBookStatus = (state) => state.books.status;
+export const getBookError = (state) => state.books.error;
 
 export default booksSlice.reducer;
