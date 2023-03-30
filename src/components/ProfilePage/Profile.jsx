@@ -3,7 +3,6 @@ import Avatar from '../Utility/Avatar';
 import BannerCard from '../Utility/BannerCard';
 import { useSelector, useDispatch } from "react-redux";
 import { getUser, selectUser } from '../../features/userSlice';
-import { auth } from '../../config/firebase';
 import { selectAuth } from '../../features/authSlice';
 
 const Profile =  () => {

@@ -13,7 +13,9 @@ import UserList from "./components/UserList/UserList";
 import BookUpload from "./components/BookUpload/BookUpload";
 import { selectAuth } from "./features/authSlice";
 import UserProfile from "./components/ProfilePage/UserProfile";
+import User from "./components/ProfilePage/User";
 import BookInfo from "./components/BookInfo/BookInfo";
+import NotFound from "./components/NotFound/NotFound";
 
 function App() {
   const currentUser = useSelector(selectAuth);
@@ -27,6 +29,7 @@ function App() {
     <Routes>
       <Route path="login" element={<LogIn />} />
       <Route path="signup" element={<SignUp />} />
+      <Route path="*" element={<NotFound/>} />
       <Route path="/" element={<Layout />}>
         <Route
           index
@@ -36,26 +39,34 @@ function App() {
             </RequireAuth>
           }
         />
-
+        
         <Route path="profile">
-          <Route index element={
-            <RequireAuth>
-              <Profile />
-            </RequireAuth>
-          }
-          />
-          <Route path=":uid" element={
-            <UserProfile />
-          }
-          />
+        
+        <Route index element={
+          <RequireAuth>
+          <Profile />
+          </RequireAuth>
+        }
+        />
+        
+          <Route path=":username" element={<User />} />
+          <Route path=":uid" element={<UserProfile />} />
+
+          <Route
+            path="editprofile"
+            element={
+              <RequireAuth>
+                <EditProfile />
+              </RequireAuth>
+            } />
+
           <Route path="editprofile" element={
             <RequireAuth>
               <EditProfile />
             </RequireAuth>
           }
           />
-        </Route>
-
+        </Route>               
 
         <Route path="book">
 
@@ -72,9 +83,10 @@ function App() {
           } />
 
         </Route>
-
         <Route path="userlist" element={<UserList />} />
-      </Route>
+        </Route>
+        
+        
     </Routes>
   );
 }

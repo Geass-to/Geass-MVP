@@ -62,6 +62,7 @@ a{
 .logo img{
     width: 85px; 
     filter:drop-shadow(2px 2px 2px black);
+    cursor: pointer;
 }
 
 nav{
@@ -117,6 +118,7 @@ ul .upload-box button{
     height: 40px;
     font-size: 15px;
     color: var(--light);
+    cursor: pointer;
 }
 
 ul .upload-box :is(button:hover, button:focus, button:active){
@@ -222,6 +224,7 @@ nav ul .profile img{
     width: 40px;
     border: 2px solid var(--light-dark);
     border-radius: 100%;
+    cursor: pointer;
 }
 
 /* Search Icon Styling */
