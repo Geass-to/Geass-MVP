@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
 
-const MediaPlayer = () => {
+const MediaPlayer = ({ source }) => {
   return (
-    <div>MediaPlayer</div>
-  )
-}
+    <audio controls>
+      <source
+        src={source}
+        type="audio/mpeg"
+      />
+      Your browser does not support the audio element.
+    </audio>
+  );
+};
 
-export default MediaPlayer
+export default MediaPlayer;

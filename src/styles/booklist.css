@@ -82,6 +82,25 @@
     float: right;
 }
 
+audio {
+    width: 100%;
+}
+
+audio::-webkit-media-controls-panel {
+    border-radius: none;
+    border: none;
+    background-color: var(--light);
+}
+
+audio::-webkit-media-controls-seek-forward-button {
+    color: var(--primary);
+}
+
+audio::-webkit-media-controls-play-button {
+    color: var(--primary);
+    background-color: var(--primary);
+}
+
 @media screen and (max-width: 850px) /* and (max-width: 810) */{
     .book-list {
         justify-content: center;

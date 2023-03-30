@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import "../../styles/bookinfo.css";
+import MediaPlayer from "./MediaPlayer";
 
 const BookInfo = () => {
   const { bookId } = useParams();
@@ -41,13 +42,10 @@ const BookInfo = () => {
         </div>
       </div>
 
-      <audio controls>
-        <source
-          src="https://firebasestorage.googleapis.com/v0/b/geass-8fac8.appspot.com/o/audio%2FFinal.mp3?alt=media&token=1ffc9cf9-a632-4efc-b92d-e001bef23abb"
-          type="audio/mpeg"
-        />
-        Your browser does not support the audio element.
-      </audio>
+      <MediaPlayer
+        className="media-element"
+        source="https://firebasestorage.googleapis.com/v0/b/geass-8fac8.appspot.com/o/audio%2FFinal.mp3?alt=media&token=1ffc9cf9-a632-4efc-b92d-e001bef23abb"
+      />
     </>
   );
 };
