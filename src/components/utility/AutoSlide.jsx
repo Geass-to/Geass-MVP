@@ -6,7 +6,7 @@ import "../../styles/AutoScroll.css";
 
 const AutoSlide = () => {
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 2000,
     slidesToShow: 1,
@@ -23,6 +23,7 @@ const AutoSlide = () => {
         );
       }
   };
+
   return (
     <div className="autoscroll">      
       <Slider {...settings}>
