@@ -13,6 +13,7 @@ import UserList from "./components/UserList/UserList";
 import BookUpload from "./components/BookUpload/BookUpload";
 import { selectAuth } from "./features/authSlice";
 import UserProfile from "./components/ProfilePage/UserProfile";
+import BookInfo from "./components/BookInfo/BookInfo";
 
 function App() {
   const currentUser = useSelector(selectAuth);
@@ -38,26 +39,41 @@ function App() {
 
         <Route path="profile">
           <Route index element={
-              <RequireAuth>
-                <Profile />
-              </RequireAuth>
-            }
+            <RequireAuth>
+              <Profile />
+            </RequireAuth>
+          }
           />
-          <Route path=":uid" element={              
-                <UserProfile />              
-            }
+          <Route path=":uid" element={
+            <UserProfile />
+          }
           />
           <Route path="editprofile" element={
-              <RequireAuth>
-                <EditProfile />
-              </RequireAuth>
-            }
+            <RequireAuth>
+              <EditProfile />
+            </RequireAuth>
+          }
           />
-          </Route>
+        </Route>
 
-          <Route path="uploadbook" element={<BookUpload />} />
 
-          <Route path="userlist" element={<UserList />} />
+        <Route path="book">
+
+          <Route path="uploadbook" element={
+            <RequireAuth>
+              <BookUpload />
+            </RequireAuth>
+          } />
+
+          <Route index path=":bookId" element={
+            <RequireAuth>
+              <BookInfo />
+            </RequireAuth>
+          } />
+
+        </Route>
+
+        <Route path="userlist" element={<UserList />} />
       </Route>
     </Routes>
   );
