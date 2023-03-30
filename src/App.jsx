@@ -15,6 +15,7 @@ import { selectAuth } from "./features/authSlice";
 import UserProfile from "./components/ProfilePage/UserProfile";
 import User from "./components/ProfilePage/User";
 import BookInfo from "./components/BookInfo/BookInfo";
+import NotFound from "./components/NotFound/NotFound";
 
 function App() {
   const currentUser = useSelector(selectAuth);
@@ -28,6 +29,7 @@ function App() {
     <Routes>
       <Route path="login" element={<LogIn />} />
       <Route path="signup" element={<SignUp />} />
+      <Route path="*" element={<NotFound/>} />
       <Route path="/" element={<Layout />}>
         <Route
           index
@@ -37,17 +39,17 @@ function App() {
             </RequireAuth>
           }
         />
-        <Route path=":username" element={<User />} />
-
+        
         <Route path="profile">
-          
-          <Route index element={
-            <RequireAuth>
-              <Profile />
-            </RequireAuth>
-          }
-          />
-
+        
+        <Route index element={
+          <RequireAuth>
+          <Profile />
+          </RequireAuth>
+        }
+        />
+        
+          <Route path=":username" element={<User />} />
           <Route path=":uid" element={<UserProfile />} />
 
           <Route
@@ -81,9 +83,10 @@ function App() {
           } />
 
         </Route>
-
         <Route path="userlist" element={<UserList />} />
-      </Route>
+        </Route>
+        
+        
     </Routes>
   );
 }

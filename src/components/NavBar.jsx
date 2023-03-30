@@ -6,18 +6,21 @@ const NavBar = () => {
     
   const navigate = useNavigate();
   const handleUpload = () => {
-    navigate(`/uploadbook`);
+    navigate(`/book/uploadbook`);
   }
 
   const handleProfile = () => {
     navigate(`/profile`)
+  }
+  const handleHome = () => {
+    navigate(`/`)
   }
 
   return (
     <nav>
     <div className="container">
       <ul>
-        <li className="logo"><img src="\src\assets\images\Geass_Logo.png" alt="Geass" /></li>
+        <li className="logo"><img src="\src\assets\images\Geass_Logo.png" alt="Geass" onClick={handleHome}/></li>
         <li className="search-bar">
           <input type="search" placeholder="Search..." className="search" />
           <span className="fas fa-search"></span>
