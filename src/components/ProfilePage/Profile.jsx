@@ -12,11 +12,12 @@ const Profile =  () => {
   const userData = useSelector(selectUser);
   const authUser = useSelector(selectAuth);
 
-  console.log(userData);
+  console.log(authUser);
+
   useEffect(() => {
     const uid = authUser.uid
     console.log(uid)
-    if(!uid){
+    if(uid){
       dispatch(getUser(uid));
     }
     else{

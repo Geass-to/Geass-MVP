@@ -1,8 +1,18 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 
 const NavBar = () => {
     
+  const navigate = useNavigate();
+  const handleUpload = () => {
+    navigate(`/uploadbook`);
+  }
+
+  const handleProfile = () => {
+    navigate(`/profile`)
+  }
+
   return (
     <nav>
     <div className="container">
@@ -12,6 +22,9 @@ const NavBar = () => {
           <input type="search" placeholder="Search..." className="search" />
           <span className="fas fa-search"></span>
         </li>
+        <div className="upload-box">
+          <li> <button onClick={handleUpload}>Upload</button> </li>
+        </div>
         <div className="menu">
           <li><a href="index.html">Home</a></li>
           <li><a href="#">Popular</a></li>
@@ -32,7 +45,7 @@ const NavBar = () => {
         </div>
 
         <li className="profile">
-          <img src="\src\assets\images\lelouch.png" alt="profile Pic" />
+          <img src="\src\assets\images\lelouch.png" alt="profile Pic" onClick={handleProfile}/>
         </li>
       </ul>
     </div>
