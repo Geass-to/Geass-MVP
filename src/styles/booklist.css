@@ -38,6 +38,11 @@
     width: 100%;
     font-family: "Quicksand",monospace;
     color: var(--light);
+    height: 60px;
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
     /* background-color: red; */
 }
 
@@ -56,6 +61,8 @@
     color: var(--gray);
     /* font-size: 10px; */
     font-size: clamp(14px, 1.2vw,20px); 
+
+    text-align: right;
 }
 
 .book-card .book-cover img{
@@ -68,4 +75,15 @@
 
 .book-card .book-cover :hover{
     box-shadow: none;
+}
+
+.book-info > span {
+    font-size: 15px;
+    float: right;
+}
+
+@media screen and (max-width: 850px) /* and (max-width: 810) */{
+    .book-list {
+        justify-content: center;
+    }
 }
