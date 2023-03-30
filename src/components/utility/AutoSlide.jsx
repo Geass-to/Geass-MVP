@@ -17,15 +17,23 @@ const AutoSlide = () => {
     cssEase: "linear",
     pauseOnHover: true,
     swipeToSlide: true,
-      afterChange: function(index) {
-        console.log(
-          `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
-        );
+    afterChange: function (index) {
+      console.log(
+        `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
+      );
+    },
+    responsive: [
+      {
+        breakpoint: 912,
+        settings: {
+          arrows: false
+        }
       }
+    ]
   };
 
   return (
-    <div className="autoscroll">      
+    <div className="autoscroll">
       <Slider {...settings}>
         <div>
           <div class="auto-scroll">

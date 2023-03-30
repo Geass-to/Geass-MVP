@@ -105,6 +105,24 @@ nav ul li{
 .optional-nav{
     display: none;
 }
+
+/* Upload Box*/
+ul .upload-box button{
+    background-color: var(--primary);
+    border: none;
+    padding: 5px;
+    font-weight: bold;
+    border-radius: 100px;
+    width: 80px;
+    height: 40px;
+    font-size: 15px;
+    color: var(--light);
+}
+
+ul .upload-box :is(button:hover, button:focus, button:active){
+    color: var(--dark);
+}
+
 /* Support Button and logos style */
 .misc-element{
     display: none;
@@ -178,7 +196,7 @@ nav .misc-element .icons :is(i:hover, i:focus, i:active){
 nav ul .search-bar{
     position: relative;
     height: 40px;
-    width: 200px;
+    width: 100px;
     display: flex;
     background-color: var(--primary);    
     color: var(--light);
@@ -190,7 +208,7 @@ nav ul .search-bar input{
     font-family: 'Quicksand', sans-serif ;
     font-size: 15px;
     height: 100%;
-    width: 200px;
+    width: inherit;
     border: none;
     outline: none;
     border-radius: 100px;
