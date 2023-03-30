@@ -3,7 +3,6 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { LogIn } from "./components/Auth/LogIn";
 import { SignUp } from "./components/Auth/SignUp";
 import Home from "./components/HomePage/Home";
-import { Scroll_Items } from "./components/HomePage/Scroll_Items";
 import { Layout } from "./components/Layout";
 import "./styles/style.css";
 import "./styles/animate.css";
@@ -12,10 +11,12 @@ import EditProfile from "./components/ProfilePage/EditProfile";
 import { useSelector } from "react-redux";
 import UserList from "./components/UserList/UserList";
 import BookUpload from "./components/BookUpload/BookUpload";
+import { selectAuth } from "./features/authSlice";
+import UserProfile from "./components/ProfilePage/UserProfile";
 
 function App() {
-  const currentUser = useSelector((state) => state.auth.currentUser);
-  console.log(currentUser);
+  const currentUser = useSelector(selectAuth);
+  // console.log(currentUser);
 
   const RequireAuth = ({ children }) => {
     return currentUser ? children : <Navigate to="/login" />;
@@ -40,6 +41,10 @@ function App() {
               <RequireAuth>
                 <Profile />
               </RequireAuth>
+            }
+          />
+          <Route path=":uid" element={              
+                <UserProfile />              
             }
           />
           <Route path="editprofile" element={
