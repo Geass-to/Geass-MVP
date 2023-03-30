@@ -11,17 +11,43 @@
 
 .audio-range-wrapper {
     width: 100%;
+    padding: 1.5rem 2rem .25rem 2rem;
 }
 
 .audio-range-wrapper .audio-range {
-    width: 90%;
+    width: 100%;
 }
 
 .duration-wrapper {
     width: 100%;
-    padding: 0 6% 0 6%;
+    padding: 0 2rem 0 2rem;
 
     display: flex;
     justify-content: space-between;
 }
+
+.button-wrapper {
+    width: 100%;
+    padding: 1.5rem;
+}
+
+.backward-btn {
+    /* margin: 5% 5% 5% 5%; */
+}
+
+.forward-btn {
+    /* margin: 5% 5% 5% 5%; */
+}
+
+.play-pause {
+    margin: 0% 5% 0% 5%;
+}
+
+.audio-element button {
+    background-color: inherit;
+    outline: inherit;
+    border: none;
+    color: white;
+}
+
 

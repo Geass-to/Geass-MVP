@@ -91,15 +91,17 @@ function MediaPlayer({ src }) {
       </div>
 
       <div className="button-wrapper">
-        <button className="backward-btn" onClick={handleFastBackwardClick}>
-          -15s
-        </button>
-        <button className="play-pause" onClick={handlePlayPauseClick}>
-          {isPlaying ? "Pause" : "Play"}
-        </button>
-        <button className="forward-btn" onClick={handleFastForwardClick}>
-          +15s
-        </button>
+        <center>
+          <button className="backward-btn" onClick={handleFastBackwardClick}>
+            -15s
+          </button>
+          <button className="play-pause" onClick={handlePlayPauseClick}>
+            {isPlaying ? "Pause" : "Play"}
+          </button>
+          <button className="forward-btn" onClick={handleFastForwardClick}>
+            <i className="fa-duotone fa-forward"></i>
+          </button>
+        </center>
       </div>
       {/* </div> */}
 
