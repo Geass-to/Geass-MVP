@@ -32,6 +32,7 @@ const UserProfile = () => {
   return (
     <div>
       <h1>User Profile:</h1>
+      <Link to={`/${userData.username}`}>View user</Link>
       {/* Render user profile content here */}
     </div>
   );

@@ -6,6 +6,8 @@ import {
   addDoc,
   setDoc,
   updateDoc,
+  query,
+  where,
   doc,
 } from "firebase/firestore";
 import { db, auth } from "../config/firebase";
@@ -59,6 +61,26 @@ export const getUser = createAsyncThunk("user/getUser", async (docId) => {
   console.log(data);
   // return { ...data, id: docId };
   return { ...data.data(), id: data.id };
+});
+
+export const getUserByUsername = createAsyncThunk("user/getUserByUsername", async (username) => {
+  console.log(username);
+  let data
+  try {
+    const q = query(collection(db, collectionName), where("username", "==", username));
+    const querySnapshot = await getDocs(q);
+    console.log(q)  
+    if (!querySnapshot.empty) {
+      const doc = querySnapshot.docs[0];
+      data = { ...doc.data(), id: doc.id };
+    } else {
+      console.log("Document not found!");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+  console.log(data);
+  return data;
 });
 
 export const addUser = createAsyncThunk("user/addUser", async (newUser) => {
@@ -125,6 +147,18 @@ const userSlice = createSlice({
         state.userList.push(action.payload);
       })
       .addCase(addUser.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(getUserByUsername.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(getUserByUsername.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        // state.userList.push(action.payload);
+        state.userList = action.payload;
+      })
+      .addCase(getUserByUsername.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       })
