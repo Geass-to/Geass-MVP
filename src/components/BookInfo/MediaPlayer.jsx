@@ -15,6 +15,7 @@
 // export default MediaPlayer;
 import React, { useState, useRef } from "react";
 import "./mediaelement.css";
+import "./inputrange.css";
 
 function MediaPlayer({ src }) {
   const audioRef = useRef(null);
@@ -93,13 +94,15 @@ function MediaPlayer({ src }) {
       <div className="button-wrapper">
         <center>
           <button className="backward-btn" onClick={handleFastBackwardClick}>
-            -15s
+            {/* <i class="fa-solid fa-angles-left"></i> */}
+            <i className="fa-solid fa-rotate-left"></i>
           </button>
           <button className="play-pause" onClick={handlePlayPauseClick}>
-            {isPlaying ? "Pause" : "Play"}
+            {isPlaying ? <i className="fa-solid fa-pause"></i> : <i className="fa-solid fa-play"></i>}
           </button>
           <button className="forward-btn" onClick={handleFastForwardClick}>
-            <i className="fa-duotone fa-forward"></i>
+          {/* <i class="fa-solid fa-angles-right"></i> */}
+          <i className="fa-solid fa-rotate-right"></i>
           </button>
         </center>
       </div>
