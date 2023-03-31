@@ -1,12 +1,14 @@
-html{
+/* html{
     height: 100vh;
-}
+} */
 
 .notfound{
     font-family: "quicksand", monospace;
     font-size: 80px;
     font-weight: bolder;
     text-align: center;
+    color: white;
+    color: var(--primary);
 }
 
 .gif{

@@ -64,7 +64,7 @@ export const getUser = createAsyncThunk("user/getUser", async (docId) => {
 });
 
 export const getUserByUsername = createAsyncThunk("user/getUserByUsername", async (username) => {
-  console.log(username);
+  console.log("getUserByUsername called with username:", username);
   let data
   try {
     const q = query(collection(db, collectionName), where("username", "==", username));
@@ -150,6 +150,7 @@ const userSlice = createSlice({
         state.status = "failed";
         state.error = action.error.message;
       })
+      //Get user by username
       .addCase(getUserByUsername.pending, (state) => {
         state.status = "loading";
       })

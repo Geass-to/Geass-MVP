@@ -10,12 +10,17 @@ const User = () => {
   const dispatch = useDispatch();
   const { username } = useParams();
   const userData = useSelector(selectUser);
+  console.log(username)
+  console.log(userData)
 
   useEffect(() => {
+    console.log("In Effect")
     dispatch(getUserByUsername(username));
   }, [username]);
-
+  
   function capitalizeWord(string) {
+    if (!string) return "";
+    
     const words = string.split(" ");
     const capitalizedWords = words.map((word) => {
       return word.charAt(0).toUpperCase() + word.slice(1);
@@ -24,9 +29,11 @@ const User = () => {
   }
   
   function capitalizeFirstLetter(string) {
+    if (!string) return "";
+    
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
-
+  
   return (
     <BannerCard user={userData}>
       <div className="profile-container">
