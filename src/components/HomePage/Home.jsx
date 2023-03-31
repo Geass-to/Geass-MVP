@@ -6,14 +6,13 @@ import "../../styles/booklist.css";
 import { getBooks, selectBook } from "../../features/bookSilce";
 
 const Home = () => {
-
   const dispatch = useDispatch();
   const books = useSelector(selectBook);
 
   console.log(books);
 
   useEffect(() => {
-    console.log("ineffect")
+    console.log("ineffect");
     dispatch(getBooks());
   }, [dispatch]);
 
