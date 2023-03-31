@@ -1,3 +1,7 @@
+html{
+    height: 100vh;
+}
+
 .notfound{
     font-family: "quicksand", monospace;
     font-size: 80px;
