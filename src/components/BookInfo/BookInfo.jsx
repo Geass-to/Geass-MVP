@@ -12,8 +12,7 @@ const BookInfo = () => {
         <div
           className="wallpaper"
           style={{
-            backgroundImage:
-              "url(https://s4.anilist.co/file/anilistcdn/media/anime/banner/12859-XjlBW6o2YwUb.jpg)",
+            backgroundImage: "url(https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx12859-uQFENDPzMWz6.jpg)",
           }}
         ></div>
         <div className="anime-container">

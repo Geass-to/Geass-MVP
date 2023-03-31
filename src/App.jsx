@@ -16,6 +16,7 @@ import UserProfile from "./components/ProfilePage/UserProfile";
 import User from "./components/ProfilePage/User";
 import BookInfo from "./components/BookInfo/BookInfo";
 import NotFound from "./components/NotFound/NotFound";
+import SearchResults from "./components/SearchResults/SearchResults";
 
 function App() {
   const currentUser = useSelector(selectAuth);
@@ -29,7 +30,7 @@ function App() {
     <Routes>
       <Route path="login" element={<LogIn />} />
       <Route path="signup" element={<SignUp />} />
-      <Route path="*" element={<NotFound/>} />
+      <Route path="*" element={<NotFound />} />
       <Route path="/" element={<Layout />}>
         <Route
           index
@@ -39,16 +40,17 @@ function App() {
             </RequireAuth>
           }
         />
-        
+
         <Route path="profile">
-        
-        <Route index element={
-          <RequireAuth>
-          <Profile />
-          </RequireAuth>
-        }
-        />
-        
+          <Route
+            index
+            element={
+              <RequireAuth>
+                <Profile />
+              </RequireAuth>
+            }
+          />
+
           <Route path=":username" element={<User />} />
           <Route path=":uid" element={<UserProfile />} />
 
@@ -58,35 +60,46 @@ function App() {
               <RequireAuth>
                 <EditProfile />
               </RequireAuth>
-            } />
-
-          <Route path="editprofile" element={
-            <RequireAuth>
-              <EditProfile />
-            </RequireAuth>
-          }
+            }
           />
-        </Route>               
+
+          <Route
+            path="editprofile"
+            element={
+              <RequireAuth>
+                <EditProfile />
+              </RequireAuth>
+            }
+          />
+        </Route>
 
         <Route path="book">
+          <Route
+            path="uploadbook"
+            element={
+              <RequireAuth>
+                <BookUpload />
+              </RequireAuth>
+            }
+          />
 
-          <Route path="uploadbook" element={
-            <RequireAuth>
-              <BookUpload />
-            </RequireAuth>
-          } />
-
-          <Route index path=":bookId" element={
-            <RequireAuth>
-              <BookInfo />
-            </RequireAuth>
-          } />
-
+          <Route
+            index
+            path=":bookId"
+            element={
+              <RequireAuth>
+                <BookInfo />
+              </RequireAuth>
+            }
+          />
         </Route>
+
+        <Route path="search">
+          <Route index path=":searchquery" element={<SearchResults />} />
+        </Route>
+
         <Route path="userlist" element={<UserList />} />
-        </Route>
-        
-        
+      </Route>
     </Routes>
   );
 }
