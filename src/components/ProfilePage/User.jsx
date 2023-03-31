@@ -5,11 +5,15 @@ import { selectUser, getUserByUsername } from "../../features/userSlice";
 import { useParams } from "react-router-dom";
 import Avatar from "../Utility/Avatar";
 import "../../styles/profile.css";
+import BookCard from "../utility/BookCard";
 
 const User = () => {
   const dispatch = useDispatch();
   const { username } = useParams();
   const userData = useSelector(selectUser);
+
+  const books = userData.bookList
+  console.log(books)
   console.log(username)
   console.log(userData)
 
@@ -35,6 +39,7 @@ const User = () => {
   }
   
   return (
+    <>
     <BannerCard user={userData}>
       <div className="profile-container">
         <div className="profile-image">
@@ -68,6 +73,18 @@ const User = () => {
         </div>
       </div>
     </BannerCard>
+    
+    <div className="list-header">
+        <div className="header-title">
+          <h2>Trending:</h2>
+        </div>
+      </div>
+      <div className="book-list">
+        {books.map((book) => (
+          <BookCard bookDetails={book} key={book.id} />
+        ))}
+      </div>
+      </>
   );
 };
 

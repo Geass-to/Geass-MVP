@@ -4,12 +4,14 @@ import BannerCard from '../Utility/BannerCard';
 import { useSelector, useDispatch } from "react-redux";
 import { getUser, selectUser } from '../../features/userSlice';
 import { selectAuth } from '../../features/authSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Profile =  () => {
 
   const dispatch = useDispatch();
   const userData = useSelector(selectUser);
   const authUser = useSelector(selectAuth);
+  const navigate = useNavigate()
 
   console.log(authUser);
 
@@ -24,6 +26,10 @@ const Profile =  () => {
     }
     console.log("In effect")
   }, [dispatch]);
+
+  const handleEditProfile = () => {
+    navigate(`/editprofile`)
+  }
 
   return (
     <BannerCard user={userData}>
@@ -53,7 +59,7 @@ const Profile =  () => {
         </div>
         <div className="large-card-details-3">
           <button className="readnow">Create Now</button>
-          <button className='readnow'>Edit Profile</button>
+          <button className='readnow' onClick={handleEditProfile}>Edit Profile</button>
         </div>
       </div>
 

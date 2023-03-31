@@ -14,18 +14,18 @@
 - [ ] Twitter login
 #### Bugs and features
 - [x] LogIn Navigate
-- [ ] LogIn Error message correction
-- [ ] SignUp Navigate
-- [ ] SignUp message to verify email
+- [x] LogIn Error message correction
+- [x] SignUp Navigate
+- [x] SignUp message to verify email
 
 ### Users can upload their text file and covert them to audio
 - [ ] Upload pdf or text files
 - [ ] Using their own API key
-- [ ] Upload their own audiobooks
+- [x] Upload their own audiobooks
 - [ ] Pay for converting
 
 ### Users can listen to premade audiobooks
-- [ ] Media player page
+- [x] Media player page
 - [ ] Users history
 
 ### Users can make their books public
@@ -33,7 +33,7 @@
 
 ### User profile and dashboard
 - [ ] Books coverted
-- [ ] Books uploaded
+- [x] Books uploaded
 
 ### User Info
 - uid

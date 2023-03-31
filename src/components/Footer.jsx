@@ -1,7 +1,19 @@
 import React from 'react'
 import LogOut from './Auth/LogOut'
+import { useNavigate } from 'react-router-dom';
 
 export const Footer = () => {
+
+  const navigate = useNavigate();
+
+  const handleBookInfo = () => {
+    navigate(`/book/bookinfo`)
+  }
+
+  const handleUserPage = () => {
+    navigate(`/user/cgcrew`)
+  }
+
   return (
     <footer>
         <div className="footer-container">
@@ -11,8 +23,8 @@ export const Footer = () => {
             </li>
           </div>
           <div className="footer-icons">
-            <i className="fa-brands fa-discord"></i>
-            <i className="fa-brands fa-reddit"></i>
+            <i className="fa-brands fa-discord" onClick={handleBookInfo}></i>
+            <i className="fa-brands fa-reddit" onClick={handleUserPage}></i>
             <i className="fa-brands fa-instagram"></i>
             <i className="fa-brands fa-twitter"></i>
           </div>
