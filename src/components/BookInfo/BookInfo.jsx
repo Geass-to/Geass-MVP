@@ -44,7 +44,7 @@ const BookInfo = () => {
 
       <MediaPlayer
         className="media-element"
-        source="https://firebasestorage.googleapis.com/v0/b/geass-8fac8.appspot.com/o/audio%2FFinal.mp3?alt=media&token=1ffc9cf9-a632-4efc-b92d-e001bef23abb"
+        src="https://firebasestorage.googleapis.com/v0/b/geass-8fac8.appspot.com/o/audio%2FFinal.mp3?alt=media&token=1ffc9cf9-a632-4efc-b92d-e001bef23abb"
       />
     </>
   );
