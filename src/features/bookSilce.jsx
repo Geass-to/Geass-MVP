@@ -69,13 +69,11 @@ export const getBooks = createAsyncThunk("books/getBooks", async () => {
 });
 
 // Async Thunk to get one books from Firestore
-export const getBook = createAsyncThunk("books/getBook", async () => {
-  const querySnapshot = await getDoc(collection(db, collectionName));
-  const books = querySnapshot.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
-  return books;
+export const getBook = createAsyncThunk("books/getBook", async (bookId) => {
+  const bookRef = doc(db, collectionName, bookId)
+  const books = await getDoc(bookRef);
+  console.log(books)
+  return { ...books.data(), id: books.id};
 });
 
 // Async Thunk to update a book in Firestore
@@ -93,6 +91,7 @@ const booksSlice = createSlice({
   name: "books",
   initialState: {
     booksList: [],
+    singleBook: "",
     status: "idle",
     error: null,
     selectedBookId: null,
@@ -125,6 +124,17 @@ const booksSlice = createSlice({
       state.status = "failed";
       state.error = action.error.message;
     },
+    [getBook.pending]: (state) => {
+      state.status = "loading";
+    },
+    [getBook.fulfilled]: (state, action) => {
+      state.status = "succeeded";
+      state.singleBook = action.payload; // update singleBook property
+    },
+    [getBook.rejected]: (state, action) => {
+      state.status = "failed";
+      state.error = action.error.message;
+    },
     [updateBook.pending]: (state) => {
       state.status = "loading";
     },
@@ -144,7 +154,8 @@ const booksSlice = createSlice({
 
 export const { setSelectedBookId } = booksSlice.actions;
 
-export const selectBook = (state) => state.books.booksList;
+export const selectSingleBook = (state) => state.books.singleBook;
+export const selectBooks = (state) => state.books.booksList;
 export const getBookStatus = (state) => state.books.status;
 export const getBookError = (state) => state.books.error;
 

@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import BookCard from "../utility/BookCard";
 import AutoSlide from "../Utility/AutoSlide";
 import "../../styles/booklist.css";
-import { getBooks, selectBook } from "../../features/bookSilce";
+import { getBooks, selectBooks } from "../../features/bookSilce";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const books = useSelector(selectBook);
+  const books = useSelector(selectBooks);
 
   console.log(books);
 
