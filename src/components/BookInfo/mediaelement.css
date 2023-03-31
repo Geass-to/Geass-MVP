@@ -6,15 +6,15 @@
     justify-content: center;
     align-items: center;
 
-    color: var(--primary);
+    color: var(--light);
 }
 
 .audio-range-wrapper {
     width: 100%;
     padding: 1.5rem 2rem .25rem 2rem;
-}
+} 
 
-.audio-range-wrapper .audio-range {
+.audio-range {
     width: 100%;
 }
 
@@ -28,15 +28,11 @@
 
 .button-wrapper {
     width: 100%;
-    padding: 1.5rem;
+    padding: .5rem 1.5rem 1.5rem 1.5rem;
 }
 
-.backward-btn {
-    /* margin: 5% 5% 5% 5%; */
-}
-
-.forward-btn {
-    /* margin: 5% 5% 5% 5%; */
+.button-wrapper button {
+    font-size: 30px;
 }
 
 .play-pause {
