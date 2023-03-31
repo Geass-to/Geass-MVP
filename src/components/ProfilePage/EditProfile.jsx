@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import "../../styles/editprofile.css";
 import StyledButton from "../Utility/Button";
 import { useDispatch } from "react-redux";
-import { addUser, updateUser } from "../../features/userSlice";
+import { updateUser } from "../../features/userSlice";
+import { checkUsernameExists } from "./CheckUser";
+import { useNavigate } from "react-router-dom";
 
 const EditProfile = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
@@ -13,6 +16,8 @@ const EditProfile = () => {
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
   const [bio, setBio] = useState("");
+  const [usernameExists, setUsernameExists] = useState(false); // Add state for checking if username exists
+  const [submitDisabled, setSubmitDisabled] = useState(false); // Add state for disabling submit button
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -34,7 +39,24 @@ const EditProfile = () => {
       console.error(error); // error while adding the user
     }
   };
-  
+
+  const handleUsernameChange = async (event) => {
+    const username = event.target.value;
+    setUsername(username);
+    if (username) {
+      try {
+        const exists = await checkUsernameExists(username);
+        setUsernameExists(exists);
+        setSubmitDisabled(exists);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
+
+  const handleGoBack = () => {
+    navigate(`/profile`)
+  }
 
   return (
     <>
@@ -70,8 +92,12 @@ const EditProfile = () => {
               <input
                 type="text"
                 value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={handleUsernameChange}
+                className={usernameExists ? "error" : ""}
               />
+              {usernameExists && (
+                <span id="error-message">Username already exists</span>
+              )}
             </li>
             <li>
               <span>Email Id</span>
@@ -85,7 +111,7 @@ const EditProfile = () => {
             </li>
             <li>
               <span>Password</span>
-              <input type="password" disabled="disabled"/>
+              <input type="password" disabled="disabled" />
             </li>
             <li>
               <span>Country</span>
@@ -108,8 +134,8 @@ const EditProfile = () => {
               <textarea value={bio} onChange={(e) => setBio(e.target.value)} />
             </li>
             <li id="editprofile-submit-button">
-              <StyledButton bgColor="var(--light-dark)">Go Back</StyledButton>
-              <StyledButton type="submit">Submit Now</StyledButton>
+              <StyledButton bgColor="var(--light-dark)" onClick={handleGoBack}>Go Back</StyledButton>
+              <StyledButton type="submit" disabled={submitDisabled}>Submit Now</StyledButton>
             </li>
             <li></li>
           </ul>

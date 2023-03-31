@@ -11,7 +11,7 @@ export const Footer = () => {
   }
 
   const handleUserPage = () => {
-    navigate(`/user/cgcrew`)
+    navigate(`/profile/cgcrew`)
   }
 
   return (

@@ -28,7 +28,7 @@ const Profile =  () => {
   }, [dispatch]);
 
   const handleEditProfile = () => {
-    navigate(`/editprofile`)
+    navigate(`/profile/editprofile`)
   }
 
   return (

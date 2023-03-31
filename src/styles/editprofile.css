@@ -108,3 +108,9 @@
     justify-content: center;
     align-self: flex-end;
 }
+
+#error-message{
+    /* color: #e63440; */
+    font-weight: 200;
+    font-size: 16px;
+}
