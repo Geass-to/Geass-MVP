@@ -3,9 +3,9 @@ import styled from 'styled-components'
 
 const BannerCard = ({ children, user }) => {
   return (
-    <div className="auto-scroll">
-      <div className="large-card-bg">
-        <div className="large-shade">
+    <div className="banner-container">
+      <div className="banner-bg">
+        <div className="banner-shade">
           {children}
         </div>
       </div>

@@ -1,47 +1,63 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import BannerCard from "../Utility/BannerCard";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser, getUserByUsername } from "../../features/userSlice";
 import { useParams } from "react-router-dom";
 import Avatar from "../Utility/Avatar";
+import "../../styles/profile.css";
 
 const User = () => {
-    const dispatch = useDispatch();
-    const { username } = useParams();
-    const userData = useSelector(selectUser);
+  const dispatch = useDispatch();
+  const { username } = useParams();
+  const userData = useSelector(selectUser);
 
-    useEffect(() => {
-        dispatch(getUserByUsername(username));
-      }, [username]);
+  useEffect(() => {
+    dispatch(getUserByUsername(username));
+  }, [username]);
+
+  function capitalizeWord(string) {
+    const words = string.split(" ");
+    const capitalizedWords = words.map((word) => {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    });
+    return capitalizedWords.join(" ");
+  }
+  
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 
   return (
     <BannerCard user={userData}>
-      <div className="poster-container">
-        <div className="poster">
+      <div className="profile-container">
+        <div className="profile-image">
           <Avatar
             imageUrl="https://wallpaperaccess.com/full/4595683.jpg"
             size={100}
           />
         </div>
 
-        <div className="large-card-details-1">
-          <h3>{userData.name}</h3>
-          <p className="info">{userData.bio}</p>
+        <div className="user-username">
+          <h3>{userData.username}</h3>
         </div>
-        <div className="large-card-details-2">
-          <span className="status">Finished</span>
-          <span className="volume">{/*userData.completed*/}</span>
-          <br />
+
+        <div className="user-name">
+          <h3>{capitalizeWord(userData.name)}</h3>
+        </div>
+
+        <div className="user-bio">
+          <p className="info">{capitalizeFirstLetter(userData.bio)}</p>
+        </div>
+
+        <div className="user-email">
+          <span>{userData.email}</span>
+        </div>
+
+        <div className="user-location">
           <ul>
-            <li>{userData.city}</li>
-            <li>{userData.country}</li>
-            <li>{userData.email}</li>
+            <li>{capitalizeFirstLetter(userData.city)}</li>
+            <li>{capitalizeFirstLetter(userData.country)}</li>
           </ul>
-          <br />
-        </div>
-        <div className="large-card-details-3">
-          <button className="readnow">Create Now</button>
-          <button className="readnow">Edit Profile</button>
         </div>
       </div>
     </BannerCard>
