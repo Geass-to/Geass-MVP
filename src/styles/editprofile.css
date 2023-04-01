@@ -110,7 +110,7 @@
 }
 
 #error-message{
-    /* color: #e63440; */
-    font-weight: 200;
+    color: #e63440;
+    font-weight: 500;
     font-size: 16px;
 }

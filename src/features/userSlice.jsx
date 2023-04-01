@@ -37,7 +37,7 @@ export const userSlice = createSlice({
       state.info = { ...state.info, ...action.payload };
     },
   },
-});
+// });  
 
 */
 
@@ -189,3 +189,11 @@ export const getUserStatus = (state) => state.user.status;
 export const getUserError = (state) => state.user.error;
 
 export default userSlice.reducer;
+
+
+
+
+
+
+
+
