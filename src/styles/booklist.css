@@ -13,6 +13,7 @@
     display: grid;
     padding: 0px;
     grid-template-columns: repeat(auto-fit, 125px);
+    margin: 25px;
     /* grid-gap: 10px; */
 }
 
