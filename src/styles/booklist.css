@@ -38,7 +38,7 @@
     width: 100%;
     font-family: "Quicksand",monospace;
     color: var(--light);
-    height: 60px;
+    height: 65px;
 
     display: flex;
     justify-content: space-between;
@@ -68,9 +68,10 @@
 .book-card .book-cover img{
     width: 100%;
     aspect-ratio: .7 / 1 ;
-    background-size: cover;
+    /* background-size: cover; */
     border-radius: inherit;
     box-shadow: 5px 5px 5px black;
+    object-fit: cover;
 }
 
 .book-card .book-cover :hover{

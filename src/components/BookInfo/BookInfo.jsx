@@ -7,30 +7,33 @@ import { getBookById, selectSingleBook, selectBooks } from "../../features/bookS
 import { useEffect } from "react";
 
 const BookInfo = () => {
+
+  
   const { bookId } = useParams();
   const dispatch = useDispatch();
   const books = useSelector(selectBooks);
   const book =
-    books.find((book) => book.id === bookId) || useSelector(selectSingleBook);
-
+  books.find((book) => book.id === bookId) || useSelector(selectSingleBook);
+  
   useEffect(() => {
     if (!book) {
       console.log("In Effect");
       dispatch(getBookById(bookId));
     }
   }, [book, bookId, dispatch]);
-
+  
   if (!book) {
     return <div>Loading...</div>;
   }
-
+  
+  let bookCoverImg = `url(${book.coverImage})`
   return (
     <>
       <div className="anime-wrapper">
         <div
           className="wallpaper"
           style={{
-            backgroundImage: "url(https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx12859-uQFENDPzMWz6.jpg)",
+            backgroundImage: bookCoverImg,
           }}
         ></div>
         <div className="anime-container">

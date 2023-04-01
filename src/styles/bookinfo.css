@@ -55,18 +55,19 @@ justify-content: flex-start;
 overflow-x: scroll; */
 }
 
-.poster {
+.anime .poster {
   grid-area: poster;
   align-self: center;
 }
 
-.poster > img {
+.anime .poster > img {
   width: 100%;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 20px;
+  aspect-ratio: 1 / 1.25;
 }
 
-.description {
+.anime .description {
   grid-area: desc;
   overflow-y: scroll;
   /* max-height: 450px; */
@@ -90,7 +91,11 @@ overflow-x: scroll; */
 
 @media screen and (max-width: 550px) {
   .anime-wrapper {
-    height: 52.5rem;
+    max-height: 52.5rem;
+  }
+
+  .anime-container {
+    top: calc(325px / 2);
   }
 
   .anime {
@@ -100,7 +105,7 @@ overflow-x: scroll; */
     max-height: 630px;
   }
 
-  .poster {
+  .anime .poster {
     width: 10rem;
     /* height: 6rem; */
   }
