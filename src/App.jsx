@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { LogIn } from "./components/Auth/LogIn";
+import { LogIn } from "./components/Auth/Login";
 import { SignUp } from "./components/Auth/SignUp";
 import Home from "./components/HomePage/Home";
 import { Layout } from "./components/Layout";

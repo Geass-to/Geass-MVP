@@ -11,15 +11,19 @@ import TwitterAuth from "./TwitterAuth";
 import FacebookAuth from "./FacebookAuth";
 import { useDispatch } from "react-redux";
 import { addUser } from "../../features/userSlice";
-import { current } from "@reduxjs/toolkit";
+import { checkUsernameExists } from "../ProfilePage/CheckUser";
 
 export const SignUp = () => {
   //!States
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordMatch, setPasswordMatch] = useState(true);
   const [error, setError] = useState("");
+  const [usernameExists, setUsernameExists] = useState(false); // Add state for checking if username exists
+  const [submitDisabled, setSubmitDisabled] = useState(false); // Add state for disabling submit button
+
 
   const dispatch = useDispatch();
 
@@ -27,6 +31,21 @@ export const SignUp = () => {
   const navigate = useNavigate();
   const gotoLogIn = () => {
     navigate("/login");
+  };
+
+  //!Check username
+  const handleUsernameChange = async (event) => {
+    const username = event.target.value;
+    setUsername(username);
+    if (username) {
+      try {
+        const exists = await checkUsernameExists(username);
+        setUsernameExists(exists);
+        setSubmitDisabled(exists);
+      } catch (error) {
+        console.error(error);
+      }
+    }
   };
 
   //!For Auth
@@ -47,7 +66,8 @@ export const SignUp = () => {
         });
         // await result.user.sendEmailVerification();
         // Create a new user object to add to the database
-        const newUser = { email: email };
+        const newUser = { email: email, username: username };
+        
         // Dispatch the addUser action to add the new user to the database
         const data = dispatch(addUser(newUser));
         console.log(data);
@@ -103,6 +123,18 @@ export const SignUp = () => {
           </div>
           <div id="trans">
             <form id="signup" className="input-group" onSubmit={handleSignup}>
+            <div className="inputBox">
+              <input
+                type="text"
+                className="input-field"
+                placeholder="Username"
+                required
+                onChange={handleUsernameChange}
+              />
+              {usernameExists && (
+                <span id="error-message">Username already exists</span>
+              )}
+            </div>
               <div className="inputBox">
                 <input
                   type="text"
@@ -144,7 +176,7 @@ export const SignUp = () => {
               {!passwordMatch && <span id="error">Passwords do not match</span>}
               {error && <span id="error">{error}</span>}
               <div className="inputBox">
-                <input type="submit" value="Sign Up" />
+                <input type="submit" value="Sign Up" disabled={submitDisabled} />
               </div>
 
               <h3>Login with social media</h3>
