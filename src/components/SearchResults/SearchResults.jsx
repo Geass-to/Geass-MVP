@@ -11,7 +11,7 @@ const SearchResults = () => {
     }
   ]
   return (
-    <>
+    <div className="search-results-container">
       <div className="list-header">
         <div className="header-title">
           <h2>Search results for</h2>
@@ -22,7 +22,7 @@ const SearchResults = () => {
           <BookCard bookDetails={book} key={book.id} />
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
