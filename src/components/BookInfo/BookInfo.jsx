@@ -3,19 +3,26 @@ import { useParams } from "react-router-dom";
 import "../../styles/bookinfo.css";
 import MediaPlayer from "./MediaPlayer";
 import { useDispatch, useSelector } from "react-redux";
-import { getBook, selectSingleBook } from "../../features/bookSilce";
+import { getBookById, selectSingleBook, selectBooks } from "../../features/bookSilce";
 import { useEffect } from "react";
 
 const BookInfo = () => {
   const { bookId } = useParams();
   const dispatch = useDispatch();
-  const book = useSelector(selectSingleBook);
-  // const book = books[0]
-  console.log(book)
+  const books = useSelector(selectBooks);
+  const book =
+    books.find((book) => book.id === bookId) || useSelector(selectSingleBook);
+
   useEffect(() => {
-    console.log("In Effect");
-    dispatch(getBook(bookId));
-  }, [bookId])
+    if (!book) {
+      console.log("In Effect");
+      dispatch(getBookById(bookId));
+    }
+  }, [book, bookId, dispatch]);
+
+  if (!book) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
@@ -33,9 +40,7 @@ const BookInfo = () => {
               <img src={book.coverImage} />
             </div>
             <div className="description">
-              <div className="description-content">
-                {book.description}
-              </div>
+              <div className="description-content">{book.description}</div>
             </div>
             <div className="total-episodes">
               Author: <span>{book.author}</span>
@@ -44,10 +49,7 @@ const BookInfo = () => {
         </div>
       </div>
 
-      <MediaPlayer
-        className="media-element"
-        src={book.audioFile}
-      />
+      <MediaPlayer className="media-element" src={book.audioFile} />
     </>
   );
 };

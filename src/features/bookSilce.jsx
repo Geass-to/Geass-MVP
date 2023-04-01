@@ -1,5 +1,5 @@
 // Redux slice for Books
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, createSelector } from "@reduxjs/toolkit";
 import {
   doc,
   collection,
@@ -10,10 +10,7 @@ import {
   writeBatch
 } from "firebase/firestore";
 import { db } from "../config/firebase";
-import { auth } from "../config/firebase";
 import { arrayUnion } from "firebase/firestore";
-import { useDispatch, useSelector } from "react-redux";
-import { updateUser } from "./userSlice";
 
 /*
 ### Book Info
@@ -55,8 +52,6 @@ export const addBook = createAsyncThunk("books/addBook", async (newBook, { getSt
   return { id: bookId, ...bookWithUid };
 });
 
-
-
 // Async Thunk to get all books from Firestore
 export const getBooks = createAsyncThunk("books/getBooks", async () => {
   const querySnapshot = await getDocs(collection(db, collectionName));
@@ -69,11 +64,25 @@ export const getBooks = createAsyncThunk("books/getBooks", async () => {
 });
 
 // Async Thunk to get one books from Firestore
-export const getBook = createAsyncThunk("books/getBook", async (bookId) => {
+export const getBookById = createAsyncThunk("books/getBookById", async (bookId) => {
   const bookRef = doc(db, collectionName, bookId)
   const books = await getDoc(bookRef);
-  console.log(books)
+  // console.log(books)
   return { ...books.data(), id: books.id};
+});
+
+// Async Thunk to get one books from Firestore
+export const getBookByIds = createAsyncThunk("books/getBookByIds", async (bookIds) => {
+
+  const booksPromises  = await bookIds.map(async (bookId) => {
+    const bookRef = doc(db, collectionName, bookId)
+    const book = await getDoc(bookRef);
+    // console.log(book.data())
+    return { ...book.data(), id: book.id};
+  });
+  const books = await Promise.all(booksPromises);
+  console.log(books)
+  return books;
 });
 
 // Async Thunk to update a book in Firestore
@@ -124,14 +133,25 @@ const booksSlice = createSlice({
       state.status = "failed";
       state.error = action.error.message;
     },
-    [getBook.pending]: (state) => {
+    [getBookById.pending]: (state) => {
       state.status = "loading";
     },
-    [getBook.fulfilled]: (state, action) => {
+    [getBookById.fulfilled]: (state, action) => {
       state.status = "succeeded";
       state.singleBook = action.payload; // update singleBook property
     },
-    [getBook.rejected]: (state, action) => {
+    [getBookById.rejected]: (state, action) => {
+      state.status = "failed";
+      state.error = action.error.message;
+    },
+    [getBookByIds.pending]: (state) => {
+      state.status = "loading";
+    },
+    [getBookByIds.fulfilled]: (state, action) => {
+      state.status = "succeeded";
+      state.booksList = action.payload;
+    },
+    [getBookByIds.rejected]: (state, action) => {
       state.status = "failed";
       state.error = action.error.message;
     },

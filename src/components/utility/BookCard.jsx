@@ -1,10 +1,20 @@
 import React from 'react'
+import { useNavigate } from "react-router-dom";
 
 const BookCard = ({ bookDetails }) => {
-  // console.log(bookDetails)
+
+  // console.log(bookDetails)  
+  const navigate = useNavigate();
+
+  const handleBookClick = (id) => {
+    console.log(id)
+    navigate(`/book/${id}`);
+  };
+
   return (
     
-    <div className="book-card">
+    <div className="book-card" 
+    onClick={() => handleBookClick(bookDetails.id)}>
       <div className="book-cover">
         <img src={bookDetails.coverImage} alt="Poster Img" />
       </div>
