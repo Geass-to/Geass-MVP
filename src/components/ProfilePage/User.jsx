@@ -15,8 +15,6 @@ const User = () => {
   const books = useSelector(selectBooks)
   const bookIds = userData.booklist
   console.log(books)
-  // console.log(username)
-  // console.log(userData)
 
   useEffect(() => {
     dispatch(getBookByIds(bookIds));

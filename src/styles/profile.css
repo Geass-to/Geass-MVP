@@ -3,7 +3,7 @@
     /* min-width: 400px; */
     margin: 1rem auto;
     max-width: 1400px;
-    height: 220px;
+    height: 230px;
     /* height: auto; */
     
     
@@ -31,8 +31,6 @@
     border-radius: inherit;
     background-color: rgba(0, 0, 0, 0.80);
 }
-
-
 
 /* ------------------Using Grid------------------------ */
 
@@ -65,7 +63,6 @@
     /* margin-bottom: 20px;   */
 }
 
-
 .profile-container .user-name{
     grid-row: 1 / 2;
     grid-column: 2 / 2;
@@ -73,6 +70,9 @@
 }
 .profile-container .user-name h3{
    font-size: 25px;
+   color: var(--primary);
+   font-family: "Secular One";
+   text-align: left;
 }
 
 .profile-container .user-username{
@@ -84,6 +84,9 @@
     grid-row: 2 / 2;
     grid-column: 2 / 2;
     align-self: center;
+    height: 100px;
+    overflow-y: hidden; 
+    font-size: 15px;
 }
 .profile-container .user-email{
     grid-row: 3 / 3;
