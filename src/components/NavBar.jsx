@@ -20,7 +20,7 @@ const NavBar = () => {
     <nav>
     <div className="container">
       <ul>
-        <li className="logo"><img src="\src\assets\images\Geass_Logo.png" alt="Geass" onClick={handleHome}/></li>
+        <li className="logo"><img src="https://firebasestorage.googleapis.com/v0/b/geass-8fac8.appspot.com/o/geassAssets%2FGeass_Logo.png?alt=media&token=6bf27e30-247f-4525-a627-77845eaac411" alt="Geass" onClick={handleHome}/></li>
         <li className="search-bar">
           <input type="search" placeholder="Search..." className="search" />
           <span className="fas fa-search"></span>

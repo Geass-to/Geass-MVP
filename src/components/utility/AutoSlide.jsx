@@ -33,22 +33,22 @@ const AutoSlide = () => {
   };
 
   return (
-    <div className="autoscroll">
+    <div classNameName="autoscroll">
       <Slider {...settings}>
         <div>
-          <div class="auto-scroll">
-            <div class="large-card-bg">
-              <div class="large-shade">
-                <div class="poster-container">
-                  <div class="poster">
+          <div className="auto-scroll">
+            <div className="large-card-bg">
+              <div className="large-shade">
+                <div className="poster-container">
+                  <div className="poster">
                     <img
                       src="https://kbimages1-a.akamaihd.net/29216134-5f0b-4080-a492-4a58461f91f1/353/569/90/False/86-eighty-six-vol-4-light-novel.jpg"
                       alt=""
                     />
                   </div>
-                  <div class="large-card-details-1">
+                  <div className="large-card-details-1">
                     <h3>86 -Eighty Six-</h3>
-                    <p class="info">
+                    <p className="info">
                       According to the Republic of San Magnolia, their ongoing
                       war against the Giadian Empire has no casualties—however,
                       that is mere propaganda. While the silver-haired Alba of
@@ -60,9 +60,9 @@ const AutoSlide = () => {
                       of the Republican "Handlers."
                     </p>
                   </div>
-                  <div class="large-card-details-2">
-                    <span class="status">Releasing</span>
-                    <span class="volume">VOL-11</span>
+                  <div className="large-card-details-2">
+                    <span className="status">Releasing</span>
+                    <span className="volume">VOL-11</span>
                     <br />
                     <ul>
                       <li>Action</li>
@@ -71,8 +71,8 @@ const AutoSlide = () => {
                     </ul>
                     <br />
                   </div>
-                  <div class="large-card-details-3">
-                    <button class="readnow">Read Now</button>
+                  <div className="large-card-details-3">
+                    <button className="readnow">Read Now</button>
                   </div>
                 </div>
               </div>
@@ -80,19 +80,19 @@ const AutoSlide = () => {
           </div>
         </div>
         <div>
-          <div class="auto-scroll">
-            <div class="large-card-bg">
-              <div class="large-shade">
-                <div class="poster-container">
-                  <div class="poster">
+          <div className="auto-scroll">
+            <div className="large-card-bg">
+              <div className="large-shade">
+                <div className="poster-container">
+                  <div className="poster">
                     <img
                       src="https://kbimages1-a.akamaihd.net/29216134-5f0b-4080-a492-4a58461f91f1/353/569/90/False/86-eighty-six-vol-4-light-novel.jpg"
                       alt=""
                     />
                   </div>
-                  <div class="large-card-details-1">
+                  <div className="large-card-details-1">
                     <h3>86 -Eighty Six-</h3>
-                    <p class="info">
+                    <p className="info">
                       According to the Republic of San Magnolia, their ongoing
                       war against the Giadian Empire has no casualties—however,
                       that is mere propaganda. While the silver-haired Alba of
@@ -104,9 +104,9 @@ const AutoSlide = () => {
                       of the Republican "Handlers."
                     </p>
                   </div>
-                  <div class="large-card-details-2">
-                    <span class="status">Releasing</span>
-                    <span class="volume">VOL-11</span>
+                  <div className="large-card-details-2">
+                    <span className="status">Releasing</span>
+                    <span className="volume">VOL-11</span>
                     <br />
                     <ul>
                       <li>Action</li>
@@ -115,8 +115,8 @@ const AutoSlide = () => {
                     </ul>
                     <br />
                   </div>
-                  <div class="large-card-details-3">
-                    <button class="readnow">Read Now</button>
+                  <div className="large-card-details-3">
+                    <button className="readnow">Read Now</button>
                   </div>
                 </div>
               </div>
@@ -124,19 +124,19 @@ const AutoSlide = () => {
           </div>
         </div>
         <div>
-          <div class="auto-scroll">
-            <div class="large-card-bg">
-              <div class="large-shade">
-                <div class="poster-container">
-                  <div class="poster">
+          <div className="auto-scroll">
+            <div className="large-card-bg">
+              <div className="large-shade">
+                <div className="poster-container">
+                  <div className="poster">
                     <img
                       src="https://kbimages1-a.akamaihd.net/29216134-5f0b-4080-a492-4a58461f91f1/353/569/90/False/86-eighty-six-vol-4-light-novel.jpg"
                       alt=""
                     />
                   </div>
-                  <div class="large-card-details-1">
+                  <div className="large-card-details-1">
                     <h3>86 -Eighty Six-</h3>
-                    <p class="info">
+                    <p className="info">
                       According to the Republic of San Magnolia, their ongoing
                       war against the Giadian Empire has no casualties—however,
                       that is mere propaganda. While the silver-haired Alba of
@@ -148,9 +148,9 @@ const AutoSlide = () => {
                       of the Republican "Handlers."
                     </p>
                   </div>
-                  <div class="large-card-details-2">
-                    <span class="status">Releasing</span>
-                    <span class="volume">VOL-11</span>
+                  <div className="large-card-details-2">
+                    <span className="status">Releasing</span>
+                    <span className="volume">VOL-11</span>
                     <br />
                     <ul>
                       <li>Action</li>
@@ -159,8 +159,8 @@ const AutoSlide = () => {
                     </ul>
                     <br />
                   </div>
-                  <div class="large-card-details-3">
-                    <button class="readnow">Read Now</button>
+                  <div className="large-card-details-3">
+                    <button className="readnow">Read Now</button>
                   </div>
                 </div>
               </div>
@@ -168,19 +168,19 @@ const AutoSlide = () => {
           </div>
         </div>
         <div>
-          <div class="auto-scroll">
-            <div class="large-card-bg">
-              <div class="large-shade">
-                <div class="poster-container">
-                  <div class="poster">
+          <div className="auto-scroll">
+            <div className="large-card-bg">
+              <div className="large-shade">
+                <div className="poster-container">
+                  <div className="poster">
                     <img
                       src="https://kbimages1-a.akamaihd.net/29216134-5f0b-4080-a492-4a58461f91f1/353/569/90/False/86-eighty-six-vol-4-light-novel.jpg"
                       alt=""
                     />
                   </div>
-                  <div class="large-card-details-1">
+                  <div className="large-card-details-1">
                     <h3>86 -Eighty Six-</h3>
-                    <p class="info">
+                    <p className="info">
                       According to the Republic of San Magnolia, their ongoing
                       war against the Giadian Empire has no casualties—however,
                       that is mere propaganda. While the silver-haired Alba of
@@ -192,9 +192,9 @@ const AutoSlide = () => {
                       of the Republican "Handlers."
                     </p>
                   </div>
-                  <div class="large-card-details-2">
-                    <span class="status">Releasing</span>
-                    <span class="volume">VOL-11</span>
+                  <div className="large-card-details-2">
+                    <span className="status">Releasing</span>
+                    <span className="volume">VOL-11</span>
                     <br />
                     <ul>
                       <li>Action</li>
@@ -203,8 +203,8 @@ const AutoSlide = () => {
                     </ul>
                     <br />
                   </div>
-                  <div class="large-card-details-3">
-                    <button class="readnow">Read Now</button>
+                  <div className="large-card-details-3">
+                    <button className="readnow">Read Now</button>
                   </div>
                 </div>
               </div>

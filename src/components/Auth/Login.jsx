@@ -59,7 +59,7 @@ export const LogIn = () => {
     <section>
       <div className="imgBox">
         <img
-          src="src\assets\images\A-Sabukaru-Introduxction-to-manga-Homonculus-color.png"
+          src="https://firebasestorage.googleapis.com/v0/b/geass-8fac8.appspot.com/o/geassAssets%2FA-Sabukaru-Introduxction-to-manga-Homonculus-color.png?alt=media&token=44b75e52-4dc5-46d1-8fb0-0d51649a1abb"
           alt="IMG"
         />
       </div>

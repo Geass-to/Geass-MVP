@@ -85,7 +85,7 @@ export const SignUp = () => {
     <section>
       <div className="imgBox">
         <img
-          src="src\assets\images\A-Sabukaru-Introduxction-to-manga-Homonculus-hideo-yamamoto5.png"
+          src="https://firebasestorage.googleapis.com/v0/b/geass-8fac8.appspot.com/o/geassAssets%2FA-Sabukaru-Introduxction-to-manga-Homonculus-hideo-yamamoto5.png?alt=media&token=b6d506e1-4dd8-422d-804b-52c20cf40e89"
           alt="IMG"
         />
       </div>
