@@ -71,7 +71,7 @@ export const getBookById = createAsyncThunk("books/getBookById", async (bookId) 
   return { ...books.data(), id: books.id};
 });
 
-// Async Thunk to get one books from Firestore
+// Async Thunk to get books from Firestore
 export const getBookByIds = createAsyncThunk("books/getBookByIds", async (bookIds) => {
 
   const booksPromises  = await bookIds.map(async (bookId) => {
@@ -83,6 +83,26 @@ export const getBookByIds = createAsyncThunk("books/getBookByIds", async (bookId
   const books = await Promise.all(booksPromises);
   console.log(books)
   return books;
+});
+
+// Async Thunk to get books for search from Firestore
+export const getBookByName = createAsyncThunk("books/getBookByName", async (bookName) => {
+
+  console.log("getBookByName called with book name:", bookName);
+  let data
+  try {
+    const q = query(collection(db, collectionName), where("title", "==", bookName));
+    const querySnapshot = await getDocs(q);
+    console.log(q)  
+    data = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+  } catch (error) {
+    console.error(error);
+  }
+  // console.log(data);
+  return data;
 });
 
 // Async Thunk to update a book in Firestore
