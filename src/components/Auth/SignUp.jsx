@@ -13,9 +13,12 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../../features/userSlice";
 import { checkUsernameExists } from "../ProfilePage/CheckUser";
 
+import { generateRandomProfile } from "../utility/profileRandomizer";
+
 export const SignUp = () => {
   //!States
   const [email, setEmail] = useState("");
+  const [profileImage, setProfileImage] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -52,6 +55,12 @@ export const SignUp = () => {
   //TODO Verify email
   const handleSignup = async (e) => {
     e.preventDefault();
+
+    // const randomProfileImage = generateRandomProfile();
+    // console.log(randomProfileImage);
+
+    // setProfileImage(randomProfileImage);
+
     try {
       const result = await createUserWithEmailAndPassword(
         auth,
@@ -66,7 +75,7 @@ export const SignUp = () => {
         });
         // await result.user.sendEmailVerification();
         // Create a new user object to add to the database
-        const newUser = { email: email, username: username };
+        const newUser = { email: email, username: username, profileImage: generateRandomProfile() };
         
         // Dispatch the addUser action to add the new user to the database
         const data = dispatch(addUser(newUser));
