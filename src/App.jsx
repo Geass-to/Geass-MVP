@@ -40,6 +40,8 @@ function App() {
             </RequireAuth>
           }
         />
+        
+        <Route path="uid/:uid" element={<UserProfile />} />
 
         <Route path="profile">
           <Route
@@ -52,7 +54,6 @@ function App() {
           />
 
           <Route path=":username" element={<User />} />
-          <Route path=":uid" element={<UserProfile />} />
 
           <Route
             path="editprofile"

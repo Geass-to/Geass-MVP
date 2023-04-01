@@ -14,6 +14,7 @@ const User = () => {
   const userData = useSelector(selectUser);
   const books = useSelector(selectBooks)
   const bookIds = userData.booklist
+  
   console.log(books)
 
   useEffect(() => {
@@ -65,7 +66,8 @@ const User = () => {
         </div>
 
         <div className="user-email">
-          <span>{userData.email}</span>
+          <span className="email-header">Email:</span>
+          <span className="email">{userData.email}</span>
         </div>
 
         <div className="user-location">

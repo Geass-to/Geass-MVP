@@ -1,16 +1,20 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
+import { selectAuth } from '../features/authSlice';
 
 
 const NavBar = () => {
     
   const navigate = useNavigate();
+  const authUser = useSelector(selectAuth)
+
   const handleUpload = () => {
     navigate(`/book/uploadbook`);
   }
 
   const handleProfile = () => {
-    navigate(`/profile`)
+    navigate(`/uid/${authUser.uid}`)
   }
   const handleHome = () => {
     navigate(`/`)

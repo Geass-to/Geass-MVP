@@ -10,7 +10,7 @@ const UserProfile = () => {
   const userData = useSelector(selectUser);
 
   const gotoUsername = () => {
-    navigate(`/${userData.username}`);
+    navigate(`/profile/${userData.username}`);
   };
 
   useEffect(() => {
@@ -24,7 +24,10 @@ const UserProfile = () => {
 
   useEffect(() => {
     if (userData.username) {
+      console.log("Going")
       gotoUsername();
+    }else{
+      console.log("Not going");
     }
   }, [userData.username, navigate]);
 
@@ -32,7 +35,7 @@ const UserProfile = () => {
   return (
     <div>
       <h1>User Profile:</h1>
-      <Link to={`/${userData.username}`}>View user</Link>
+  {/*<Link to={`/${userData.username}`}>View user</Link>*/}
       {/* Render user profile content here */}
     </div>
   );
