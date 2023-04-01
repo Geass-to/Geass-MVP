@@ -51,11 +51,11 @@ const User = () => {
   
   return (
     <>
-    <BannerCard user={userData}>
+    <BannerCard bgImage={userData.profileImage}>
       <div className="profile-container">
         <div className="profile-image">
           <Avatar
-            imageUrl="https://wallpaperaccess.com/full/4595683.jpg"
+            imageUrl={userData.profileImage}
             size={100}
           />
         </div>

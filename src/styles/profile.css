@@ -16,14 +16,14 @@
     box-shadow: -3px -3px 10px var(--lightshadow);
     height: inherit;
     background-color: var(--light);
-    background-image:url(https://m.media-amazon.com/images/M/MV5BODI2NjdlYWItMTE1ZC00YzI2LTlhZGQtNzE3NzA4MWM0ODYzXkEyXkFqcGdeQXVyNjU1OTg4OTM@._V1_.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center center;
     border-radius: inherit;
     color: var(--light);
     font-family: 'Secular One',sans-serif;
-
 }
+
 .banner-container .banner-bg .banner-shade{
     height: inherit;
     width: 100%;
@@ -84,7 +84,7 @@
     align-self: center;
     height: 100px;
     overflow-y: hidden; 
-    font-size: 13px;
+    font-size: 14px;
     font-family: "quicksand", monospace;
     padding-right: 14px;
 }

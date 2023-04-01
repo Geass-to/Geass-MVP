@@ -7,7 +7,7 @@ import { selectAuth } from '../features/authSlice';
 const NavBar = () => {
     
   const navigate = useNavigate();
-  const authUser = useSelector(selectAuth)
+  const authUser = useSelector(selectAuth);
 
   const handleUpload = () => {
     navigate(`/book/uploadbook`);

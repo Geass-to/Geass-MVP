@@ -8,6 +8,7 @@ const UserProfile = () => {
   const navigate = useNavigate();
   const { uid } = useParams();
   const userData = useSelector(selectUser);
+  const [hasDispatched, setHasDispatched] = useState(false);
 
   const gotoUsername = () => {
     navigate(`/profile/${userData.username}`);
@@ -17,19 +18,26 @@ const UserProfile = () => {
     const fetchUsername = async () => {
       if (uid) {
         dispatch(getUser(uid));
+        setHasDispatched(true);
       }
     };
     fetchUsername();
-  }, [uid]);
-
+  }, [uid, navigate]);
+  
   useEffect(() => {
-    if (userData.username) {
+    if (userData.username && hasDispatched && userData.id === uid) {
       console.log("Going")
       gotoUsername();
     }else{
       console.log("Not going");
     }
-  }, [userData.username, navigate]);
+  }, [userData.username, hasDispatched]);
+
+  useEffect(() => {
+    if (userData.username && userData.id === uid) {
+      setHasDispatched(true);
+    }
+  }, [userData.username]);
 
   // Render the user profile with the fetched username
   return (
