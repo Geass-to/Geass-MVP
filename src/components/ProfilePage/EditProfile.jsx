@@ -1,23 +1,43 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../styles/editprofile.css";
 import StyledButton from "../Utility/Button";
-import { useDispatch } from "react-redux";
-import { updateUser } from "../../features/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser, selectUser, updateUser } from "../../features/userSlice";
 import { checkUsernameExists } from "./CheckUser";
 import { useNavigate } from "react-router-dom";
+import { generateRandomProfile } from "../utility/profileRandomizer";
+import { selectAuth } from "../../features/authSlice";
 
 const EditProfile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const userAuth = useSelector(selectAuth);
+  
+  const userData = useSelector(selectUser);
+  
+  useEffect(() => {
+    dispatch(getUser(userAuth.uid));
+    // navigate(`/profile/editprofile`)
+    console.log("in effect - in editprofile")
+  }, []);
+  // let tempname = userData.name;
+  const [name, setName] = useState(userData.name);
+  const [username, setUsername] = useState(userData.username);
+  const [email, setEmail] = useState(userData.email);
+  const [country, setCountry] = useState(userData.country);
+  const [city, setCity] = useState(userData.city);
+  const [bio, setBio] = useState(userData.bio);
 
-  const [name, setName] = useState("");
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [country, setCountry] = useState("");
-  const [city, setCity] = useState("");
-  const [bio, setBio] = useState("");
+  const [profileImage, setProfileImage] = useState(userData.profileImage);
+
   const [usernameExists, setUsernameExists] = useState(false); // Add state for checking if username exists
   const [submitDisabled, setSubmitDisabled] = useState(false); // Add state for disabling submit button
+
+  const handleGetNewProfile = () => {
+
+    setProfileImage(generateRandomProfile());
+  }
+
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -27,14 +47,17 @@ const EditProfile = () => {
       bio: bio,
       city: city,
       country: country,
+      profileImage: profileImage
     };
     handleAddUser(newUser);
+
   };
 
   const handleAddUser = async (newUser) => {
     try {
       const result = await dispatch(updateUser(newUser));
       console.log(result); // successful response from the server
+      navigate(`/`);
     } catch (error) {
       console.error(error); // error while adding the user
     }
@@ -55,14 +78,14 @@ const EditProfile = () => {
   };
 
   const handleGoBack = () => {
-    navigate(`/profile`)
-  }
+    navigate(`/profile/${userAuth.uid}`);
+  };
 
   return (
     <>
       <div className="banner">
         <img
-          src="https://images.hdqwalls.com/download/kimetsu-no-yaiba-anime-4k-yn-1360x768.jpg"
+          src={profileImage}
           alt="Banner Image"
         />
       </div>
@@ -70,12 +93,12 @@ const EditProfile = () => {
         <div className="profileImage">
           <div className="uploadBox">
             <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8Kni0rQUyBectTikBTL3j2zb69aiad1qqwsW-6Ttj3UpNcfqoUMFCuOCFcPosYluvIoc&usqp=CAU"
+              src={profileImage}
               alt="Profile Image"
             />
           </div>
           <br />
-          <span>Upload profile image</span>
+          <span onClick={handleGetNewProfile}>Get a new Profile</span>
         </div>
         <form className="profileDetails" onSubmit={onSubmit}>
           <ul>
@@ -134,8 +157,12 @@ const EditProfile = () => {
               <textarea value={bio} onChange={(e) => setBio(e.target.value)} />
             </li>
             <li id="editprofile-submit-button">
-              <StyledButton bgColor="var(--light-dark)" onClick={handleGoBack}>Go Back</StyledButton>
-              <StyledButton type="submit" disabled={submitDisabled}>Submit Now</StyledButton>
+              <StyledButton bgColor="var(--light-dark)" onClick={handleGoBack}>
+                Go Back
+              </StyledButton>
+              <StyledButton type="submit" disabled={submitDisabled}>
+                Submit Now
+              </StyledButton>
             </li>
             <li></li>
           </ul>
