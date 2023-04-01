@@ -1,10 +1,10 @@
 import React, { children } from 'react'
-import styled from 'styled-components'
 
-const BannerCard = ({ children, user }) => {
+const BannerCard = ({ children , bgImage}) => {
+  const bgCover = `url(${bgImage})`
   return (
     <div className="banner-container">
-      <div className="banner-bg">
+    <div className="banner-bg" style={{backgroundImage: bgCover}}>
         <div className="banner-shade">
           {children}
         </div>

@@ -78,7 +78,7 @@ const EditProfile = () => {
   };
 
   const handleGoBack = () => {
-    navigate(`/profile/${userAuth.uid}`);
+    navigate(`/uid/${userAuth.uid}`);
   };
 
   return (
