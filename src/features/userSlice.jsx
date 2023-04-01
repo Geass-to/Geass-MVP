@@ -73,13 +73,15 @@ export const getUserByUsername = createAsyncThunk("user/getUserByUsername", asyn
     if (!querySnapshot.empty) {
       const doc = querySnapshot.docs[0];
       data = { ...doc.data(), id: doc.id };
+      return !userDocs.empty;
     } else {
       console.log("Document not found!");
+      return userDocs.empty;
     }
   } catch (error) {
     console.error(error);
   }
-  console.log(data);
+  // console.log(data);
   return data;
 });
 

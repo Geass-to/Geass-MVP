@@ -6,16 +6,21 @@ import { useParams } from "react-router-dom";
 import Avatar from "../Utility/Avatar";
 import "../../styles/profile.css";
 import BookCard from "../utility/BookCard";
+import { selectBooks, getBookByIds } from "../../features/bookSilce";
 
 const User = () => {
   const dispatch = useDispatch();
   const { username } = useParams();
   const userData = useSelector(selectUser);
-
-  const books = userData.bookList
-  // console.log(books)
+  const books = useSelector(selectBooks)
+  const bookIds = userData.booklist
+  console.log(books)
   // console.log(username)
   // console.log(userData)
+
+  useEffect(() => {
+    dispatch(getBookByIds(bookIds));
+  }, [bookIds, dispatch]);
 
   useEffect(() => {
     console.log("In Effect")
@@ -76,7 +81,7 @@ const User = () => {
     
     <div className="list-header">
         <div className="header-title">
-          <h2>Trending:</h2>
+          <h2>Books Created:</h2>
         </div>
       </div>
       <div className="book-list">
