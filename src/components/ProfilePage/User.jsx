@@ -7,14 +7,21 @@ import Avatar from "../Utility/Avatar";
 import "../../styles/profile.css";
 import BookCard from "../utility/BookCard";
 import { selectBooks, getBookByIds } from "../../features/bookSilce";
+import { selectAuth } from "../../features/authSlice";
+import { Link } from "react-router-dom";
+import StyledButton from "../Utility/Button";
 
 const User = () => {
   const dispatch = useDispatch();
   const { username } = useParams();
   const userData = useSelector(selectUser);
-  const books = useSelector(selectBooks)
+  const books = useSelector(selectBooks);
+  const userAuth = useSelector(selectAuth);
   const bookIds = userData.booklist
-  
+
+  const isCurrentUser = userAuth.uid === userData.id;
+
+
   console.log(books)
 
   useEffect(() => {
@@ -69,6 +76,14 @@ const User = () => {
           <span className="email-header">Email:</span>
           <span className="email">{userData.email}</span>
         </div>
+
+        {isCurrentUser && (
+          <div className="user-edit-profile">
+            <StyledButton bgColor="var(--light-dark)">
+              <Link to="/profile/editprofile" style={{"color":"var(--light)"}}>Edit Profile</Link>
+            </StyledButton>
+          </div>
+        )}
 
         <div className="user-location">
           <ul>
