@@ -13,9 +13,9 @@ const User = () => {
   const userData = useSelector(selectUser);
 
   const books = userData.bookList
-  console.log(books)
-  console.log(username)
-  console.log(userData)
+  // console.log(books)
+  // console.log(username)
+  // console.log(userData)
 
   useEffect(() => {
     console.log("In Effect")
