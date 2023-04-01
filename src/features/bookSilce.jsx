@@ -7,7 +7,9 @@ import {
   updateDoc,
   getDocs,
   getDoc,
-  writeBatch
+  writeBatch,
+  query,
+  where
 } from "firebase/firestore";
 import { db } from "../config/firebase";
 import { arrayUnion } from "firebase/firestore";
@@ -86,12 +88,20 @@ export const getBookByIds = createAsyncThunk("books/getBookByIds", async (bookId
 });
 
 // Async Thunk to get books for search from Firestore
-export const getBookByName = createAsyncThunk("books/getBookByName", async (bookName) => {
+export const getBookByName = createAsyncThunk("books/getBookByName", async (searchQuery) => {
 
-  console.log("getBookByName called with book name:", bookName);
+  console.log("getBookByName called with book name:", searchQuery);
   let data
+
+  // const subQueries = query.split(" ");
+  // const booksQuery = collection(db, collectionName);
+
+  // subQueries.forEach((subQuery) => {
+  //   booksQuery = query(booksQuery,where("title", ">=", subQuery),where("title", "<=", subQuery + "\uf8ff"));
+  // });
+
   try {
-    const q = query(collection(db, collectionName), where("title", "==", bookName));
+    const q = query(collection(db, collectionName), where("title", ">=", searchQuery), where("title", "<=", searchQuery + "\uf8ff"));
     const querySnapshot = await getDocs(q);
     console.log(q)  
     data = querySnapshot.docs.map((doc) => ({
@@ -172,6 +182,17 @@ const booksSlice = createSlice({
       state.booksList = action.payload;
     },
     [getBookByIds.rejected]: (state, action) => {
+      state.status = "failed";
+      state.error = action.error.message;
+    },
+    [getBookByName.pending]: (state) => {
+      state.status = "loading";
+    },
+    [getBookByName.fulfilled]: (state, action) => {
+      state.status = "succeeded";
+      state.booksList = action.payload;
+    },
+    [getBookByName.rejected]: (state, action) => {
       state.status = "failed";
       state.error = action.error.message;
     },

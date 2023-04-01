@@ -16,7 +16,7 @@ import UserProfile from "./components/ProfilePage/UserProfile";
 import User from "./components/ProfilePage/User";
 import BookInfo from "./components/BookInfo/BookInfo";
 import NotFound from "./components/NotFound/NotFound";
-import SearchResults from "./components/SearchResults/SearchResults";
+import SearchResults from "./components/Search/SearchResults";
 
 function App() {
   const currentUser = useSelector(selectAuth);
