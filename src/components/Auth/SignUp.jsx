@@ -71,7 +71,7 @@ export const SignUp = () => {
         // Send verification email to the user's email address
         sendEmailVerification(result.user).then(() => {
           // Email verification sent!
-          console.log("Sent email verification!");
+          alert("Sent email verification!");
         });
         // await result.user.sendEmailVerification();
         // Create a new user object to add to the database

@@ -12,13 +12,13 @@ const EditProfile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userAuth = useSelector(selectAuth);
-  
+
   const userData = useSelector(selectUser);
-  
+
   useEffect(() => {
     dispatch(getUser(userAuth.uid));
     // navigate(`/profile/editprofile`)
-    console.log("in effect - in editprofile")
+    console.log("in effect - in editprofile");
   }, []);
   // let tempname = userData.name;
   const [name, setName] = useState(userData.name);
@@ -34,10 +34,8 @@ const EditProfile = () => {
   const [submitDisabled, setSubmitDisabled] = useState(false); // Add state for disabling submit button
 
   const handleGetNewProfile = () => {
-
     setProfileImage(generateRandomProfile());
-  }
-
+  };
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -47,10 +45,9 @@ const EditProfile = () => {
       bio: bio,
       city: city,
       country: country,
-      profileImage: profileImage
+      profileImage: profileImage,
     };
     handleAddUser(newUser);
-
   };
 
   const handleAddUser = async (newUser) => {
@@ -84,21 +81,23 @@ const EditProfile = () => {
   return (
     <>
       <div className="banner">
-        <img
-          src={profileImage}
-          alt="Banner Image"
-        />
+        <img src={profileImage} alt="Banner Image" />
       </div>
       <div className="bottomInfo">
         <div className="profileImage">
           <div className="uploadBox">
-            <img
-              src={profileImage}
-              alt="Profile Image"
-            />
+            <img src={profileImage} alt="Profile Image" />
           </div>
           <br />
-          <span onClick={handleGetNewProfile}>Get a new Profile</span>
+          <center>
+            <StyledButton
+              bgColor="var(--primary-light)"
+              onClick={handleGetNewProfile}
+            >
+              New Profile
+            </StyledButton>
+          </center>
+          {/* <span onClick={handleGetNewProfile}>Get a new Profile</span> */}
         </div>
         <form className="profileDetails" onSubmit={onSubmit}>
           <ul>

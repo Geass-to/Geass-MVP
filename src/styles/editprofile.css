@@ -114,3 +114,30 @@
     font-weight: 500;
     font-size: 16px;
 }
+
+@media screen and (max-width: 1000px) {
+    .profileDetails {
+        width: auto;
+    }
+
+    .banner {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .bottomInfo {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .profileDetails ul {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .profileDetails ul li {
+        width: 310px;
+    }
+}
