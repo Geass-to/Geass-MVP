@@ -4,10 +4,10 @@ input[type="range"] {
 }
 
 input[type="range"] {
-  color: var(--primary);
+  /* color: var(--primary); */
   --thumb-height: 1.125em;
   --track-height: 0.125em;
-  --track-color: rgba(0, 0, 0, 0.2);
+  --track-color: rgba(243, 240, 240, 0.495);
   --brightness-hover: 180%;
   --brightness-down: 80%;
   --clip-edges: 0.125em;

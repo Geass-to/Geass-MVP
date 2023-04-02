@@ -98,25 +98,32 @@ function MediaPlayer({ src }) {
             <i className="fa-solid fa-rotate-left"></i>
           </button>
           <button className="play-pause" onClick={handlePlayPauseClick}>
-            {isPlaying ? <i className="fa-solid fa-pause"></i> : <i className="fa-solid fa-play"></i>}
+            {isPlaying ? (
+              <i className="fa-solid fa-pause"></i>
+            ) : (
+              <i className="fa-solid fa-play"></i>
+            )}
           </button>
           <button className="forward-btn" onClick={handleFastForwardClick}>
-          {/* <i class="fa-solid fa-angles-right"></i> */}
-          <i className="fa-solid fa-rotate-right"></i>
+            {/* <i class="fa-solid fa-angles-right"></i> */}
+            <i className="fa-solid fa-rotate-right"></i>
           </button>
         </center>
+
+        <div className="volume-wrapper">
+        <i class="fa-solid fa-volume-high"></i>
+          <input
+            className="volume-range"
+            type="range"
+            min={0}
+            max={1}
+            step={0.1}
+            value={volume}
+            onChange={handleVolumeChange}
+          />
+        </div>
       </div>
       {/* </div> */}
-
-      {/* <input
-          className="volume-rance"
-          type="range"
-          min={0}
-          max={1}
-          step={0.1}
-          value={volume}
-          onChange={handleVolumeChange}
-        /> */}
     </div>
   );
 }
