@@ -57,7 +57,7 @@ export const addBook = createAsyncThunk("books/addBook", async (newBook, { getSt
 // Async Thunk to get all books from Firestore
 export const getBooks = createAsyncThunk("books/getBooks", async () => {
   const querySnapshot = await getDocs(collection(db, collectionName));
-  console.log(querySnapshot)
+  // console.log(querySnapshot)
   const books = querySnapshot.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
@@ -83,7 +83,7 @@ export const getBookByIds = createAsyncThunk("books/getBookByIds", async (bookId
     return { ...book.data(), id: book.id};
   });
   const books = await Promise.all(booksPromises);
-  console.log(books)
+  // console.log(books)
   return books;
 });
 
@@ -103,7 +103,7 @@ export const getBookByName = createAsyncThunk("books/getBookByName", async (sear
   try {
     const q = query(collection(db, collectionName), where("title", ">=", searchQuery), where("title", "<=", searchQuery + "\uf8ff"));
     const querySnapshot = await getDocs(q);
-    console.log(q)  
+    // console.log(q)  
     data = querySnapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),

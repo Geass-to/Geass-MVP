@@ -21,7 +21,7 @@ const User = () => {
 
   const isCurrentUser = userAuth?.uid === userData.id;
 
-  console.log(books);
+  // console.log(books);
 
   useEffect(() => {
     dispatch(getBookByIds(bookIds));

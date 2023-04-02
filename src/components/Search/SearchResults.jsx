@@ -10,7 +10,7 @@ const SearchResults = () => {
 
   const dispatch = useDispatch();
   const books = useSelector(selectBooks);
-  console.log(books);
+  // console.log(books);
   useEffect(() => {
     dispatch(getBookByName(searchquery));
   }, [dispatch, searchquery]);

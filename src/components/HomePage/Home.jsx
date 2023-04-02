@@ -9,10 +9,10 @@ const Home = () => {
   const dispatch = useDispatch();
   const books = useSelector(selectBooks);
 
-  console.log(books);
+  // console.log(books);
 
   useEffect(() => {
-    console.log("ineffect");
+    // console.log("ineffect");
     dispatch(getBooks());
   }, [dispatch]);
 

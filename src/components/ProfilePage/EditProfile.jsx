@@ -18,7 +18,7 @@ const EditProfile = () => {
   useEffect(() => {
     dispatch(getUser(userAuth.uid));
     // navigate(`/profile/editprofile`)
-    console.log("in effect - in editprofile");
+    // console.log("in effect - in editprofile");
   }, []);
   // let tempname = userData.name;
   const [name, setName] = useState(userData.name);
@@ -53,7 +53,7 @@ const EditProfile = () => {
   const handleAddUser = async (newUser) => {
     try {
       const result = await dispatch(updateUser(newUser));
-      console.log(result); // successful response from the server
+      // console.log(result); // successful response from the server
       navigate(`/`);
     } catch (error) {
       console.error(error); // error while adding the user

@@ -13,18 +13,18 @@ const Profile =  () => {
   const authUser = useSelector(selectAuth);
   const navigate = useNavigate()
 
-  console.log(authUser);
+  // console.log(authUser);
 
   useEffect(() => {
     const uid = authUser.uid
-    console.log(uid)
+    // console.log(uid)
     if(uid){
       dispatch(getUser(uid));
     }
     else{
       console.log("Loading")
     }
-    console.log("In effect")
+    // console.log("In effect")
   }, [dispatch]);
 
   const handleEditProfile = () => {

@@ -27,10 +27,10 @@ export const getUsers = createAsyncThunk("user/getUsers", async () => {
 
 export const getUser = createAsyncThunk("user/getUser", async (docId) => {
   // const docId ;
-  console.log(docId);
+  // console.log(docId);
   const usersCollectionRef = doc(db, collectionName, docId);
   const data = await getDoc(usersCollectionRef);  
-  console.log(data);
+  // console.log(data);
   // return { ...data, id: docId };
   return { ...data.data(), id: data.id };
 });
@@ -41,7 +41,7 @@ export const getUserByUsername = createAsyncThunk("user/getUserByUsername", asyn
   try {
     const q = query(collection(db, collectionName), where("username", "==", username));
     const querySnapshot = await getDocs(q);
-    console.log(q)  
+    // console.log(q)  
     if (!querySnapshot.empty) {
       const doc = querySnapshot.docs[0];
       data = { ...doc.data(), id: doc.id };      
@@ -70,7 +70,7 @@ export const updateUser = createAsyncThunk("user/updateUser", async (updatedUser
       Object.entries(updatedUser).filter(([_, v]) => v !== null && v !== "")
     );
     const data = await updateDoc(userRef, filteredUser);
-    console.log(data);
+    // console.log(data);
     return { ...filteredUser, id: docId };
   }
 );

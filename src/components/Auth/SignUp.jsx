@@ -79,7 +79,7 @@ export const SignUp = () => {
         
         // Dispatch the addUser action to add the new user to the database
         const data = dispatch(addUser(newUser));
-        console.log(data);
+        // console.log(data);
         navigate("/profile/editprofile");
       }
     } catch (err) {

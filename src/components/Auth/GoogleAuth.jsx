@@ -16,12 +16,12 @@ const GoogleAuth = () => {
     signInWithPopup(auth, provider)
       .then((userCredential) => {
 
-        console.log(userCredential.user);
+        // console.log(userCredential.user);
         const user = userCredential.user;
         // SetUser(user)
         localStorage.setItem("user", JSON.stringify(user));
         dispatch(login(user));
-        console.log(user);
+        // console.log(user);
         navigate("/");
   
       })

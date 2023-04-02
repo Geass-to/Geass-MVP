@@ -15,7 +15,7 @@ const NavBar = () => {
   const [username, setUsername] = useState(localStorage.getItem("username") || "");
   const [profileImage, setProfileImage] = useState(localStorage.getItem("profileImage") || "https://wallpapers-clan.com/wp-content/uploads/2022/08/default-pfp-18.jpg");
 
-  console.log(userList)
+  // console.log(userList)
   let userProfile
 
   if (Array.isArray(userList)) {
