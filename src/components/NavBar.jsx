@@ -89,7 +89,7 @@ const NavBar = () => {
           </div>
           <div className="menu">
             <li>
-              <a href="index.html">Home</a>
+              <a href="/">Home</a>
             </li>
             <li>
               <a href="#">Popular</a>
