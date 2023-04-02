@@ -19,7 +19,7 @@ const User = () => {
   const userAuth = useSelector(selectAuth);
   const bookIds = userData.booklist;
 
-  const isCurrentUser = userAuth.uid === userData.id;
+  const isCurrentUser = userAuth?.uid === userData.id;
 
   console.log(books);
 
@@ -49,7 +49,7 @@ const User = () => {
   }
 
   return (
-    <>
+    <div>
       <BannerCard bgImage={userData.profileImage}>
         <div className="profile-container">
           <div className="profile-image">
@@ -115,7 +115,7 @@ const User = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

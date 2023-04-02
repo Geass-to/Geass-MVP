@@ -110,6 +110,10 @@ export const SignUp = () => {
     }
   };
 
+  const handleHome = () => {
+    navigate(`/`);
+  };
+
   return (
     <section>
       <div className="imgBox">
@@ -121,7 +125,13 @@ export const SignUp = () => {
       <div className="contentBox">
         <div className="formBox">
           <span>
-            <h2 id="indicator">Sign Up</h2>
+          <li className="logo" style={{"listStyle":"none"}}>
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/geass-8fac8.appspot.com/o/geassAssets%2FGeass_Logo.png?alt=media&token=6bf27e30-247f-4525-a627-77845eaac411"
+            alt="Geass"   
+            onClick={handleHome}           
+          />
+        </li>
           </span>
           <div className="button-Box">
             <div id="btn" style={{ left: "50%" }}></div>

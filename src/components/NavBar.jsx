@@ -88,8 +88,8 @@ const NavBar = () => {
             </li>
           </div>
           <div className="menu">
-            <li>
-              <a href="" onClick={handleHome} >Home</a>
+            <li >
+              <a onClick={handleHome} style={{"cursor":"pointer"}}>Home</a>
             </li>
             <li>
               <a href="#">Popular</a>
@@ -101,8 +101,7 @@ const NavBar = () => {
               <a href="#">Genres</a>
             </li>
             <li>
-              <a href="#">About Us</a>
-              <a href="#">About Us</a>
+              <a href="#">About Us</a>              
             </li>
           </div>
           <div className="misc-element">

@@ -35,13 +35,17 @@ function App() {
         <Route
           index
           element={
-            <RequireAuth>
+            /*<RequireAuth>*/
               <Home />
-            </RequireAuth>
+            /*</RequireAuth>*/
           }
         />
         
-        <Route path="uid/:uid" element={<UserProfile />} />
+        <Route path="uid/:uid" element={
+          <RequireAuth>
+            <UserProfile />
+          </RequireAuth>
+        } />
 
         <Route path="profile">
           <Route
@@ -53,7 +57,11 @@ function App() {
             }
           />
 
-          <Route path=":username" element={<User />} />
+          <Route path=":username" element={
+            <RequireAuth>
+              <User />
+            </RequireAuth>          
+          } />
 
           <Route
             path="editprofile"
@@ -99,7 +107,11 @@ function App() {
           <Route index path=":searchquery" element={<SearchResults />} />
         </Route>
 
-        <Route path="userlist" element={<UserList />} />
+        <Route path="userlist" element={
+          <RequireAuth>
+            <UserList />
+          </RequireAuth>
+        } />
       </Route>
     </Routes>
   );

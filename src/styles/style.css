@@ -629,7 +629,7 @@ footer .footer-icons :is(i:hover, i:focus, i:active) {
 
 @media screen and (min-width: 766px) /* and (max-width: 810) */ {
   body {
-    background-image: linear-gradient(150deg, #313132, #161617);
+    /* background-image: linear-gradient(150deg, #313132, #161617); */
     /* height: 200%; */
   }
   .menu {
@@ -650,7 +650,7 @@ footer .footer-icons :is(i:hover, i:focus, i:active) {
 @media screen and (min-width: 810px) {
   body {
     /* background-color: #EF5A63; */
-    background-image: linear-gradient(150deg, #313132, #161617);
+    /* background-image: linear-gradient(150deg, #313132, #161617); */
   }
 
   nav ul li {
@@ -686,6 +686,11 @@ footer .footer-icons :is(i:hover, i:focus, i:active) {
 /*------------------------ Navbar styling for Small PC and Laptop ------------------------*/
 
 @media screen and (min-width: 1040px) {
+
+  body {
+    /* background-image: linear-gradient(150deg, #313132, #161617); */
+  }
+
   .menu a {
     font-size: 20px;
   }
@@ -865,6 +870,10 @@ footer .footer-icons :is(i:hover, i:focus, i:active) {
       position: absolute;
       bottom: 0;
     }
+  }
+
+  body {
+    background-image: linear-gradient(150deg, #313132, #161617);
   }
 
   .misc-element {

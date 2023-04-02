@@ -12,11 +12,21 @@
 .book-list {
     display: grid;
     padding: 0px;
-    grid-template-columns: repeat(auto-fit, 120px);
+    grid-template-columns: repeat(auto-fit, 170px);
     margin: 25px;
     /* grid-gap: 10px; */
 }
 
+@media only screen and (max-width: 900px) {
+    .book-list {
+      grid-template-columns: repeat(auto-fit, 150px);
+    }
+}
+@media only screen and (max-width: 540px) {
+    .book-list {
+      grid-template-columns: repeat(auto-fit, 120px);
+    }
+}
 @media only screen and (max-width: 405px) {
     .book-list {
       grid-template-columns: repeat(auto-fit, 100px);
