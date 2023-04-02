@@ -12,34 +12,6 @@ import {
 } from "firebase/firestore";
 import { db, auth } from "../config/firebase";
 
-/*  Old Code
-const initialState = {
-  info: {
-    name: "",
-    username: "",
-    bio: "",
-    city: "",
-    country: "",
-  },
-};
-
-export const userSlice = createSlice({
-  name: "user",
-  initialState,
-  reducers: {
-    getUser: (state) => {
-      state.value = action.payload;
-    },
-    addUser: (state, action) => {
-      state.info = action.payload;
-    },
-    updateUser: (state, action) => {
-      state.info = { ...state.info, ...action.payload };
-    },
-  },
-// });  
-
-*/
 
 let collectionName = "usertest";
 

@@ -1,14 +1,45 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { selectAuth } from "../features/authSlice";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { selectUser, getUser } from "../features/userSlice";
 
 const NavBar = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const authUser = useSelector(selectAuth);
+  const userList = useSelector(selectUser);
 
   const [bookname, setBookname] = useState("");
+  const [username, setUsername] = useState(localStorage.getItem("username") || "");
+  const [profileImage, setProfileImage] = useState(localStorage.getItem("profileImage") || "https://wallpapers-clan.com/wp-content/uploads/2022/08/default-pfp-18.jpg");
+
+  console.log(userList)
+  let userProfile
+
+  if (Array.isArray(userList)) {
+    userProfile = userList.find((user) => user.id === authUser.uid);
+  } else {
+    userProfile = userList;
+  }
+
+  useEffect(() => {
+    if (authUser.uid && userProfile && authUser.uid === userProfile.id) {
+      // Dispatch getUser if the authenticated user is not found in the userList
+      if (!userProfile) {
+        dispatch(getUser(authUser.uid));
+      }
+      
+      // Store username and profileImage in localStorage
+        localStorage.setItem("profileImage", userProfile?.profileImage || "https://wallpapers-clan.com/wp-content/uploads/2022/08/default-pfp-18.jpg");
+        localStorage.setItem("username", userProfile?.username || "");
+
+      // Set username and profileImage state from localStorage
+      setUsername(localStorage.getItem("username") || "");
+      setProfileImage(localStorage.getItem("profileImage") || "https://wallpapers-clan.com/wp-content/uploads/2022/08/default-pfp-18.jpg");
+    }
+  }, [authUser.uid, dispatch, userProfile]);
 
   const handleUpload = () => {
     navigate(`/book/uploadbook`);
@@ -88,7 +119,7 @@ const NavBar = () => {
 
           <li className="profile">
             <img
-              src="\src\assets\images\lelouch.png"
+              src={profileImage}
               alt="profile Pic"
               onClick={handleProfile}
             />

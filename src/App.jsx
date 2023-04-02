@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { LogIn } from "./components/Auth/Login";
 import { SignUp } from "./components/Auth/SignUp";
