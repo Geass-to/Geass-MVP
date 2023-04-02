@@ -89,7 +89,7 @@ const NavBar = () => {
           </div>
           <div className="menu">
             <li>
-              <a href="index.html">Home</a>
+              <a href="" onClick={handleHome} >Home</a>
             </li>
             <li>
               <a href="#">Popular</a>
@@ -101,20 +101,28 @@ const NavBar = () => {
               <a href="#">Genres</a>
             </li>
             <li>
-              <a href="loginpage.html">About Us</a>
+              <a href="#">About Us</a>
             </li>
           </div>
           <div className="misc-element">
             <div className="support-box">
               <li>
-                <a href="#">Support</a>
+                <a href="https://www.patreon.com/Amethesh" >Support</a>
               </li>
             </div>
             <div className="icons">
-              <i className="fa-brands fa-discord"></i>
-              <i className="fa-brands fa-reddit"></i>
-              <i className="fa-brands fa-instagram"></i>
-              <i className="fa-brands fa-twitter"></i>
+            <a href="https://twitter.com/GeassReade81903">
+                <i className="fa-brands fa-discord"></i>
+              </a>
+              <a href="https://twitter.com/GeassReade81903">
+                <i className="fa-brands fa-reddit"></i>
+              </a>
+              <a href="https://www.instagram.com/geassreader/">
+                <i className="fa-brands fa-instagram"></i>
+              </a>
+              <a href="https://twitter.com/GeassReade81903">
+                <i className="fa-brands fa-twitter"></i>
+              </a>
             </div>
           </div>
 
