@@ -25,7 +25,8 @@ const NavBar = () => {
   }
 
   useEffect(() => {
-    if (authUser.uid && userProfile && authUser.uid === userProfile.id) {
+
+    if (authUser?.uid && userProfile && authUser.uid === userProfile.id) {
       // Dispatch getUser if the authenticated user is not found in the userList
       if (!userProfile) {
         dispatch(getUser(authUser.uid));
@@ -39,14 +40,14 @@ const NavBar = () => {
       setUsername(localStorage.getItem("username") || "");
       setProfileImage(localStorage.getItem("profileImage") || "https://wallpapers-clan.com/wp-content/uploads/2022/08/default-pfp-18.jpg");
     }
-  }, [authUser.uid, dispatch, userProfile]);
+  }, [authUser?.uid, dispatch, userProfile]);
 
   const handleUpload = () => {
     navigate(`/book/uploadbook`);
   };
 
   const handleProfile = () => {
-    navigate(`/uid/${authUser.uid}`);
+    navigate(`/uid/${authUser?.uid}`);
   };
   const handleHome = () => {
     navigate(`/`);
