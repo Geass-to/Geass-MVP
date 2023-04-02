@@ -47,4 +47,30 @@
     color: white;
 }
 
+.volume-wrapper {
+    float: right;
+    position: relative;
+    bottom: 30px;
+
+    display: flex;
+    gap: 5px;
+}
+
+input[type="range"].volume-range {
+    color: grey;
+    --thumb-height: 1rem;
+    --track-height: 0.0725rem;
+}
+
+input[type="range"].audio-range {
+    color: var(--primary);
+}
+
+@media screen and (max-width: 650px) {
+    .volume-wrapper {
+        display: none;
+    }
+}
+
+
 
