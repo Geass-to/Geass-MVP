@@ -140,76 +140,75 @@ const booksSlice = createSlice({
       state.selectedBookId = action.payload;
     },
   },
-  extraReducers: {
-    [addBook.pending]: (state) => {
-      state.status = "loading";
-    },
-    [addBook.fulfilled]: (state, action) => {
-      state.status = "succeeded";
-      state.booksList.push(action.payload);
-    },
-    [addBook.rejected]: (state, action) => {
-      state.status = "failed";
-      state.error = action.error.message;
-    },
-    [getBooks.pending]: (state) => {
-      state.status = "loading";
-    },
-    [getBooks.fulfilled]: (state, action) => {
-      state.status = "succeeded";
-      state.booksList = action.payload;
-    },
-    [getBooks.rejected]: (state, action) => {
-      state.status = "failed";
-      state.error = action.error.message;
-    },
-    [getBookById.pending]: (state) => {
-      state.status = "loading";
-    },
-    [getBookById.fulfilled]: (state, action) => {
-      state.status = "succeeded";
-      state.singleBook = action.payload; // update singleBook property
-    },
-    [getBookById.rejected]: (state, action) => {
-      state.status = "failed";
-      state.error = action.error.message;
-    },
-    [getBookByIds.pending]: (state) => {
-      state.status = "loading";
-    },
-    [getBookByIds.fulfilled]: (state, action) => {
-      state.status = "succeeded";
-      state.booksList = action.payload;
-    },
-    [getBookByIds.rejected]: (state, action) => {
-      state.status = "failed";
-      state.error = action.error.message;
-    },
-    [getBookByName.pending]: (state) => {
-      state.status = "loading";
-    },
-    [getBookByName.fulfilled]: (state, action) => {
-      state.status = "succeeded";
-      state.booksList = action.payload;
-    },
-    [getBookByName.rejected]: (state, action) => {
-      state.status = "failed";
-      state.error = action.error.message;
-    },
-    [updateBook.pending]: (state) => {
-      state.status = "loading";
-    },
-    [updateBook.fulfilled]: (state, action) => {
-      state.status = "succeeded";
-      const index = state.booksList.findIndex(
-        (book) => book.id === action.payload.id
-      );
-      state.booksList[index] = action.payload;
-    },
-    [updateBook.rejected]: (state, action) => {
-      state.status = "failed";
-      state.error = action.error.message;
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(addBook.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(addBook.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.booksList.push(action.payload);
+      })
+      .addCase(addBook.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(getBooks.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(getBooks.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.booksList = action.payload;
+      })
+      .addCase(getBooks.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(getBookById.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(getBookById.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.singleBook = action.payload; // update singleBook property
+      })
+      .addCase(getBookById.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(getBookByIds.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(getBookByIds.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.booksList = action.payload;
+      })
+      .addCase(getBookByIds.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(getBookByName.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(getBookByName.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.booksList = action.payload;
+      })
+      .addCase(getBookByName.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(updateBook.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(updateBook.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        const index = state.booksList.findIndex((book) => book.id === action.payload.id);
+        state.booksList[index] = action.payload;
+      })
+      .addCase(updateBook.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      });
   },
 });
 
