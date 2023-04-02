@@ -101,7 +101,7 @@ const NavBar = () => {
               <a href="#">Genres</a>
             </li>
             <li>
-              <a href="loginpage.html">About Us</a>
+              <a href="#">About Us</a>
             </li>
           </div>
           <div className="misc-element">
