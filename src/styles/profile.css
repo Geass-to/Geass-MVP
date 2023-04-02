@@ -113,7 +113,9 @@
 
 .user-location ul {
     display: flex;
+    font-size: 12px;
 }
+
 .user-location ul li {
     font-family: "quicksand";
     font-weight: normal;
@@ -131,7 +133,8 @@
 @media screen and (min-width: 1040px){
 
     .banner-container .profile-container{       
-        grid-template-columns: 1fr 2fr .7fr;          
+        grid-template-columns: 1fr 2fr .7fr;
+        grid-template-rows: .5fr 1fr .5fr;          
     }    
     
     .banner-container{
@@ -172,6 +175,10 @@
         grid-row: 3 / 4;
         grid-column: 1 / 1;
         align-self: center;
+    }
+
+    .user-location ul {
+        font-size: 16px;
     }
 
     .profile-container .user-bio{

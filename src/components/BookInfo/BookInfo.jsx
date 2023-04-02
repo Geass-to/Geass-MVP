@@ -48,7 +48,7 @@ const BookInfo = () => {
             </div>
             <div className="total-episodes">
               Author: <span>{book.author}</span> <br />
-              <span onClick={() => navigate(`/uid/${book.userUid}`)}>Visit created user</span>
+              <span onClick={() => navigate(`/uid/${book.userUid}`)}  style={{"cursor":"pointer"}}>Visit created user</span>
               {/* <Link to={`/uid/${book.userUid}`} style={{"color":"var(--light)"}}>Created user</Link> */}
             </div>
             {/* div.createdUser */}
