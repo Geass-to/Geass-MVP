@@ -12,9 +12,15 @@
 .book-list {
     display: grid;
     padding: 0px;
-    grid-template-columns: repeat(auto-fit, 125px);
+    grid-template-columns: repeat(auto-fit, 120px);
     margin: 25px;
     /* grid-gap: 10px; */
+}
+
+@media only screen and (max-width: 405px) {
+    .book-list {
+      grid-template-columns: repeat(auto-fit, 100px);
+    }
 }
 
 .book-card {
@@ -105,6 +111,6 @@ audio::-webkit-media-controls-play-button {
 
 @media screen and (max-width: 850px) /* and (max-width: 810) */{
     .book-list {
-        justify-content: center;
+        justify-content: flex-start;
     }
 }

@@ -121,6 +121,10 @@ const BookUpload = () => {
     }
   };
 
+  const handleGoBack = () => {
+    Navigate("/");
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -191,7 +195,7 @@ const BookUpload = () => {
             ></textarea>
           </li>
           <li className="upload-form-field submit-field">
-            <StyledButton bgColor="var(--light-dark)">Go Back</StyledButton>
+            <StyledButton bgColor="var(--light-dark)" onClick={handleGoBack}>Go Back</StyledButton>
             <StyledButton type="submit">Submit</StyledButton>
           </li>
         </ul>
@@ -201,4 +205,5 @@ const BookUpload = () => {
 };
 
 export default BookUpload;
+
 

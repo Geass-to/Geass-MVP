@@ -48,7 +48,7 @@ export const addBook = createAsyncThunk("books/addBook", async (newBook, { getSt
   const bookId = docRef.id;
   const userRef = doc(db, "usertest", userUid);
   batch.update(userRef, {
-    bookList: arrayUnion(bookId),
+    booklist: arrayUnion(bookId),
   });
   await batch.commit();
   return { id: bookId, ...bookWithUid };
