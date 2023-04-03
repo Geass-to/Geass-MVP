@@ -7,7 +7,7 @@ const BookCard = ({ bookDetails }) => {
   const navigate = useNavigate();
 
   const handleBookClick = (id) => {
-    console.log(id)
+    // console.log(id)
     navigate(`/book/${id}`);
   };
 

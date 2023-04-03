@@ -173,6 +173,7 @@ export const SignUp = () => {
                   required
                   onChange={handleInputChange}
                   onBlur={checkPasswordMatch}
+                  
                 />
               </div>
               <div className="inputBox">

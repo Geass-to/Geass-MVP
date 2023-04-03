@@ -29,7 +29,7 @@
 }
 @media only screen and (max-width: 405px) {
     .book-list {
-      grid-template-columns: repeat(auto-fit, 100px);
+      grid-template-columns: repeat(auto-fit, 110px);
     }
 }
 
