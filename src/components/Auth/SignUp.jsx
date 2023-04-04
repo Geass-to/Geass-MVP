@@ -1,4 +1,4 @@
-import { auth } from "../../config/firebase";
+import { analytics, auth } from "../../config/firebase";
 import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
@@ -14,6 +14,7 @@ import { addUser } from "../../features/userSlice";
 import { checkUsernameExists } from "../ProfilePage/CheckUser";
 
 import { generateRandomProfile } from "../utility/profileRandomizer";
+import { logEvent } from "firebase/analytics";
 
 export const SignUp = () => {
   //!States
@@ -69,14 +70,17 @@ export const SignUp = () => {
       );
       if (result.user) {
         // Send verification email to the user's email address
-        sendEmailVerification(result.user).then(() => {
-          // Email verification sent!
+          sendEmailVerification(result.user).then(() => {
           alert("Sent email verification!");
         });
         // await result.user.sendEmailVerification();
         // Create a new user object to add to the database
         const newUser = { email: email, username: username, profileImage: generateRandomProfile() };
         
+        //LogEvents for signup
+        const method = "Email Method"
+        logEvent(analytics, "sign_up", {method: method});
+
         // Dispatch the addUser action to add the new user to the database
         const data = dispatch(addUser(newUser));
         // console.log(data);

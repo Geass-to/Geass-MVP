@@ -1,5 +1,5 @@
-import { auth } from "../../config/firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { analytics, auth } from "../../config/firebase";
+import { SignInMethod, signInWithEmailAndPassword } from "firebase/auth";
 import { useEffect, useState } from "react";
 import "../../styles/login.css";
 import { useNavigate } from "react-router-dom";
@@ -34,6 +34,10 @@ export const LogIn = () => {
           //Signed in
           const user = userCredential.user;
           if (user.emailVerified) {
+            //LogEvents for Login
+            const method = user.SignInMethod;
+            logEvent(analytics, "login", {method: method});
+
             // SetUser(user)
             localStorage.setItem("user", JSON.stringify(user));          
             dispatch(login(user));

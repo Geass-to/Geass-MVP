@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBookByName, selectBooks } from "../../features/bookSilce";
 import { useParams } from "react-router-dom";
 import "../Search/search.css";
+import { analytics } from "../../config/firebase";
+import { logEvent } from "firebase/analytics";
 
 const SearchResults = () => {
   const { searchquery } = useParams();
@@ -12,6 +14,9 @@ const SearchResults = () => {
   const books = useSelector(selectBooks);
   // console.log(books);
   useEffect(() => {
+    //LogEvents for Search
+    logEvent(analytics, "search", { search_term: searchquery });
+
     dispatch(getBookByName(searchquery));
   }, [dispatch, searchquery]);
 

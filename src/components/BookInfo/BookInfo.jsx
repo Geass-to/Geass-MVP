@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBookById, selectSingleBook, selectBooks } from "../../features/bookSilce";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { logEvent } from "firebase/analytics";
+import { analytics } from "../../config/firebase";
 
 const BookInfo = () => {
 
@@ -19,6 +21,8 @@ const BookInfo = () => {
   useEffect(() => {
     if (!book) {
       console.log("In Effect");
+      //LogEvents for Book Select
+      logEvent(analytics, "select_content", {content_type: book.title, item_id: bookId});
       dispatch(getBookById(bookId));
     }
   }, [book, bookId, dispatch]);
