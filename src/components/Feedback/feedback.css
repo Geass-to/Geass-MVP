@@ -1,0 +1,9 @@
+.feedback{
+    display: flex;
+    justify-content: center;
+}
+
+iframe{
+    width: 640px;
+    height:1350px;
+}

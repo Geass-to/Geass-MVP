@@ -8,6 +8,9 @@ export const Footer = () => {
   const handleHome = () => {
     navigate(`/`);
   }; 
+  const handleFeedback = () => {
+    navigate(`/feedback`);
+  };
 
   return (
     <footer>
@@ -15,7 +18,7 @@ export const Footer = () => {
         <div className="footer-logo">
           <li className="logo">
             <img
-              src="https://firebasestorage.googleapis.com/v0/b/geass-8fac8.appspot.com/o/geassAssets%2FGeass_Logo.png?alt=media&token=6bf27e30-247f-4525-a627-77845eaac411"
+              src="https://firebasestorage.googleapis.com/v0/b/geass-8fac8.appspot.com/o/geassAssets%2FGeass_Beta_Logo.png?alt=media&token=3f274ca5-c01b-40d5-99bd-659b1bf17f6c"
               alt="Geass"
               onClick={handleHome}
             />
@@ -37,13 +40,13 @@ export const Footer = () => {
         </div>
         <div className="footer-menu">
           <li>
-            <a href="#">Home</a>
+            <a onClick={handleHome} style={{"cursor":"pointer"}}>Home</a>
           </li>
           <li>
             <a href="#">Terms of Service</a>
           </li>
           <li>
-            <a href="#">DMCA Notices</a>
+            <a onClick={handleFeedback} style={{"cursor":"pointer"}}>Feedback</a>
           </li>
           <li>
             <a href="#">Contact Us</a>

@@ -17,6 +17,7 @@ import User from "./components/ProfilePage/User";
 import BookInfo from "./components/BookInfo/BookInfo";
 import NotFound from "./components/NotFound/NotFound";
 import SearchResults from "./components/Search/SearchResults";
+import Feedback from "./components/Feedback/Feedback";
 
 function App() {
   const currentUser = useSelector(selectAuth);
@@ -40,6 +41,7 @@ function App() {
             /*</RequireAuth>*/
           }
         />
+        <Route path="feedback" element={<Feedback/>} />
         
         <Route path="uid/:uid" element={
           <RequireAuth>
