@@ -12,7 +12,6 @@ import FacebookAuth from "./FacebookAuth";
 import { useDispatch } from "react-redux";
 import { addUser } from "../../features/userSlice";
 import { checkUsernameExists } from "../ProfilePage/CheckUser";
-
 import { generateRandomProfile } from "../utility/profileRandomizer";
 import { logEvent } from "firebase/analytics";
 

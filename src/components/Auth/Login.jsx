@@ -9,6 +9,7 @@ import FacebookAuth from "./FacebookAuth";
 import { useDispatch } from "react-redux";
 import { login } from "../../features/authSlice";
 import SetUser from "./SetUser";
+import { logEvent } from "firebase/analytics";
 
 export const LogIn = () => {
   //!states
@@ -35,8 +36,8 @@ export const LogIn = () => {
           const user = userCredential.user;
           if (user.emailVerified) {
             //LogEvents for Login
-            const method = user.SignInMethod;
-            logEvent(analytics, "login", {method: method});
+            // const method = SignInMethod();
+            logEvent(analytics, "login", {method: "signIn"});
 
             // SetUser(user)
             localStorage.setItem("user", JSON.stringify(user));          

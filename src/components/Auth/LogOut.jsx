@@ -3,11 +3,13 @@ import React, { useContext } from 'react'
 import { auth } from '../../config/firebase';
 import { useDispatch } from "react-redux";
 import { logout } from "../../features/authSlice";
+import { useNavigate } from 'react-router-dom';
 
 
 const LogOut = () => {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
     const handleLogout = async (e) => {
         e.preventDefault();
@@ -16,6 +18,7 @@ const LogOut = () => {
             .then(() => {
                 dispatch(logout());                
                 console.log("LogOut");
+                navigate("/login");
             })
         } catch (error) {
             console.error(error)
@@ -23,7 +26,7 @@ const LogOut = () => {
     }
 
   return (
-    <a onClick={handleLogout}>Log Out</a>
+    <a onClick={handleLogout} style={{"cursor":"pointer"}}>Log Out</a>
   )
 }
 
