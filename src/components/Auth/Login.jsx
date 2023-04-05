@@ -37,7 +37,7 @@ export const LogIn = () => {
           if (user.emailVerified) {
             //LogEvents for Login
             // const method = SignInMethod();
-            logEvent(analytics, "login", {method: "signIn"});
+            logEvent(analytics, "login");
 
             // SetUser(user)
             localStorage.setItem("user", JSON.stringify(user));          

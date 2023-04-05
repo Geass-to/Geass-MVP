@@ -103,7 +103,7 @@ overflow-x: scroll; */
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    max-height: 630px;
+    max-height: 500px;
   }
 
   .anime .poster {
