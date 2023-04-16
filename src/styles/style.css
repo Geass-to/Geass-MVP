@@ -311,7 +311,7 @@ nav ul .search-bar span {
   height: inherit;
   width: 100%;
   border-radius: inherit;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.75);
 }
 
 /* ------------------Using Grid------------------------ */
