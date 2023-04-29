@@ -19,19 +19,19 @@
 
 @media only screen and (max-width: 900px) {
     .book-list {
-      grid-template-columns: repeat(auto-fit, 150px);
+      grid-template-columns: repeat(auto-fit, minmax(100px, .5fr));
     }
 }
-@media only screen and (max-width: 540px) {
+/* @media only screen and (max-width: 540px) {
     .book-list {
       grid-template-columns: repeat(auto-fit, 120px);
     }
 }
 @media only screen and (max-width: 405px) {
     .book-list {
-      grid-template-columns: repeat(auto-fit, 110px);
+      grid-template-columns: repeat(auto-fit, 100px);
     }
-}
+} */
 
 .book-card {
     

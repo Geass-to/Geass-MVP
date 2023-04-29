@@ -98,9 +98,9 @@ function App() {
             index
             path=":bookId"
             element={
-              <RequireAuth>
-                <BookInfo />
-              </RequireAuth>
+              // <RequireAuth>
+              <BookInfo />
+              // </RequireAuth>
             }
           />
         </Route>
